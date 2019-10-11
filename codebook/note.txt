@@ -1,22 +1,22 @@
-¤@¨Ç¹w­p­n´«±¼ªº¡G
-Articulation Vertex -> ÂIÂù³s³q
-Bridge -> ÃäÂù³s³q
+ä¸€äº›é è¨ˆè¦æ›æ‰çš„ï¼š
+Articulation Vertex -> é»é›™é€£é€š
+Bridge -> é‚Šé›™é€£é€š
 
-¤@¨Ç¹w­p­n§ï¨}codeªº¡G
+ä¸€äº›é è¨ˆè¦æ”¹è‰¯codeçš„ï¼š
 Heavy light Decomposition
-Dynamic convex (¥ÎBBªº)
+Dynamic convex (ç”¨BBçš„)
 
-¤@¨Ç§Ú¤£ª¾¹D¥¿½T©Êªº¡G
-Kuhn Munkres (§Ú¤£¤Ó²M·¡³o¬OV^3ÁÙ¬OV^4ªºª©¥»)
-Suffix Array (´¿¸gRE¹L¡A¦ı¬O§Ú§Ñ°O§Ú­×±¼¤F¨S)
+ä¸€äº›æˆ‘ä¸çŸ¥é“æ­£ç¢ºæ€§çš„ï¼š
+Kuhn Munkres (æˆ‘ä¸å¤ªæ¸…æ¥šé€™æ˜¯V^3é‚„æ˜¯V^4çš„ç‰ˆæœ¬)
+Suffix Array (æ›¾ç¶“REéï¼Œä½†æ˜¯æˆ‘å¿˜è¨˜æˆ‘ä¿®æ‰äº†æ²’)
 
-¤@¨Ç§Ú¨S¥Î¹Lªº¡G
+ä¸€äº›æˆ‘æ²’ç”¨éçš„ï¼š
 Maximum Simple Graph Matching
 Minimum Weight Matching (Clique version)
 SW-mincut
-Simplex Algorithm (§Ú¬Æ¦Ü¤£·|¥Î¡A¥Ø«e¥u¬O©ñ²nªº)
+Simplex Algorithm (æˆ‘ç”šè‡³ä¸æœƒç”¨ï¼Œç›®å‰åªæ˜¯æ”¾çˆ½çš„)
 
-¹w­p­n¥[¤Jªº¡G
+é è¨ˆè¦åŠ å…¥çš„ï¼š
 2:
 Dominator Tree
 
@@ -31,16 +31,16 @@ palindromic tree
 Suffix Automaton
 
 6:
-§ù±Ğ¿z(?)
+æœæ•™ç¯©(?)
 
 7:
-¦h¶µ¦¡°£ªk
-¦h¶µ¦¡¦hÂI¨D­È
-¦h¶µ¦¡¦hÂI´¡­È
+å¤šé …å¼é™¤æ³•
+å¤šé …å¼å¤šé»æ±‚å€¼
+å¤šé …å¼å¤šé»æ’å€¼
 
 8:
-¥b¥­­±¥æ
-¤Tºû¥Y¥]
+åŠå¹³é¢äº¤
+ä¸‰ç¶­å‡¸åŒ…
 voronoi diagram
 Triangulation
 Minimum Covering Circle
