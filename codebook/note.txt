@@ -1,0 +1,47 @@
+一些預計要換掉的：
+Articulation Vertex -> 點雙連通
+Bridge -> 邊雙連通
+
+一些預計要改良code的：
+Heavy light Decomposition
+Dynamic convex (用BB的)
+
+一些我不知道正確性的：
+Kuhn Munkres (我不太清楚這是V^3還是V^4的版本)
+Suffix Array (曾經RE過，但是我忘記我修掉了沒)
+
+一些我沒用過的：
+Maximum Simple Graph Matching
+Minimum Weight Matching (Clique version)
+SW-mincut
+Simplex Algorithm (我甚至不會用，目前只是放爽的)
+
+預計要加入的：
+2:
+Dominator Tree
+
+3:
+Link-Cut Tree
+KD Tree
+LiChaoST
+
+5:
+SAIS
+palindromic tree
+Suffix Automaton
+
+6:
+杜教篩(?)
+
+7:
+多項式除法
+多項式多點求值
+多項式多點插值
+
+8:
+半平面交
+三維凸包
+voronoi diagram
+Triangulation
+Minimum Covering Circle
+
