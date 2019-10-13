@@ -1,0 +1,20 @@
+dist: bionic
+
+language: generic
+
+services:
+  - docker
+
+install:
+  - echo "$GITHUB_TOKEN" | docker login -u "$DOCKER_USERNAME" --password-stdin docker.pkg.github.com
+  - docker pull docker.pkg.github.com/brianbbsu/bbqube/auto-build:latest
+
+script:
+  - docker run -t docker.pkg.github.com/brianbbsu/bbqube/auto-build:latest "$GITHUB_TOKEN"
+
+notifications:
+  email:
+      recipients:
+        - brianbb.su@gmail.com
+      on_success: change
+      on_failure: always
