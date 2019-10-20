@@ -5,8 +5,8 @@ Current Version: [Codebook.pdf](https://github.com/brianbbsu/BBQube/blob/codeboo
 
 # Result
 
-| Contest                   | Date          | Rank |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
-| --------------------------|:-------------:|:----:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+| Contest                   | Date          | Rank |   |   |   |   |   |   |   |   |   |   |   |   |   |
+| --------------------------|:-------------:|:----:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
 | NWERC 2016                    | 2019/08/17    |  4  | A | B | C | **D** | E | F | **G** | H | I | J | K |
 | JAG Spring Contest 2015       | 2019/08/24    |  2  | A | **B** | . | D | E | F | G | . | **I** | . | K | L |
 | 2010-2011 OpenCup IX          | 2019/08/31    |  16 | . | . | . | . | E | . | . | H | . | **J** |
@@ -19,7 +19,7 @@ Current Version: [Codebook.pdf](https://github.com/brianbbsu/BBQube/blob/codeboo
 | NTU NCPC & Team Ranking 2019  | 2019/09/28    |  1  | A | B | **C** | D | **E** | (F) | G | (H) | I | J |
 | TOPC 2019                     | 2019/10/05    |  2  | A | B | C | D | . | F | **G** | H | I |
 | ASC 37                        | 2019/10/12    |  7  | A | B | . | D | E | F | G | H | . |
-| NCPC 2019                     | 2019/10/19    |  14 | A | B | C | D | (E) | F | G | H | I | J | K | L | M | N | O |
+| NCPC 2019                     | 2019/10/19    |  4  | A | B | C | D | (E) | F | G | H | I | J | K | L | M~O |
 
 
 - A : 賽內AC
