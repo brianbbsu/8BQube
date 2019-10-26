@@ -48,7 +48,7 @@ struct GenMatch {//1-base
 			if(inb[djs[tu]]){
 				djs[tu]=nb;
 				if(!inq[tu])
-				qe.push(tu),inq[tu]=1;
+					qe.push(tu),inq[tu]=1;
 			}
 	}
 	void flow(){
