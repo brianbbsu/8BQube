@@ -19,7 +19,8 @@ Current Version: [Codebook.pdf](https://github.com/brianbbsu/BBQube/blob/codeboo
 | NTU NCPC & Team Ranking 2019  | 2019/09/28    |  1  | A | B | **C** | D | **E** | (F) | G | (H) | I | J |
 | TOPC 2019                     | 2019/10/05    |  2  | A | B | C | D | . | F | **G** | H | I |
 | ASC 37                        | 2019/10/12    |  7  | A | B | . | D | E | F | G | H | . |
-| NCPC 2019                     | 2019/10/19    |  4  | A | B | C | D | (E) | F | G | H | I | J | K | L | M~O |
+| NCPC 2019                     | 2019/10/19    |  4  | A | B | C | D | E | F | G | H | I | J | K | L | M~O |
+| ASC 42                        | 2019/10/26    |  6  | (A) | B | C | D | . | F | G | . | . | J |
 
 
 - A : 賽內AC
