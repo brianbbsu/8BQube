@@ -20,6 +20,7 @@ Current Version: [Codebook.pdf](https://github.com/brianbbsu/BBQube/blob/codeboo
 | TOPC 2019                     | 2019/10/05    |  2  | A | B | C | D | . | F | **G** | H | I |
 | ASC 37                        | 2019/10/12    |  7  | A | B | . | D | E | F | G | H | . |
 | NCPC 2019                     | 2019/10/19    |  4  | A | B | C | D | E | F | G | H | I | J | K | L | M~O |
+| Nanjing 2018                  | 2019/10/22    |  8  | A | B | . | D | . | . | G | . | I | J | K | . | M |
 | ASC 42                        | 2019/10/26    |  6  | (A) | B | C | D | . | F | G | . | . | J |
 
 
