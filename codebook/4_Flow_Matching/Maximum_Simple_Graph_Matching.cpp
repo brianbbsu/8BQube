@@ -18,16 +18,12 @@ struct GenMatch {//1-base
 	}
 	int lca(int u,int v){
 		for(int i=0;i<=V;++i) inp[i]=0; 
-		while(1){
-			u=djs[u],inp[u]=true; 
-			if(u==st) break; 
-			u=bk[pr[u]];
-		}
-		while(1){
-			v=djs[v];
-			if(inp[v]) return v;
-			v=bk[pr[v]];
-		}
+		while(1)
+			if(u=djs[u],inp[u]=true,u==st) break; 
+			else u=bk[pr[u]];
+		while(1)
+			if(v=djs[v],inp[v]) return v;
+			else v=bk[pr[v]];
 		return v;
 	}
 	void upd(int u){
@@ -45,11 +41,9 @@ struct GenMatch {//1-base
 		if(djs[u]!=nb) bk[u]=v;
 		if(djs[v]!=nb) bk[v]=u;
 		for(int tu=1;tu<=V;++tu)
-			if(inb[djs[tu]]){
-				djs[tu]=nb;
-				if(!inq[tu])
+			if(inb[djs[tu]])
+				if(djs[tu]=nb,!inq[tu])
 					qe.push(tu),inq[tu]=1;
-			}
 	}
 	void flow(){
 		for(int i=1;i<=V;++i)
@@ -73,8 +67,7 @@ struct GenMatch {//1-base
 		}
 	}
 	void aug(){
-		int u=ed,v,w;
-		while(u>0)
+		for(int u=ed,v,w;u>0;)
 			v=bk[u],w=pr[v],pr[v]=u,pr[u]=v,u=w;
 	}
 	int solve(){
