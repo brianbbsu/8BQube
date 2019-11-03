@@ -22,7 +22,7 @@ Current Version: [Codebook.pdf](https://github.com/brianbbsu/BBQube/blob/codeboo
 | NCPC 2019                     | 2019/10/19    |  2  | A | B | C | D | E | F | G | H | I | J | K | L | M~O |
 | Nanjing 2018                  | 2019/10/22    |  12 | A | B | . | D | . | . | G | . | I | J | K | . | M |
 | ASC 42                        | 2019/10/26    |  2  | (A) | B | C | D | . | F | G | . | . | J |
-| Radewoosh+mnbvmar Contest     | 2019/11/02    |  33 | A | . | C | . | . | . | . | H | . | J | K | L |
+| Radewoosh+mnbvmar Contest     | 2019/11/02    |  33 | A | . | C | . | . | . | . | H | . | J | K | . |
 
 
 
