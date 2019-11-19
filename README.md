@@ -23,7 +23,7 @@ Current Version: [Codebook.pdf](https://github.com/brianbbsu/BBQube/blob/codeboo
 | Nanjing 2018                  | 2019/10/22    |  12 | A | B | . | D | . | . | G | . | I | J | K | . | M |
 | ASC 42                        | 2019/10/26    |  2  | (A) | B | C | D | . | F | G | . | . | J |
 | Radewoosh+mnbvmar Contest     | 2019/11/02    |  33 | A | . | C | . | . | . | . | H | . | J | K | . |
-
+| NEERC 2014-2015 Southern Subregional Contest  | 2019/11/19    | 1 | A | B | C | D | E | F | G | . | I | J | K | **L** | M |
 
 
 - A : 賽內AC
