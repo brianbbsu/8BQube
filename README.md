@@ -28,7 +28,8 @@ Current Version: [Codebook.pdf](https://github.com/brianbbsu/BBQube/blob/codeboo
 | BSUIR Final                   | 2019/11/30    |  38 | A | . | . | D | **E** | F | . | H | I | . | . |
 | Jakarta 2019                  | 2019/12/03    |  1  | A | B | C | . | E | F | G | H | . | J | K | L |
 | 2018 Yandex Cup               | 2019/12/10    |  31 | A | . | C | . | . | F | . | H | . | . | K |
-| Manila 2019                   | 2019/12/15    |  3 | A | . | . | D | E | . | . | H | I | . | . | L | M |
+| Manila 2019                   | 2019/12/15    |  3  | A | . | . | D | E | . | . | H | I | . | . | L | M |
+| ASC 43                        | 2020/2/12     |  10 | . | B | . | D | . | . | G | H | I | J | K | L |
 
 - A : 賽內AC
 - **A** : 賽後AC
