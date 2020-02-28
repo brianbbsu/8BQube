@@ -30,7 +30,7 @@ Current Version: [Codebook.pdf](https://github.com/brianbbsu/BBQube/blob/codeboo
 | 2018 Yandex Cup               | 2019/12/10    |  31 | 5/11  | 457  | A | . | C | . | . | F | . | H | . | . | K |
 | Manila 2019                   | 2019/12/15    |  3  | 7/13  | 660  | A | . | . | D | E | . | . | H | I | . | . | L | M |
 | ASC 43                        | 2020/2/12     |  10 | 8/12  | 1098 | . | B | **C** | D | . | . | G | H | I | J | K | L |
-| North-Western Russia 2019     | 2020/2/16     |  9  | 9/13  | 1051 | A | B | C | . | E | . | . | H | I | J | K | . | M |
+| North-Western Russia 2019     | 2020/2/16     |  9  | 9/13  | 1051 | A | B | C | . | E | . | . | H | I | J | K | **L** | M |
 | 2014 Tokyo                    | 2020/2/22     |  6  | 8/11  | 731  | A | B | C | D | E | F | G | . | I | . | . |
 
 - A : 賽內AC
