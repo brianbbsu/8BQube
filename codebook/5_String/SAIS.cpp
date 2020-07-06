@@ -1,9 +1,9 @@
-const int N = 300010;
+// CAUTION!!! The elements in the string/array are supposed be positive!
 struct SA{
 #define REP(i,n) for ( int i=0; i<int(n); i++ )
 #define REP1(i,a,b) for ( int i=(a); i<=int(b); i++ )
-  bool _t[N*2];
-  int _s[N*2], _sa[N*2], _c[N*2], x[N], _p[N], _q[N*2], hei[N], r[N];
+  bool _t[MAXN*2];
+  int _s[MAXN*2], _sa[MAXN*2], _c[MAXN*2], x[MAXN], _p[MAXN], _q[MAXN*2], hei[MAXN], r[MAXN];
   int operator [] (int i){ return _sa[i]; }
   void build(int *s, int n, int m){
     memcpy(_s, s, sizeof(int) * n);
@@ -44,7 +44,7 @@ struct SA{
     MAGIC(for(int i = nn - 1; i >= 0; i--) sa[--x[s[p[nsa[i]]]]] = p[nsa[i]]);
   }
 }sa;
-int H[ N ], SA[ N ];
+int H[ MAXN ], SA[ MAXN ];
 void suffix_array(int* ip, int len) {
   // should padding a zero in the back
   // ip is int array, len is array length
