@@ -33,7 +33,7 @@ Current Version: [Codebook.pdf](https://github.com/brianbbsu/BBQube/blob/codeboo
 | North-Western Russia 2019     | 2020/2/16     |  9  | 9/13  | 1051 | A | B | C | . | E | . | . | H | I | J | K | **L** | M |
 | 2014 Tokyo                    | 2020/2/22     |  6  | 8/11  | 731  | A | B | C | D | E | F | G | . | I | . | . |
 | SEERC 2018                    | 2020/3/3      |  1  | 6/11  | 683  | **A** | B | C | . | E | **F** | G | . | I | . | K |
-| Multi-Univ Beihang 2018       | 2020/3/11     |  37 | 4/12  | 657  | . | B | . | . | E | . | G | H | . | . | . | . |
+| Multi-Univ Beihang 2018       | 2020/3/11     |  37 | 4/12  | 657  | . | B | . | . | E | . | G | H | . | **J** | . | . |
 | CERC 2016                     | 2020/3/29     |  24 | 8/12  | 1155 | A | B | C | . | . | F | . | H | . | J | K | L |
 | NWERC 2015                    | 2020/7/3      |  1  | 10/11 | 661  | A | B | C | D | E | . | G | H | I | J | K |
 
