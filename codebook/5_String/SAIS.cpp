@@ -1,4 +1,3 @@
-// CAUTION!!! The elements in the string/array are supposed to be positive!
 struct SA{
 #define REP(i,n) for ( int i=0; i<int(n); i++ )
 #define REP1(i,a,b) for ( int i=(a); i<=int(b); i++ )
