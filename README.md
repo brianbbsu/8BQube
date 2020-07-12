@@ -21,7 +21,7 @@ Current Version: [Codebook.pdf](https://github.com/brianbbsu/BBQube/blob/codeboo
 | NWERC 2016                    | 2019/08/17    |  4  | 9/11  | 1118 | A | B | C | **D** | E | F | **G** | H | I | J | K |
 | JAG Spring Contest 2015       | 2019/08/24    |  2  | 7/12  | 1251 | A | **B** | . | D | E | F | G | . | **I** | . | K | L |
 | 2010-2011 OpenCup IX          | 2019/08/31    |  16 | 2/10  | 248  | . | . | . | . | E | . | . | H | . | **J** |
-| Jakarta 2018                  | 2019/09/05    |  4  | 9/12  | 816  | A | (B) | C | D | (E) | F | G | H | I | J | K | L |
+| Jakarta 2018                  | 2019/09/05    |  4  | 9/12  | 816  | A | (B) | **C** | D | (E) | F | G | H | I | J | K | L |
 | Seoul 2018                    | 2019/09/06    |  10 | 8/12  | 1042 | A | B | **C** | D | E | F | **G** | . | . | J | K | L |
 | Yokohama 2018                 | 2019/09/14    |  8  | 7/11  | 878  | A | B | C | D | **E** | . | G | . | **I** | J | K |
 | Nakhon Pathom 2018            | 2019/09/15    |  3  | 9/12  | 1070 | A | **B** | C | D | E | **F** | G | H | . | J | K | L |
@@ -33,7 +33,7 @@ Current Version: [Codebook.pdf](https://github.com/brianbbsu/BBQube/blob/codeboo
 | NEERC 2014 Southern Subregional Contest  | 2019/11/19    | 1 | 11/13 | 1248 | A | B | C | D | E | F | G | **H** | I | J | K | **L** | M |
 | 2018 BSUIR Final              | 2019/11/30    |  38 | 5/11  | 452  | A | . | . | D | **E** | F | . | H | I | . | . |
 | Jakarta 2019                  | 2019/12/03    |  1  | 10/12 | 1179 | A | B | C | . | E | F | G | H | . | J | K | L |
-| 2018 Yandex Cup               | 2019/12/10    |  31 | 5/11  | 457  | A | . | C | . | . | F | . | H | . | . | K |
+| 2018 Yandex Cup               | 2019/12/10    |  31 | 5/11  | 457  | A | . | C | . | . | F | **G** | H | **I** | . | K |
 | ASC 43                        | 2020/2/12     |  10 | 8/12  | 1098 | . | B | **C** | D | . | . | G | H | I | J | K | L |
 | North-Western Russia 2019     | 2020/2/16     |  9  | 9/13  | 1051 | A | B | C | . | E | . | . | H | I | J | K | **L** | M |
 | 2014 Tokyo                    | 2020/2/22     |  6  | 8/11  | 731  | A | B | C | D | E | F | G | . | I | . | . |
