@@ -11,8 +11,7 @@ int g[MAXN][MAXN],num,n;
 Point P[MAXN];
 double vlen(Point a){return sqrt(a.x*a.x+a.y*a.y+a.z*a.z);}
 Point cross(const Point &a, const Point &b, const Point &c){ 
-	return Point((b.y-a.y)*(c.z-a.z)-(b.z-a.z)*(c.y-a.y),-((b.x-a.x)*(c.z-a.z)
-		-(b.z-a.z)*(c.x-a.x)),(b.x-a.x)*(c.y-a.y)-(b.y-a.y)*(c.x-a.x));
+	return Point((b.y-a.y)*(c.z-a.z)-(b.z-a.z)*(c.y-a.y),-((b.x-a.x)*(c.z-a.z)-(b.z-a.z)*(c.x-a.x)),(b.x-a.x)*(c.y-a.y)-(b.y-a.y)*(c.x-a.x));
 }
 double area(Point a,Point b,Point c){return vlen((b-a)*(c-a));}
 double volume(Point a,Point b,Point c,Point d){return (b-a)*(c-a)^(d-a);}
@@ -23,9 +22,7 @@ void deal(int p,int a,int b){
 	if(F[f].ok)
 		if(dblcmp(P[p],F[f])>EPS) dfs(p,f);
 		else
-			add.a=b,add.b=a,add.c=p,add.ok=1,
-			g[p][b]=g[a][p]=g[b][a]=num,
-			F[num++]=add;
+			add.a=b,add.b=a,add.c=p,add.ok=1,g[p][b]=g[a][p]=g[b][a]=num,F[num++]=add;
 } 
 void dfs(int p,int now){
 	F[now].ok=0;
@@ -35,8 +32,7 @@ bool same(int s,int t){
 	Point &a=P[F[s].a];
 	Point &b=P[F[s].b];
 	Point &c=P[F[s].c];
-	return fabs(volume(a,b,c,P[F[t].a]))<EPS && fabs(volume(a,b,c,P[F[t].b]))<EPS
-		&& fabs(volume(a,b,c,P[F[t].c]))<EPS;
+	return fabs(volume(a,b,c,P[F[t].a]))<EPS && fabs(volume(a,b,c,P[F[t].b]))<EPS && fabs(volume(a,b,c,P[F[t].c]))<EPS;
 }
 void init(int _n){n=_n,num=0;}
 void solve(){
@@ -45,15 +41,9 @@ void solve(){
 	num=0;
 	if(n<4) return;
 	if([&](){
-        for(int i=1;i<n;++i)if(vlen(P[0]-P[i])>EPS)return swap(P[1],P[i]),0;
-        return 1;
-    }() || [&](){
-        for(int i=2;i<n;++i)if(vlen((P[0]-P[i])*(P[1]-P[i]))>EPS)return swap(P[2],P[i]),0;
-        return 1;
-    }() || [&](){
-        for(int i=3;i<n;++i)if(fabs((P[0]-P[1])*(P[1]-P[2])^(P[0]-P[i]))>EPS)return swap(P[3],P[i]),0;
-        return 1;
-    }())return;
+        for(int i=1;i<n;++i)if(vlen(P[0]-P[i])>EPS)return swap(P[1],P[i]),0;return 1;}() || [&](){
+        for(int i=2;i<n;++i)if(vlen((P[0]-P[i])*(P[1]-P[i]))>EPS)return swap(P[2],P[i]),0;return 1;}() || [&](){
+        for(int i=3;i<n;++i)if(fabs((P[0]-P[1])*(P[1]-P[2])^(P[0]-P[i]))>EPS)return swap(P[3],P[i]),0;return 1;}())return;
 	for(int i=0;i<4;++i){
 		add.a=(i+1)%4,add.b=(i+2)%4,add.c=(i+3)%4,add.ok=true;
 		if(dblcmp(P[i],add)>0) swap(add.b,add.c);
@@ -96,10 +86,7 @@ Point getcent(){
 			Point p1=P[F[i].a],p2=P[F[i].b],p3=P[F[i].c]; 
 			t2 = volume(temp,p1,p2,p3)/6.0;
 			if(t2>0)
-				ans.x += (p1.x+p2.x+p3.x+temp.x)*t2,
-				ans.y += (p1.y+p2.y+p3.y+temp.y)*t2,
-				ans.z += (p1.z+p2.z+p3.z+temp.z)*t2,
-				v += t2; 
+				ans.x += (p1.x+p2.x+p3.x+temp.x)*t2, ans.y += (p1.y+p2.y+p3.y+temp.y)*t2, ans.z += (p1.z+p2.z+p3.z+temp.z)*t2, v += t2; 
 		} 
 	ans.x/=(4*v),ans.y/=(4*v),ans.z/=(4*v); 
 	return ans; 
