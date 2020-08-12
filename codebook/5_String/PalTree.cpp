@@ -1,48 +1,45 @@
-/*
- * sfail: compressed fail links with same diff
- * O(lgn): length of sfail link path
- */
-const int MAXN = 1e6+10;
-struct PalT{
-  int tot,lst;
-  int nxt[MAXN][26], len[MAXN];
-  int fail[MAXN], diff[MAXN], sfail[MAXN];
-  char* s;
-  int newNode(int l, int _fail) {
-    int res = ++tot;
-    fill(nxt[res], nxt[res]+26, 0);
-    len[res] = l, fail[res] = _fail;
-    diff[res] = l - len[_fail];
-    if (diff[res] == diff[_fail])
-      sfail[res] = sfail[_fail];
-    else
-      sfail[res] = _fail;
-    return res;
-  }
-  void push(int p) {
-    int np = lst;
-    int c = s[p]-'a';
-    while (p-len[np]-1 < 0 || s[p] != s[p-len[np]-1])
-      np = fail[np];
-    if ((lst=nxt[np][c])) return;
-    int nq_f = 0;
-    if (len[np]+2 == 1) nq_f = 2;
-    else {
-      int tf = fail[np];
-      while (p-len[tf]-1 < 0 || s[p] != s[p-len[tf]-1])
-        tf = fail[tf];
-      nq_f = nxt[tf][c];
-    }
-    int nq = newNode(len[np]+2, nq_f);
-    nxt[np][c] = nq;
-    lst=nq;
-  }
-  void init(char* _s){
-    s = _s;
-    tot = 0;
-    newNode(-1, 1);
-    newNode(0, 1);
-    diff[2] = 0;
-    lst = 2;
-  }
-} palt;
+struct palindromic_tree{// Check by APIO 2014 palindrome
+	struct node{
+		int next[26],fail,len;
+		int cnt,num;//cnt: appear times, num: number of pal. suf.
+		node(int l=0):fail(0),len(l),cnt(0),num(0){
+			for(int i=0;i<26;++i)next[i]=0;
+		}
+	};
+	vector<node>St;
+	vector<char>s;
+	int last,n;
+	palindromic_tree():St(2),last(1),n(0){
+		St[0].fail=1, St[1].len=-1, s.pb(-1);
+	}
+	inline void clear(){
+		St.clear(), s.clear(), last=1, n=0;
+		St.pb(0), St.pb(-1);
+		St[0].fail=1, s.pb(-1);
+	}
+	inline int get_fail(int x){
+		while(s[n-St[x].len-1]!=s[n])x=St[x].fail;
+		return x;
+	}
+	inline void add(int c){
+		s.push_back(c-='a'), ++n;
+		int cur=get_fail(last);
+		if(!St[cur].next[c]){
+			int now=SZ(St);
+			St.pb(St[cur].len+2);
+			St[now].fail=St[get_fail(St[cur].fail)].next[c];
+			St[cur].next[c]=now;
+			St[now].num=St[St[now].fail].num+1;
+		}
+		last=St[cur].next[c], ++St[last].cnt;
+	}
+	inline void count(){// counting cnt
+		auto i=St.rbegin();
+		for(;i!=St.rend();++i){
+			St[i->fail].cnt+=i->cnt;
+		}
+	}
+	inline int size(){// The number of diff. pal.
+		return SZ(St)-2;
+	}
+};
