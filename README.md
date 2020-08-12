@@ -42,6 +42,7 @@ Current Version: [Codebook.pdf](https://github.com/brianbbsu/BBQube/blob/codeboo
 | CERC 2016                     | 2020/3/29     |  24 | 8/12  | 1155 | A | B | C | . | . | F | . | H | . | J | K | L |
 | NWERC 2015                    | 2020/7/3      |  1  | 10/11 | 661  | A | B | C | D | E | . | G | H | I | J | K |
 | Jiaozuo 2018                  | 2020/7/9      |  15 | 7/12  | 991  | A | **B** | C | D | E | F | . | H | I | . | **K** | . |
+| SWERC 2018                    | 2020/8/10     |  1  | 10/11 | 1116 | A | B | C | D | E | F | G | H | I | . | K |
 
 - A : 賽內AC
 - **A** : 賽後AC
