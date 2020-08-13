@@ -44,7 +44,7 @@ Current Version: [Codebook.pdf](https://github.com/brianbbsu/BBQube/blob/codeboo
 | Jiaozuo 2018                  | 2020/7/9      |  15 | 7/12  | 991  | A | **B** | C | D | E | F | . | H | I | . | **K** | . |
 | Xuzhou 2018                   | 2020/7/23     |  4  | 6/13  | 1045 | A | . | C | . | . | . | G | H | I | . | . | . | M |
 | SWERC 2018                    | 2020/8/10     |  1  | 10/11 | 1116 | A | B | C | D | E | F | G | H | I | . | K |
-| Brazil 3019                   | 2020/8/13     |  1  | 12/13 | 1234 | A | B | . | D | E | F | G | H | I | J | K | L | M |
+| Brazil 2019                   | 2020/8/13     |  1  | 12/13 | 1234 | A | B | . | D | E | F | G | H | I | J | K | L | M |
 
 - A : 賽內AC
 - **A** : 賽後AC
