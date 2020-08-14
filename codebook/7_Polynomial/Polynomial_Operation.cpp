@@ -66,12 +66,4 @@ struct PolyOp {
             if ((r[i] = a[i] - buf[i]) < 0) r[i] += P;
         }
     }
-    void dx(LL *a, int n, LL *b) {
-        b[n - 1] = 0;
-        for (int i = 1; i < n; ++i) b[i - 1] = i * a[i] % P;
-    }
-    void Sx(LL *a, int n, LL *b) {
-        b[0] = 0;
-        for (int i = 1; i < n; ++i) b[i] = ntt.inv(i) * a[i - 1] % P;
-    }
 };
