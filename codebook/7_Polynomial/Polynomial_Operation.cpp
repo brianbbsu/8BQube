@@ -16,7 +16,7 @@ struct PolyOp {
         for (int i = 0; i < sz; ++i) c[i] = buf1[i] * buf2[i] % P;
         ntt(c, sz, true);
     }
-    void inv(LL *a, int n, LL *b) {
+    void inv(LL *a, int n, LL *b) { //a[0] != 0
         static LL buf[MAXN];
         if (n == 1) return b[0] = ntt.minv(a[0]), void();
         inv(a, (n + 1) / 2, b);
@@ -34,7 +34,7 @@ struct PolyOp {
         for (LL i = 0; i <= P / 2; ++i) if (i * i % P == x) return i;
         throw string("BBQube");
     }
-    void sqrt(LL *a, int n, LL *b) {
+    void sqrt(LL *a, int n, LL *b) { //a[0] != 0 && sqrt(a[0]) exists
         static LL invb[MAXN], buf[MAXN];
         if (n == 1) return b[0] = _msqrt(a[0]), void();
         sqrt(a, (n + 1) / 2, b);
