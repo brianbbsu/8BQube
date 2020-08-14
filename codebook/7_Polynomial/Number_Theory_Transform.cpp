@@ -13,7 +13,7 @@ struct NTT {
         }
         return r;
     }
-    LL inv(LL a) {
+    LL minv(LL a) {
         return mpow(a, P - 2);
     }
     NTT() {
@@ -28,21 +28,21 @@ struct NTT {
             if (j < i) swap(a[i], a[j]);
         }
     }
-    void operator()(LL *a, int n, bool f = false) { //0 <= a[i] < P
+    void operator()(LL *a, int n, bool inv = false) { //0 <= a[i] < P
         bitrev(a, n);
         for (int L = 2; L <= n; L <<= 1) {
-            int dx = MAXN / L;
+            int dx = MAXN / L, dl = L >> 1;
             for (int i = 0; i < n; i += L) {
-                for (int j = i, x = 0; j < i + (L >> 1); ++j, x += dx) {
-                    LL tmp = a[j + (L >> 1)] * w[x] % P;
-                    if ((a[j + (L >> 1)] = a[j] - tmp) < 0) a[j + (L >> 1)] += P;
+                for (int j = i, x = 0; j < i + dl; ++j, x += dx) {
+                    LL tmp = a[j + dl] * w[x] % P;
+                    if ((a[j + dl] = a[j] - tmp) < 0) a[j + dl] += P;
                     if ((a[j] += tmp) >= P) a[j] -= P;
                 }
             }
         }
-        if (f) {
+        if (inv) {
             reverse(a + 1, a + n);
-            LL invn = inv(n);
+            LL invn = minv(n);
             for (int i = 0; i < n; ++i) a[i] = a[i] * invn % P;
         }
     }

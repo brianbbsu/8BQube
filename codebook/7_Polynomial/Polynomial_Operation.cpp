@@ -1,7 +1,7 @@
-template<int MAXN, LL P, LL RT>
+template<int MAXN, LL P, LL RT> //MAXN must be 2^k
 struct PolyOp {
     NTT<MAXN, P, RT> ntt;
-    const LL INV2 = ntt.inv(2);
+    const LL INV2 = ntt.minv(2);
     int get_sz(int n) {
         int sz = 1;
         while (sz < n) sz <<= 1;
@@ -18,7 +18,7 @@ struct PolyOp {
     }
     void inv(LL *a, int n, LL *b) {
         static LL buf[MAXN];
-        if (n == 1) return b[0] = ntt.inv(a[0]), void();
+        if (n == 1) return b[0] = ntt.minv(a[0]), void();
         inv(a, (n + 1) / 2, b);
         int sz = get_sz(n * 2);
         copy(a, a + n, buf), fill(buf + n, buf + sz, 0);
@@ -32,7 +32,7 @@ struct PolyOp {
     }
     LL _msqrt(LL x) {
         for (LL i = 0; i <= P / 2; ++i) if (i * i % P == x) return i;
-        return -1;
+        throw string("BBQube");
     }
     void sqrt(LL *a, int n, LL *b) {
         static LL invb[MAXN], buf[MAXN];
