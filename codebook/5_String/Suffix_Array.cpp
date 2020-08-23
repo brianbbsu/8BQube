@@ -10,8 +10,8 @@ struct suffix_array{
 		for(int i=n-1;i>=0;--i) ot[--box[key[it[i]]]]=it[i];
 	}
 	void make_sa(string s,int n){
-        int k=1;
-        for(int i=0;i<n;++i) ra[i]=s[i];
+		int k=1;
+		for(int i=0;i<n;++i) ra[i]=s[i];
 		do{
 			iota(tp,tp+k,n-k),iota(sa+k,sa+n,0);
 			radix(ra+k,sa+k,tp+k,n-k);
@@ -21,7 +21,7 @@ struct suffix_array{
 				m+=not_equ(sa[i],sa[i-1],k,n);
 				tp[sa[i]]=m-1;
 			}
-            copy_n(tp,n,ra);
+			copy_n(tp,n,ra);
 			k*=2;
 		}while(k<n&&m!=n);
 	}
