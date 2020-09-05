@@ -24,7 +24,7 @@ int QuadraticResidue(int a, int p) {
         if (Jacobi(d, p) == -1) break;
     }
     int f0 = b, f1 = 1, g0 = 1, g1 = 0, tmp;
-    for (int e = (p + 1) >> 1; e; e >>= 1) {
+    for (int e = (1LL + p) >> 1; e; e >>= 1) {
         if (e & 1) {
             tmp = (1LL * g0 * f0 + 1LL * d * (1LL * g1 * f1 % p)) % p;
             g1 = (1LL * g0 * f1 + 1LL * g1 * f0) % p;
