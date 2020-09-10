@@ -1,9 +1,6 @@
-struct matrix { //n * (m + 1)
-    static constexpr int MAXN = 110;
+struct matrix { //m variables, n equations
     int n, m;
     fraction M[MAXN][MAXN + 1], sol[MAXN];
-    matrix(int n = 0, int m = 0): n(n), m(m), M(), sol() {
-    }
     int solve() { //-1: inconsistent, >= 0: rank
         for (int i = 0; i < n; ++i) {
             int piv = 0;
