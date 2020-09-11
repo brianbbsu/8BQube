@@ -2,8 +2,8 @@ struct PiCount {
   vector<int> pr;
   int prc[MAXN];
   ll phic[MSZ][NSZ];
+  bitset<MAXN> v;
   void init() {
-    bitset<MAXN> v;
     pr.push_back(0);
     for (int i = 2; i < MAXN; ++i) {
       if (!v[i]) pr.push_back(i);
