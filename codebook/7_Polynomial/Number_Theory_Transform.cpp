@@ -5,17 +5,8 @@
 template<int MAXN, LL P, LL RT> //MAXN must be 2^k
 struct NTT {
     LL w[MAXN];
-    LL mpow(LL a, LL n) {
-        LL r = 1;
-        while (n) {
-            if (n & 1) r = r * a % P;
-            n >>= 1, a = a * a % P;
-        }
-        return r;
-    }
-    LL minv(LL a) {
-        return mpow(a, P - 2);
-    }
+    LL mpow(LL a, LL n);
+    LL minv(LL a) { return mpow(a, P - 2); }
     NTT() {
         LL dw = mpow(RT, (P - 1) / MAXN);
         w[0] = 1;
