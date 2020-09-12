@@ -28,7 +28,7 @@ struct Strongly_CC{//1-base
 	}
 	void solve(){
 		FILL(low,0),FILL(vis,0),FILL(bln,0),FILL(sz,0),t=nScc=0;
-		for(int i=1;i<=n;++i) SG[i].clear();
+		for(int i=1;i<=n;++i) SCC[i].clear();
 		for(int i=1;i<=n;++i)
 			if(!vis[i]) dfs(i);
 		for(int i=1;i<=n;++i){
