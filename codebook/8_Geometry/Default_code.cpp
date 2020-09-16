@@ -1,6 +1,6 @@
 typedef pair<double,double> pdd;
 typedef pair<pdd,pdd> Line;
-const double eps=1e-12;
+const double eps=1e-8;
 pdd operator+(const pdd &a,const pdd &b)
 { return pdd(a.X+b.X,a.Y+b.Y);}
 pdd operator-(const pdd &a,const pdd &b)
