@@ -49,7 +49,7 @@ namespace karatsuba {
     void resolve<0>(int *x, int *y, int L) {
     }
     void mul(int *x, int n, int *y, int m) {
-        int L = 2 << __lg(max(n, m) - 1);
+        int L = 2 << __lg(max({n, m, 16}) - 1);
         fill(x + n, x + L, 0), fill(y + m, y + L, 0);
         resolve<MAXN>(x, y, L);
     }
