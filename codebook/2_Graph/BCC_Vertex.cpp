@@ -39,7 +39,9 @@ void bcc_init(int n) {
 }
 
 void bcc_solve(int n) {
-    dfs(1);
+    for (int i = 1; i <= n; ++i)
+        if (!dfn[i])
+            dfs(i);
     // circle-square tree
     for(int i = 1; i <= n; ++i)
         if(is_cut[i])
