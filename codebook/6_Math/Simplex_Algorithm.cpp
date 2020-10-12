@@ -10,7 +10,7 @@ int ix[MAXN + MAXM]; // !!! array all indexed from 0
 // usage : 
 // value = simplex(a, b, c, N, M);
 double simplex(double a[MAXN][MAXM], double b[MAXN],
-               double c[MAXM], int n, int m){
+    double c[MAXM], int n, int m){
   ++m;
   int r = n, s = m - 1;
   memset(d, 0, sizeof(d));

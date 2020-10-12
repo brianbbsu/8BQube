@@ -34,9 +34,9 @@ void rotate(Splay *x){
   int d = x->dir();
   if (!p->isr()) p->f->setCh(x, p->dir());
   else x->f = p->f;
-	p->setCh(x->ch[!d], d);
+  p->setCh(x->ch[!d], d);
   x->setCh(p, !d);
-	p->pull(); x->pull();
+  p->pull(); x->pull();
 }
 vector<Splay*> splayVec;
 void splay(Splay *x){

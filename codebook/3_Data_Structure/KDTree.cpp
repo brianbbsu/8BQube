@@ -27,7 +27,7 @@ struct KDTree {
     int M = (L+R)/2;
     tree[M].f = dep%2;
     nth_element(tree+L, tree+M, tree+R+1,
-                tree[M].f ? cmpy : cmpx);
+        tree[M].f ? cmpy : cmpx);
     tree[M].x1 = tree[M].x2 = tree[M].x;
     tree[M].y1 = tree[M].y2 = tree[M].y;
 

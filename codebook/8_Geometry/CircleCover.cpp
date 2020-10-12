@@ -34,10 +34,10 @@ struct CircleCover{
   bool contain(int i, int j){
     /* c[j] is non-strictly in c[i]. */
     return (sign(c[i].R - c[j].R) > 0 ||
-            (sign(c[i].R - c[j].R) == 0 && i < j) ) && contain(c[i], c[j], -1);
+        (sign(c[i].R - c[j].R) == 0 && i < j) ) && contain(c[i], c[j], -1);
   }
   void solve(){
-	  for( int i = 0 ; i <= C + 1 ; i ++ )
+    for( int i = 0 ; i <= C + 1 ; i ++ )
       Area[ i ] = 0;
     for( int i = 0 ; i < C ; i ++ )
       for( int j = 0 ; j < C ; j ++ )
@@ -45,7 +45,7 @@ struct CircleCover{
     for( int i = 0 ; i < C ; i ++ )
       for( int j = 0 ; j < C ; j ++ ) 
         g[i][j] = !(overlap[i][j] || overlap[j][i] ||
-                    disjuct(c[i], c[j], -1));
+            disjuct(c[i], c[j], -1));
     for( int i = 0 ; i < C ; i ++ ){
       int E = 0, cnt = 1;
       for( int j = 0 ; j < C ; j ++ )
