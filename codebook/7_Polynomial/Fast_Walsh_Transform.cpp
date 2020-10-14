@@ -1,5 +1,5 @@
 /* x: a[j], y: a[j + (L >> 1)]
-or: (x, y+x), (x, y-x) and: (x+y, y), (x-y, y)
+or: (y += x), (y -= x) and: (x += y), (x -= y)
 xor: (x+y, x-y), (x+y, x-y)/2               */
 void fwt(val_t *a, int n) { //or
   for (int L = 2; L <= n; L <<= 1) {
