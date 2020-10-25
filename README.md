@@ -34,7 +34,7 @@ Current Version: [Codebook.pdf](https://github.com/brianbbsu/BBQube/blob/codeboo
 | 2018 BSUIR Final              | 2019/11/30    |  38 | 5/11  | 452  | A | . | . | D | **E** | F | . | H | I | . | . |
 | Jakarta 2019                  | 2019/12/03    |  1  | 10/12 | 1179 | A | B | C | . | E | F | G | H | . | J | K | L |
 | 2018 Yandex Cup               | 2019/12/10    |  31 | 5/11  | 457  | A | . | C | . | . | F | **G** | H | **I** | . | K |
-| ASC 43                        | 2020/2/12     |  10 | 8/12  | 1098 | . | B | **C** | D | . | . | G | H | I | J | K | L |
+| ASC 43                        | 2020/2/12     |  10 | 8/12  | 1098 | . | B | **C** | D | . | **F** | G | H | I | J | K | L |
 | North-Western Russia 2019     | 2020/2/16     |  9  | 9/13  | 1051 | A | B | C | . | E | . | . | H | I | J | K | **L** | M |
 | 2014 Tokyo                    | 2020/2/22     |  6  | 8/11  | 731  | A | B | C | D | E | F | G | . | I | . | . |
 | SEERC 2018                    | 2020/3/3      |  1  | 6/11  | 683  | **A** | B | C | . | E | **F** | G | . | I | . | K |
