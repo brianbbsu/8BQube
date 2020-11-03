@@ -13,6 +13,8 @@ Current Version: [Codebook.pdf](https://github.com/brianbbsu/BBQube/blob/codeboo
 | NCPC 2019                     | 2019/10/19    |  2  | 15/15 | 2098 | A | B | C | D | E | F | G | H | I | J | K | L | M~O |
 | Taipei-Hsinchu 2019           | 2019/11/23    |  8  | 8/13  | 548  | A | B | C | D | E | . | . | H | . | J | K | (L) | . |
 | Manila 2019                   | 2019/12/15    |  3  | 7/13  | 660  | A | . | . | D | E | . | . | H | I | . | . | L | M |
+| NTU NCPC 2020                 | 2020/09/27    |  7  | 6/10  | 1031 | A | B | . | D | E | F | G | H | . | . |
+| TOPC 2020                     | 2020/10/07    |  1  | 10/10 | 947  | A | B | C | D | E | F | G | H | I |
 
 # Training
 
@@ -48,6 +50,12 @@ Current Version: [Codebook.pdf](https://github.com/brianbbsu/BBQube/blob/codeboo
 | NEERC 2009                    | 2020/8/22     |  2  | 10/12 | 1232 | A | B | C | . | E | F | . | H | I | J | K | L |
 | MEX Foundation Contest        | 2020/8/27     |  17 | 5/10  | 411  | **A** | . | . | . | E | F | G  | H | I | . |
 | Nordic 2018                   | 2020/8/29     |  1  | 10/11 | 957  | A | B | C | D | E | **F** | G | H | I | J | K |
+| ECNA 2014                     | 2020/9/9      |  1  | 8/9   | 1065 | A | B | C | D | E | F | G | H | **I** |
+| BAPC 18                       | 2020/9/12     |  1  | 10/11 | 1119 | A | B | C | **D** | E | F | G | H | I | J | K |
+| PtzWinterCamp rng_58 Contest4 2015 | 2020/9/19 | 31 | 6/13  | 1060 | **A** | B | C | . | E | F | . | H | . | **J** | . | L | . |
+| ASC 45                        | 2020/9/21     |  20 | 5/11  | 646  | A | B | . | D | . | F | . | . | . | . | K |
+| CERC 2015                     | 2020/9/28     |  9  | 6/12  | 529  | A | B | . | D | . | . | . | H | . | J | K | . |
+
 
 
 - A : 賽內AC
