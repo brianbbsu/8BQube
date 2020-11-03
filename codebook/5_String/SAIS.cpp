@@ -1,24 +1,25 @@
 class SAIS {
  public:
-  int SA[N * 2], H[N];
+  int *SA, *H;
   // zero based, string content MUST > 0
   // result height H[i] is LCP(SA[i - 1], SA[i])
   // string, length, |sigma|
   void build(int *s, int n, int m = 128){
     copy_n(s, n, _s);
-    H[0] = _s[n++] = 0;
-    sais(_s, SA, _p, _q, _t, _c, n, m);
+    _h[0] = _s[n++] = 0;
+    sais(_s, _sa, _p, _q, _t, _c, n, m);
     mkhei(n);
+    SA = _sa + 1; H = _h + 1;
   }
  private:
   bool _t[N * 2];
-  int _s[N * 2], _c[N * 2], x[N], _p[N], _q[N * 2], r[N];
+  int _s[N * 2], _c[N * 2], x[N], _p[N], _q[N * 2], r[N], _sa[N * 2], _h[N];
   void mkhei(int n){
-    for (int i = 0; i < n; i++) r[SA[i]] = i;
+    for (int i = 0; i < n; i++) r[_sa[i]] = i;
     for (int i = 0; i < n; i++) if(r[i]) {
-      int ans = i > 0 ? max(H[r[i - 1]] - 1, 0) : 0;
-      while(_s[i + ans] == _s[SA[r[i] - 1] + ans]) ans++;
-      H[r[i]] = ans;
+      int ans = i > 0 ? max(_h[r[i - 1]] - 1, 0) : 0;
+      while(_s[i + ans] == _s[_sa[r[i] - 1] + ans]) ans++;
+      _h[r[i]] = ans;
     }
   }
   void sais(int *s, int *sa, int *p, int *q, bool *t, int *c, int n, int z){
