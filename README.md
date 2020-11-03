@@ -55,6 +55,16 @@ Current Version: [Codebook.pdf](https://github.com/brianbbsu/BBQube/blob/codeboo
 | PtzWinterCamp rng_58 Contest4 2015 | 2020/9/19 | 31 | 6/13  | 1060 | **A** | B | C | . | E | F | . | H | . | **J** | . | L | . |
 | ASC 45                        | 2020/9/21     |  20 | 5/11  | 646  | A | B | . | D | . | F | . | . | . | . | K |
 | CERC 2015                     | 2020/9/28     |  9  | 6/12  | 529  | A | B | . | D | . | . | . | H | . | J | K | . |
+| ECL-Final 2017                | 2020/10/5     |  23 | 9/13  | 1060 | A | B | C | . | . | . | G | H | . | J | K | L | M |
+| SROC 2018                     | 2020/10/12    |  1  | 11/11 | 846  | A | B | C | D | E | F | G | H | I | J | K |
+| NEERC 2016                    | 2020/10/17    |  32 | 5/13  | 688  | A | B | . | . | E | F | . | H | . | . | . | . | . |
+| PNRC 2018                     | 2020/10/19    |  4  | 12/13 | 904  | A | B | C | D | E | F | G | H | I | J | K | L | **M** |
+| Kuala Lumpur 2014             | 2020/10/24    |  2  | 12/12 | 1282 | A | B | C | D | E | F | G | H | I | J | K | L |
+| SWERC 2015                    | 2020/10/26    |  1  | 9/10  | 587  | A | B | C | D | E | F | G | H | . | J |
+| PNRC 2012                     | 2020/10/31    |  1  | 10/12 | 661  | A | B | **C** | D | E | . | G | H | I | J | K | L |
+| Syrian Collegiate 2015        | 2020/11/03    |  1  | 13/13 | 874  | A | B | C | D | E | F | G | H | I | J | K | L | M |
+
+
 
 
 
