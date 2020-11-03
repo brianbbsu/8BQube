@@ -1,58 +1,62 @@
-struct SA{
-#define REP(i,n) for ( int i=0; i<int(n); i++ )
-#define REP1(i,a,b) for ( int i=(a); i<=int(b); i++ )
-  bool _t[MAXN*2];
-  int _s[MAXN*2], _sa[MAXN*2], _c[MAXN*2], x[MAXN], _p[MAXN], _q[MAXN*2], hei[MAXN], r[MAXN];
-  int operator [] (int i){ return _sa[i]; }
-  void build(int *s, int n, int m){
-    memcpy(_s, s, sizeof(int) * n);
-    sais(_s, _sa, _p, _q, _t, _c, n, m);
+class SAIS {
+ public:
+  int SA[N * 2], H[N];
+  // zero based, string content MUST > 0
+  // result height H[i] is LCP(SA[i - 1], SA[i])
+  // string, length, |sigma|
+  void build(int *s, int n, int m = 128){
+    copy_n(s, n, _s);
+    H[0] = _s[n++] = 0;
+    sais(_s, SA, _p, _q, _t, _c, n, m);
     mkhei(n);
   }
+ private:
+  bool _t[N * 2];
+  int _s[N * 2], _c[N * 2], x[N], _p[N], _q[N * 2], r[N];
   void mkhei(int n){
-    REP(i,n) r[_sa[i]] = i;
-    hei[0] = 0;
-    REP(i,n) if(r[i]) {
-      int ans = i>0 ? max(hei[r[i-1]] - 1, 0) : 0;
-      while(_s[i+ans] == _s[_sa[r[i]-1]+ans]) ans++;
-      hei[r[i]] = ans;
+    for (int i = 0; i < n; i++) r[SA[i]] = i;
+    for (int i = 0; i < n; i++) if(r[i]) {
+      int ans = i > 0 ? max(H[r[i - 1]] - 1, 0) : 0;
+      while(_s[i + ans] == _s[SA[r[i] - 1] + ans]) ans++;
+      H[r[i]] = ans;
     }
   }
   void sais(int *s, int *sa, int *p, int *q, bool *t, int *c, int n, int z){
-    bool uniq = t[n-1] = true, neq;
+    bool uniq = t[n - 1] = 1, neq;
     int nn = 0, nmxz = -1, *nsa = sa + n, *ns = s + n, lst = -1;
-#define MS0(x,n) memset((x),0,n*sizeof(*(x)))
-#define MAGIC(XD) MS0(sa, n); \
-    memcpy(x, c, sizeof(int) * z); \
+
+#define MAGIC(XD) \
+    fill_n(sa, n, 0); \
+    copy_n(c, z, x); \
     XD; \
-    memcpy(x + 1, c, sizeof(int) * (z - 1)); \
-    REP(i,n) if(sa[i] && !t[sa[i]-1]) sa[x[s[sa[i]-1]]++] = sa[i]-1; \
-    memcpy(x, c, sizeof(int) * z); \
-    for(int i = n - 1; i >= 0; i--) if(sa[i] && t[sa[i]-1]) sa[--x[s[sa[i]-1]]] = sa[i]-1;
-    MS0(c, z);
-    REP(i,n) uniq &= ++c[s[i]] < 2;
-    REP(i,z-1) c[i+1] += c[i];
-    if (uniq) { REP(i,n) sa[--c[s[i]]] = i; return; }
-    for(int i = n - 2; i >= 0; i--) t[i] = (s[i]==s[i+1] ? t[i+1] : s[i]<s[i+1]);
-    MAGIC(REP1(i,1,n-1) if(t[i] && !t[i-1]) sa[--x[s[i]]]=p[q[i]=nn++]=i);
-    REP(i, n) if (sa[i] && t[sa[i]] && !t[sa[i]-1]) {
-      neq=lst<0||memcmp(s+sa[i],s+lst,(p[q[sa[i]]+1]-sa[i])*sizeof(int));
-      ns[q[lst=sa[i]]]=nmxz+=neq;
+    copy_n(c, z - 1, x + 1); \
+    for (int i = 0; i < n; i++) if(sa[i] && !t[sa[i] - 1]) \
+        sa[x[s[sa[i]-1]]++] = sa[i] - 1; \
+    copy_n(c, z, x); \
+    for(int i = n - 1; i >= 0; i--) if(sa[i] && t[sa[i]-1]) \
+        sa[--x[s[sa[i]-1]]] = sa[i] - 1;
+
+    fill_n(c, z, 0);
+    for (int i = 0; i < n; i++) uniq &= ++c[s[i]] < 2;
+    partial_sum(c, c + z, c);
+    if (uniq) {
+        for (int i = 0; i < n; i++) sa[--c[s[i]]] = i;
+        return;
+    }
+    for(int i = n - 2; i >= 0; i--)
+        t[i] = (s[i] == s[i + 1] ? t[i + 1] : s[i] < s[i + 1]);
+    MAGIC(
+        for (int i = 1; i <= n - 1; i++) if (t[i] && !t[i - 1])
+            sa[--x[s[i]]] = p[q[i] = nn++] = i
+    );
+    for (int i = 0; i < n; i++) if (sa[i] && t[sa[i]] && !t[sa[i] - 1]) {
+      neq = (lst < 0) || !equal(s + lst, s + lst + p[q[sa[i]] + 1] - sa[i], s + sa[i]);
+      ns[q[lst = sa[i]]] = nmxz += neq;
     }
     sais(ns, nsa, p + nn, q + n, t + n, c + z, nn, nmxz + 1);
-    MAGIC(for(int i = nn - 1; i >= 0; i--) sa[--x[s[p[nsa[i]]]]] = p[nsa[i]]);
+    MAGIC(
+        for(int i = nn - 1; i >= 0; i--)
+            sa[--x[s[p[nsa[i]]]]] = p[nsa[i]]
+    );
   }
-}sa;
-int H[ MAXN ], SA[ MAXN ];
-void suffix_array(int* ip, int len) {
-  // should padding a zero in the back
-  // ip is int array, len is array length
-  // ip[0..n-1] != 0, and ip[len] = 0
-  ip[len++] = 0;
-  sa.build(ip, len, 128);
-  for (int i=0; i<len; i++) {
-    H[i] = sa.hei[i + 1];
-    SA[i] = sa._sa[i + 1];
-  }
-  // resulting height, sa array \in [0,len)
-}
+} sa;
