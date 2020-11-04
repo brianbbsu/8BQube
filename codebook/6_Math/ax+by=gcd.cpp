@@ -1,8 +1,8 @@
-pii gcd(int a,int b){
-  if(b==0) return pii(1,0);
-  else{ 
-    int p=a/b;
-    pii q=gcd(b,a%b);
-    return MP(q.Y,q.X-q.Y*p);
-  }
+pll exgcd(ll a, ll b) {
+    if(b == 0) return pll(1, 0);
+    else { 
+        ll p = a / b;
+        pll q = exgcd(b, a % b);
+        return pll(q.Y, q.X - q.Y * p);
+    }
 }
