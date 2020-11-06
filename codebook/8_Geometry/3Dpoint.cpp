@@ -1,7 +1,7 @@
 struct Point {
-    double x, y, z;
-    Point(double _x = 0, double _y = 0, double _z = 0): x(_x), y(_y), z(_z){}
-    Point(pdd p) { x = p.X, y = p.Y, z = abs2(p); }
+  double x, y, z;
+  Point(double _x = 0, double _y = 0, double _z = 0): x(_x), y(_y), z(_z){}
+  Point(pdd p) { x = p.X, y = p.Y, z = abs2(p); }
 };
 Point operator-(const Point &p1, const Point &p2)
 { return Point(p1.x - p2.x, p1.y - p2.y, p1.z - p2.z);}

@@ -35,7 +35,7 @@ bool seg_intersect(const pdd &p1,const pdd &p2,const pdd &p3,const pdd &p4) {
   int a342 = ori(p3, p4, p2);
   if(a123 == 0 && a124 == 0)
     return btw(p1, p2, p3) || btw(p1, p2, p4) ||
-           btw(p3, p4, p1) || btw(p3, p4, p2);
+      btw(p3, p4, p1) || btw(p3, p4, p2);
   return a123 * a124 <= 0 && a341 * a342 <= 0;
 }
 pdd intersect(const pdd &p1, const pdd &p2, const pdd &p3, const pdd &p4) {
