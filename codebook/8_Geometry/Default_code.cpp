@@ -18,7 +18,7 @@ double abs2(const pdd &a)
 { return dot(a, a);}
 double abs(const pdd &a)
 { return sqrt(dot(a, a));}
-double sign(const double &a)
+int sign(const double &a)
 { return fabs(a) < eps ? 0 : a > 0 ? 1 : -1;}
 int ori(const pdd &a,const pdd &b,const pdd &c)
 { return sign(cross(b - a, c - a));}
