@@ -1,38 +1,39 @@
-int gid(P &p) {
-  auto it = ptoid.find(p);
-  if (it == ptoid.end()) return -1;
-  return it->second;
+vector<Line> ls[N];
+pll arr[N];
+Line make_line(pdd p, Line l) {
+    pdd d = l.Y - l.X; d = perp(d);
+    pdd m = (l.X + l.Y) / 2;
+    l = Line(m, m + d);
+    if (ori(l.X, l.Y, p) < 0) 
+        l = Line(m + d, m);
+    return l;
 }
-L make_line(P p, L l) {
-  P d = l.pb - l.pa; d = d.spin(pi / 2);
-  P m = (l.pa + l.pb) / 2;
-  l = L(m, m + d);
-  if (((l.pb - l.pa) ^ (p - l.pa)) < 0) l = L(m + d, m);
-  return l;
+double calc_area(int id) {
+    // use to calculate the area of point "strictly in the convex hull"
+    vector<Line> hpi = halfPlaneInter(ls[id]);
+    vector<pdd> ps;
+    for (int i = 0; i < SZ(hpi); ++i)
+        ps.pb(intersect(hpi[i].X, hpi[i].Y, hpi[(i + 1) % SZ(hpi)].X, hpi[(i + 1) % SZ(hpi)].Y));
+    double rt = 0;
+    for (int i = 0; i < SZ(ps); ++i)
+        rt += cross(ps[i], ps[(i + 1) % SZ(ps)]);
+    return fabs(rt) / 2;
 }
-double calc_ans(int i) {
-  vector<P> ps = HPI(ls[i]);
-  double rt = 0;
-  for (int i = 0; i < (int)ps.size(); ++i) {
-    rt += (ps[i] ^ ps[(i + 1) % ps.size()]);
-  }
-  return abs(rt) / 2;
-}
-void solve() {
-  for (int i = 0; i < n; ++i) ops[i] = ps[i], ptoid[ops[i]] = i;
-  random_shuffle(ps, ps + n);
-  build(n, ps);
-  for (auto *t : triang) {
-    int z[3] = {gid(t->p[0]), gid(t->p[1]), gid(t->p[2])};
-    for (int i = 0; i < 3; ++i) for (int j = 0; j < 3; ++j) if (i != j && z[i] != -1 && z[j] != -1) {
-      L l(t->p[i], t->p[j]);
-      ls[z[i]].push_back(make_line(t->p[i], l));
+void solve(int n, pii *oarr) {
+    map<pll, int> mp;
+    for (int i = 0; i < n; ++i)
+        arr[i] = pll(oarr[i].X, oarr[i].Y), mp[arr[i]] = i;
+    build(n, arr); // Triangulation
+    for (auto *t : triang) {
+        vector<int> p;
+        for (int i = 0; i < 3; ++i)
+            if (mp.find(t -> p[i]) != mp.end())
+                p.pb(mp[t -> p[i]]);
+        for (int i = 0; i < SZ(p); ++i)
+            for (int j = i + 1; j < SZ(p); ++j) { 
+                Line l(oarr[p[i]], oarr[p[j]]);
+                ls[p[i]].pb(make_line(oarr[p[i]], l));
+                ls[p[j]].pb(make_line(oarr[p[j]], l));
+            }
     }
-  }
-  vector<P> tb = convex(vector<P>(ps, ps + n));
-  for (auto &p : tb) isinf[gid(p)] = true;
-  for (int i = 0; i < n; ++i) {
-    if (isinf[i]) cout << -1 << '\n';
-    else cout << fixed << setprecision(12) << calc_ans(i) << '\n';
-  }
 }

@@ -11,18 +11,17 @@ Voronoi diagram: for each triangle in triangulation,
 the bisector of all its edges will split the region.
 nearest point will belong to the triangle containing it
  */
-typedef int SdRef;
+const ll inf = MAXC * MAXC * 100; // lower_bound unknown
 struct Tri;
-typedef Tri* TriRef;
 struct Edge {
-    TriRef tri; SdRef side;
+    Tri* tri; int side;
     Edge(): tri(0), side(0){}
-    Edge(TriRef _tri, SdRef _side): tri(_tri), side(_side){}
+    Edge(Tri* _tri, int _side): tri(_tri), side(_side){}
 };
 struct Tri {
     pll p[3];
     Edge edge[3];
-    TriRef chd[3];
+    Tri* chd[3];
     Tri() {}
     Tri(const pll& p0, const pll& p1, const pll& p2) {
         p[0] = p0; p[1] = p1; p[2] = p2;
@@ -48,10 +47,10 @@ struct Trig { // Triangulation
         the_root = // Tri should at least contain all points
             new(tris++) Tri(pll(-inf, -inf), pll(inf + inf, -inf), pll(-inf, inf + inf));
     }
-    TriRef find(pll p) { return find(the_root, p); }
+    Tri* find(pll p) { return find(the_root, p); }
     void add_point(const pll &p) { add_point(find(the_root, p), p); }
-    TriRef the_root;
-    static TriRef find(TriRef root, const pll &p) {
+    Tri* the_root;
+    static Tri* find(Tri* root, const pll &p) {
         while (1) {
             if (!root -> has_chd())
                 return root;
@@ -63,8 +62,8 @@ struct Trig { // Triangulation
         }
         assert(0); // "point not found"
     }
-    void add_point(TriRef root, pll const& p) {
-        TriRef t[3];
+    void add_point(Tri* root, pll const& p) {
+        Tri* t[3];
         /* split it into three triangles */
         for (int i = 0; i < 3; ++i)
             t[i] = new(tris++) Tri(root -> p[i], root -> p[(i + 1) % 3], p);
@@ -77,14 +76,14 @@ struct Trig { // Triangulation
         for (int i = 0; i < 3; ++i)
             flip(t[i], 2);
     }
-    void flip(TriRef tri, SdRef pi) {
-        TriRef trj = tri -> edge[pi].tri;
+    void flip(Tri* tri, int pi) {
+        Tri* trj = tri -> edge[pi].tri;
         int pj = tri -> edge[pi].side;
         if (!trj) return;
         if (!in_cc(tri -> p[0], tri -> p[1], tri -> p[2], trj -> p[pj])) return;
         /* flip edge between tri,trj */
-        TriRef trk = new(tris++) Tri(tri -> p[(pi + 1) % 3], trj -> p[pj], tri -> p[pi]);
-        TriRef trl = new(tris++) Tri(trj -> p[(pj + 1) % 3], tri -> p[pi], trj -> p[pj]);
+        Tri* trk = new(tris++) Tri(tri -> p[(pi + 1) % 3], trj -> p[pj], tri -> p[pi]);
+        Tri* trl = new(tris++) Tri(trj -> p[(pj + 1) % 3], tri -> p[pi], trj -> p[pj]);
         edge(Edge(trk, 0), Edge(trl, 0));
         edge(Edge(trk, 1), tri->edge[(pi + 2) % 3]);
         edge(Edge(trk, 2), trj->edge[(pj + 1) % 3]);
@@ -96,9 +95,9 @@ struct Trig { // Triangulation
         flip(trl, 1); flip(trl, 2);
     }
 };
-vector<TriRef> triang; // vector of all triangle
-set<TriRef> vst;
-void go(TriRef now) { // store all tri into triang
+vector<Tri*> triang; // vector of all triangle
+set<Tri*> vst;
+void go(Tri* now) { // store all tri into triang
     if (vst.find(now) != vst.end())
         return;
     vst.insert(now);
