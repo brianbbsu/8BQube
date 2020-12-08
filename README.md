@@ -15,6 +15,7 @@ Current Version: [Codebook.pdf](https://github.com/brianbbsu/BBQube/blob/codeboo
 | Manila 2019                   | 2019/12/15    |  3  | 7/13  | 660  | A | . | . | D | E | . | . | H | I | . | . | L | M |
 | NTU NCPC 2020                 | 2020/09/27    |  7  | 6/10  | 1031 | A | B | . | D | E | F | G | H | . | . |
 | TOPC 2020                     | 2020/10/07    |  1  | 10/10 | 947  | A | B | C | D | E | F | G | H | I |
+| Taipei-Hsinchu 2020           | 2019/11/08    |  5  | 9/13  | 1033 | A | B | . | . | E | F | G | H | I | . | K | . | M |
 
 # Training
 
@@ -63,7 +64,9 @@ Current Version: [Codebook.pdf](https://github.com/brianbbsu/BBQube/blob/codeboo
 | SWERC 2015                    | 2020/10/26    |  1  | 9/10  | 587  | A | B | C | D | E | F | G | H | . | J |
 | PNRC 2012                     | 2020/10/31    |  1  | 10/12 | 661  | A | B | **C** | D | E | . | G | H | I | J | K | L |
 | Syrian Collegiate 2015        | 2020/11/03    |  1  | 13/13 | 874  | A | B | C | D | E | F | G | H | I | J | K | L | M |
-
+| PtzWinterCamp Petr Contest12 2014 | 2020/11/23 | 19 | 3/9   | 364  | **A** | . | C | . | E | . | G | . | **I** |
+| PtzWinterCamp rng_58 Contest4 2014 | 2020/11/28 | 17 | 6/10 | 888  | A | B | C | D | . | F | . | H | . | . |
+| PtzWinterCamp Kyiv + Kharkov Contest 2011 | 2020/12/07 | 2 | 8/11 | 1185 | A | . | C | . | E | F | . | H | I | J | K |
 
 
 
