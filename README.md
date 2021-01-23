@@ -68,9 +68,7 @@ Current Version: [Codebook.pdf](https://github.com/brianbbsu/BBQube/blob/codeboo
 | PtzWinterCamp rng_58 Contest4 2014 | 2020/11/28 | 17 | 6/10 | 888  | A | B | C | D | . | F | . | H | . | . |
 | PtzWinterCamp Kyiv + Kharkov Contest 2011 | 2020/12/07 | 2 | 8/11 | 1185 | A | . | C | . | E | F | . | H | I | J | K |
 | Moscow Pre-Finals Workshop 2019 | 2020/12/14 | 8 | 5/10 | 751 | A | . | . | . | E | F | . | . | I | J |
-
-
-
+| BSUIR 2018 Semifinal          | 2021/1/23    |  -  | -/12 | - | . | . | . | . | . | . | . | . | . | . | . | . |
 
 - A : 賽內AC
 - **A** : 賽後AC
