@@ -1,5 +1,5 @@
 struct SAT { // 0-base
-  int low[N], dfn[N], bln[N], sz[N], n, Time, nScc;
+  int low[N], dfn[N], bln[N], n, Time, nScc;
   bool instack[N], istrue[N];
   stack<int> st;
   vector<int> G[N], SCC[N];
@@ -15,7 +15,7 @@ struct SAT { // 0-base
     dfn[u] = low[u] = ++Time;
     instack[u] = 1, st.push(u);
     for (int i : G[u])
-      if (!dfn[i]) dfs(i), low[u] = min(low[i], low[u]);
+      if (!dfn[i]) dfs(i), low[u]=min(low[i], low[u]);
       else if (instack[i] && dfn[i] < dfn[u]) 
         low[u] = min(low[u], dfn[i]);
     if (low[u] == dfn[u]) {
@@ -30,11 +30,11 @@ struct SAT { // 0-base
   bool solve() {
     Time = nScc = 0;
     for (int i = 0; i < n + n; ++i) 
-      SCC[i].clear(), low[i] = dfn[i] = bln[i] = sz[i] = 0;
+      SCC[i].clear(), low[i] = dfn[i] = bln[i] = 0;
     for (int i = 0; i < n + n; ++i) 
       if (!dfn[i]) dfs(i);
     for (int i = 0; i < n + n; ++i) 
-      ++sz[bln[i]], SCC[bln[i]].pb(i);
+      SCC[bln[i]].pb(i);
     for (int i = 0; i < n; ++i) {
       if (bln[i] == bln[i + n]) return false;
       istrue[i] = bln[i] < bln[i + n];
