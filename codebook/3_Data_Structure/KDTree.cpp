@@ -1,80 +1,60 @@
-const int MXN = 100005;
-struct KDTree {
-  struct Nd {
-    int x,y,x1,y1,x2,y2;
-    int id,f;
-    Nd *L, *R;
-  }tree[MXN];
-  int n;
-  Nd *root;
-  LL dis2(int x1, int y1, int x2, int y2) {
-    LL dx = x1-x2; LL dy = y1-y2;
-    return dx*dx+dy*dy;
-  }
-  static bool cmpx(Nd& a, Nd& b){ return a.x<b.x; }
-  static bool cmpy(Nd& a, Nd& b){ return a.y<b.y; }
-  void init(vector<pair<int,int>> ip) {
-    n = ip.size();
-    for (int i=0; i<n; i++) {
-      tree[i].id = i;
-      tree[i].x = ip[i].first;
-      tree[i].y = ip[i].second;
+namespace kdt {
+int root, lc[maxn], rc[maxn], xl[maxn], xr[maxn], yl[maxn], yr[maxn];
+point p[maxn];
+int build(int l, int r, int dep = 0) {
+    if (l == r) return -1;
+    function<bool(const point &, const point &)> f = [dep](const point &a, const point &b) {
+        if (dep & 1) return a.x < b.x;
+        else return a.y < b.y;
+    };
+    int m = (l + r) >> 1;
+    nth_element(p + l, p + m, p + r, f);
+    xl[m] = xr[m] = p[m].x;
+    yl[m] = yr[m] = p[m].y;
+    lc[m] = build(l, m, dep + 1);
+    if (~lc[m]) {
+        xl[m] = min(xl[m], xl[lc[m]]);
+        xr[m] = max(xr[m], xr[lc[m]]);
+        yl[m] = min(yl[m], yl[lc[m]]);
+        yr[m] = max(yr[m], yr[lc[m]]);
     }
-    root = build_tree(0, n-1, 0);
-  }
-  Nd* build_tree(int L, int R, int dep) {
-    if (L>R) return nullptr;
-    int M = (L+R)/2;
-    tree[M].f = dep%2;
-    nth_element(tree+L, tree+M, tree+R+1,
-        tree[M].f ? cmpy : cmpx);
-    tree[M].x1 = tree[M].x2 = tree[M].x;
-    tree[M].y1 = tree[M].y2 = tree[M].y;
-
-    tree[M].L = build_tree(L, M-1, dep+1);
-    if (tree[M].L) {
-      tree[M].x1 = min(tree[M].x1, tree[M].L->x1);
-      tree[M].x2 = max(tree[M].x2, tree[M].L->x2);
-      tree[M].y1 = min(tree[M].y1, tree[M].L->y1);
-      tree[M].y2 = max(tree[M].y2, tree[M].L->y2);
+    rc[m] = build(m + 1, r, dep + 1);
+    if (~rc[m]) {
+        xl[m] = min(xl[m], xl[rc[m]]);
+        xr[m] = max(xr[m], xr[rc[m]]);
+        yl[m] = min(yl[m], yl[rc[m]]);
+        yr[m] = max(yr[m], yr[rc[m]]);
     }
-
-    tree[M].R = build_tree(M+1, R, dep+1);
-    if (tree[M].R) {
-      tree[M].x1 = min(tree[M].x1, tree[M].R->x1);
-      tree[M].x2 = max(tree[M].x2, tree[M].R->x2);
-      tree[M].y1 = min(tree[M].y1, tree[M].R->y1);
-      tree[M].y2 = max(tree[M].y2, tree[M].R->y2);
-    }
-    return tree+M;
-  }
-  int touch(Nd* r, int x, int y, LL d2){
-    LL dis = sqrt(d2)+1;
-    if (x<r->x1-dis || x>r->x2+dis ||
-        y<r->y1-dis || y>r->y2+dis)
-      return 0;
-    return 1;
-  }
-  void nearest(Nd* r, int x, int y, int &mID, LL &md2){
-    if (!r || !touch(r, x, y, md2)) return;
-    LL d2 = dis2(r->x, r->y, x, y);
-    if (d2 < md2 || (d2 == md2 && mID < r->id)) {
-      mID = r->id; md2 = d2;
-    }
-    // search order depends on split dim
-    if ((r->f == 0 && x < r->x) ||
-        (r->f == 1 && y < r->y)) {
-      nearest(r->L, x, y, mID, md2);
-      nearest(r->R, x, y, mID, md2);
+    return m;
+}
+bool bound(const point &q, int o, long long d) {
+    double ds = sqrt(d + 1.0);
+    if (q.x < xl[o] - ds || q.x > xr[o] + ds ||
+        q.y < yl[o] - ds || q.y > yr[o] + ds) return false;
+    return true;
+}
+long long dist(const point &a, const point &b) {
+    return (a.x - b.x) * 1ll * (a.x - b.x) + 
+           (a.y - b.y) * 1ll * (a.y - b.y);
+}
+void dfs(const point &q, long long &d, int o, int dep = 0) {
+    if (!bound(q, o, d)) return;
+    long long cd = dist(p[o], q);
+    if (cd != 0) d = min(d, cd);
+    if ((dep & 1) && q.x < p[o].x || !(dep & 1) && q.y < p[o].y) {
+        if (~lc[o]) dfs(q, d, lc[o], dep + 1);
+        if (~rc[o]) dfs(q, d, rc[o], dep + 1);
     } else {
-      nearest(r->R, x, y, mID, md2);
-      nearest(r->L, x, y, mID, md2);
+        if (~rc[o]) dfs(q, d, rc[o], dep + 1);
+        if (~lc[o]) dfs(q, d, lc[o], dep + 1);
     }
-  }
-  int query(int x, int y) {
-    int id = 1029384756;
-    LL d2 = 102938475612345678LL;
-    nearest(root, x, y, id, d2);
-    return id;
-  }
-}tree;
+}
+void init(const vector<point> &v) {
+    for (int i = 0; i < v.size(); ++i) p[i] = v[i];
+    root = build(0, v.size());
+}
+long long nearest(const point &q) {
+    long long res = 1e18;
+    dfs(q, res, root);
+    return res;
+}}
