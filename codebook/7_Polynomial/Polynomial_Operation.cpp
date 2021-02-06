@@ -1,69 +1,80 @@
-template<int MAXN, LL P, LL RT> //MAXN must be 2^k
-struct PolyOp {
-  NTT<MAXN, P, RT> ntt;
-  const LL INV2 = ntt.minv(2);
-  int get_sz(int n) {
-    int sz = 1;
-    while (sz < n) sz <<= 1;
-    return sz;
+#define fi(n) for (int i = 0; i < (int)(n); ++i)
+int n2k(int n) {
+  int sz = 1; while (sz < n) sz <<= 1;
+  return sz;
+}
+template<int MAXN, LL P, LL RT> // MAXN = 2^k
+struct Poly : public vector<LL> { // coefficients in [0, P)
+  static NTT<MAXN, P, RT> ntt;
+  static const LL INV2;
+  int n() const { return (int)size(); }
+  Poly(int _n = 1) : vector<LL>(_n) { }
+  Poly(const LL *arr, int _n) : vector<LL>(_n) {
+    copy_n(arr, _n, data());
   }
-  void mul(LL *a, int n, LL *b, int m, LL *c) {
-    static LL buf1[MAXN], buf2[MAXN];
-    int sz = get_sz(n + m - 1);
-    copy(a, a + n, buf1), fill(buf1 + n, buf1 + sz, 0);
-    copy(b, b + m, buf2), fill(buf2 + m, buf2 + sz, 0);
-    ntt(buf1, sz), ntt(buf2, sz);
-    for (int i = 0; i < sz; ++i) c[i] = buf1[i] * buf2[i] % P;
-    ntt(c, sz, true);
+  Poly(const Poly &p, int _n) : vector<LL>(_n) {
+    copy_n(p.data(), min(p.n(), _n), data());
   }
-  void inv(LL *a, int n, LL *b) { //a[0] != 0
-    static LL buf[MAXN];
-    if (n == 1) return b[0] = ntt.minv(a[0]), void();
-    inv(a, (n + 1) / 2, b);
-    int sz = get_sz(n * 2);
-    copy(a, a + n, buf), fill(buf + n, buf + sz, 0);
-    fill(b + n, b + sz, 0);
-    ntt(buf, sz), ntt(b, sz);
-    for (int i = 0; i < sz; ++i) {
-      b[i] *= (2 - b[i] * buf[i]) % P;
-      if ((b[i] %= P) < 0) b[i] += P;
+  Poly& operator=(const Poly &rhs) {
+    clear(), insert(begin(), rhs.begin(), rhs.end());
+    return *this;
+  }
+  Poly Mul(const Poly &rhs) const {
+    int _n = n2k(n() + rhs.n() - 1);
+    Poly X(*this, _n), Y(rhs, _n);
+    ntt(X.data(), _n), ntt(Y.data(), _n);
+    fi(_n) X[i] = X[i] * Y[i] % P;
+    ntt(X.data(), _n, true);
+    return X.resize(n() + rhs.n() - 1), X;
+  }
+  Poly Inv() const { // at(0) != 0
+    if (n() == 1) {
+      Poly ret(1);
+      return ret[0] = ntt.minv(at(0)), ret;
     }
-    ntt(b, sz, true), fill(b + n, b + sz, 0);
-  }
-  LL _msqrt(LL x) {
-    for (LL i = 0; i <= P / 2; ++i) if (i * i % P == x) return i;
-    throw string("BBQube");
-  }
-  void sqrt(LL *a, int n, LL *b) { //a[0] != 0 && sqrt(a[0]) exists
-    static LL invb[MAXN], buf[MAXN];
-    if (n == 1) return b[0] = _msqrt(a[0]), void();
-    sqrt(a, (n + 1) / 2, b);
-    int sz = get_sz(n * 2);
-    inv(b, n, invb);
-    copy(a, a + n, buf), fill(buf + n, buf + sz, 0);
-    ntt(b, sz), ntt(invb, sz), ntt(buf, sz);
-    for (int i = 0; i < sz; ++i) {
-      if ((b[i] += buf[i] * invb[i] % P) >= P) b[i] -= P;
-      b[i] = b[i] * INV2 % P;
+    int _n = n2k(n() * 2);
+    Poly Xi = Poly(*this, (n() + 1) / 2).Inv();
+    Poly Y(*this, _n); Xi.resize(_n);
+    ntt(Xi.data(), _n), ntt(Y.data(), _n);
+    fi(_n) {
+      Xi[i] *= (2 - Xi[i] * Y[i]) % P;
+      if ((Xi[i] %= P) < 0) Xi[i] += P;
     }
-    ntt(b, sz, true), fill(b + n, b + sz, 0);
+    ntt(Xi.data(), _n, true);
+    return Xi.resize(n()), Xi;
   }
-  void div(LL *a, int n, LL *b, int m, LL *q, LL *r) {
-    static LL invb[MAXN], buf[MAXN];
-    if (n < m) {
-      fill(q, q + m, 0), copy(a, a + n, r), fill(r + n, r + m, 0);
-      return;
+  Poly Sqrt() const { //at(0) != 0 && sqrt(at(0)) exists
+    if (n() == 1) {
+      Poly ret(1);
+      return ret[0] = _msqrt(at(0)), ret;
     }
-    int mod_sz = n - m + 1;
-    copy(b, b + m, buf), reverse(buf, buf + m);
-    if (m < mod_sz) fill(buf + m, buf + mod_sz, 0);
-    inv(buf, mod_sz, invb);
-    copy(a, a + n, buf), reverse(buf, buf + n);
-    mul(buf, mod_sz, invb, mod_sz, q);
-    fill(q + mod_sz, q + n, 0), reverse(q, q + mod_sz);
-    mul(b, m, q, mod_sz, buf);
-    for (int i = 0; i < n; ++i) {
-      if ((r[i] = a[i] - buf[i]) < 0) r[i] += P;
+    int _n = n2k(n() * 2);
+    Poly X = Poly(*this, (n() + 1) / 2).Sqrt();
+    Poly Xi = Poly(X, n()).Inv();
+    Poly Y(*this, _n); Xi.resize(_n); X.resize(_n);
+    ntt(X.data(), _n), ntt(Xi.data(), _n), ntt(Y.data(), _n);
+    fi(_n) {
+        if ((X[i] += Y[i] * Xi[i] % P) >= P) X[i] -= P;
+        X[i] = X[i] * INV2 % P;
     }
+    ntt(X.data(), _n, true);
+    return X.resize(n()), X;
+  }
+  Poly& irev() { reverse(data(), data() + n()); return *this;}
+  pair<Poly, Poly> DivMod(const Poly &rhs) const { // (rhs.)back() != 0
+    if (n() < rhs.n()) return {Poly(1), *this};
+    int _n = n() - rhs.n() + 1;
+    Poly X(rhs, rhs.n()); X.irev(); X.resize(_n);
+    Poly Y(*this, n()); Y.irev(); Y.resize(_n);
+    Poly Q = Y.Mul(X.Inv());
+    Q.resize(_n); Q.irev();
+    Poly XX = rhs.Mul(Q); Y.resize(n());
+    assert(XX.n() == Y.n());
+    fi(n()) if ((Y[i] = (*this)[i] - XX[i]) < 0) Y[i] += P;
+    return {Q, (Y.resize(max(1, rhs.n() - 1)), Y)};
   }
 };
+template<int MAXN, LL P, LL RT> NTT<MAXN, P, RT> Poly<MAXN, P, RT>::ntt;
+template<int MAXN, LL P, LL RT> const LL Poly<MAXN, P, RT>::INV2 = ntt.minv(2);
+#undef fi
+template<int MAXN> using Poly_t = Poly<MAXN, 998244353, 3>;
