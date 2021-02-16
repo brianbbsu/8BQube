@@ -13,8 +13,8 @@ struct Poly { // coefficients in [0, P)
   int n() const { return (int)coef.size(); } // n() >= 1
   LL *data() { return coef.data(); }
   const LL *data() const { return coef.data(); }
-  LL &operator[](size_t i) { return data()[i]; }
-  const LL &operator[](size_t i) const { return data()[i]; }
+  LL &operator[](size_t i) { return coef[i]; }
+  const LL &operator[](size_t i) const { return coef[i]; }
   Poly(initializer_list<LL> a) : coef(a) { }
   explicit Poly(int _n = 1) : coef(_n) { }
   Poly(const LL *arr, int _n) : coef(arr, arr + _n) {}
@@ -23,9 +23,9 @@ struct Poly { // coefficients in [0, P)
   }
   Poly& irev() { return reverse(data(), data() + n()), *this; }
   Poly& iresz(int _n) { return coef.resize(_n), *this; }
-  Poly& iadd(const Poly &rhs) {
-    Poly &lhs = *this; assert(lhs.n() == rhs.n());
-    fi(0, n()) if ((lhs[i] += rhs[i]) >= P) lhs[i] -= P;
+  Poly& iadd(const Poly &rhs) { // n() == rhs.n()
+    assert(n() == rhs.n());
+    fi(0, n()) if ((coef[i] += rhs[i]) >= P) coef[i] -= P;
     return *this;
   }
 
@@ -37,8 +37,8 @@ struct Poly { // coefficients in [0, P)
     ntt(X.data(), _n, true);
     return X.iresz(n() + rhs.n() - 1);
   }
-  Poly Inv() const { // at(0) != 0
-    if (n() == 1) return {ntt.minv(data()[0])};
+  Poly Inv() const { // coef[0] != 0
+    if (n() == 1) return {ntt.minv(coef[0])};
     const int _n = n2k(n() * 2);
     Poly Xi = Poly(*this, (n() + 1) / 2).Inv().iresz(_n);
     Poly Y(*this, _n);
@@ -50,8 +50,8 @@ struct Poly { // coefficients in [0, P)
     ntt(Xi.data(), _n, true);
     return Xi.iresz(n());
   }
-  Poly Sqrt() const { //data()[0] != 0 && sqrt(data()[0]) exists
-    if (n() == 1) return {QuadraticResidue(data()[0], P)};
+  Poly Sqrt() const { //coef[0] != 0 && sqrt(coef[0]) exists
+    if (n() == 1) return {QuadraticResidue(coef[0], P)};
     Poly X = Poly(*this, (n() + 1) / 2).Sqrt().iresz(n());
     X.iadd(Mul(X.Inv()).iresz(n()));
     fi(0, n()) X[i] = X[i] * INV2 % P;
@@ -117,6 +117,36 @@ struct Poly { // coefficients in [0, P)
     Fi(0, _n - 1) down[i] = down[i * 2].Mul(up[i * 2 + 1])
                       .iadd(down[i * 2 + 1].Mul(up[i * 2]));
     return down[1];
+  }
+  Poly Ln() const { // coef[0] == 1
+    return Derivative().Mul(Inv()).iresz(n() - 1).Integral();
+  }
+  Poly Exp() const { // coef[0] == 0
+    if (n() == 1) return {1};
+    Poly X = Poly(*this, (n() + 1) / 2).Exp().iresz(n());
+    Poly Y = X.Ln(); Y[0] = P - 1;
+    fi(0, n()) if ((Y[i] = coef[i] - Y[i]) < 0) Y[i] += P;
+    return X.Mul(Y).iresz(n());
+  }
+  Poly& imul(LL k) {
+    k %= P;
+    fi(0, n()) coef[i] = coef[i] * k % P;
+    return *this;
+  }
+  Poly Pow(const string &K) const {
+    int nz = 0;
+    while (nz < n() && !coef[nz]) ++nz;
+    LL nk = 0, nk2 = 0;
+    for (char c : K) {
+      nk = (nk * 10 + c - '0') % P;
+      nk2 = nk2 * 10 + c - '0';
+      if (nk2 * nz >= n()) return Poly(n());
+      nk2 %= P - 1;
+    }
+    if (!nk && !nk2) return Poly({1}).iresz(n());
+    Poly X(data() + nz, n() - nz * nk2);
+    LL x0 = X[0];
+    return X.imul(ntt.minv(x0)).Ln().imul(nk).Exp().imul(ntt.mpow(x0, nk2)).irev().iresz(n()).irev();
   }
 };
 #undef fi
