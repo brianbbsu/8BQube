@@ -107,8 +107,22 @@ struct Poly { // coefficients in [0, P)
     fi(0, _n) y[i] = down[_n + i][0];
     return y;
   }
-  Poly Interpolate(const vector<LL> &x, const vector<LL> &y) const {
+  Poly& iadd(const Poly &rhs) {
+    Poly &lhs = *this; assert(lhs.n() == rhs.n());
+    fi(0, n()) if ((lhs[i] += rhs[i]) >= P) lhs[i] -= P;
+    return *this;
+  }
+  static Poly Interpolate(const vector<LL> &x, const vector<LL> &y) {
     const int _n = (int)x.size();
+    vector<Poly> up(_n * 2), down(_n * 2);
+    fi(0, _n) up[_n + i] = {(x[i] % P ? P - x[i] % P : 0), 1};
+    Fi(0, _n - 1) up[i] = up[i * 2].Mul(up[i * 2 + 1]);
+    vector<LL> z = up[1].Derivative().Eval(x);
+    fi(0, _n) z[i] = y[i] * ntt.minv(z[i]) % P;
+    fi(0, _n) down[_n + i] = {z[i]};
+    Fi(0, _n - 1) down[i] = down[i * 2].Mul(up[i * 2 + 1])
+                      .iadd(down[i * 2 + 1].Mul(up[i * 2]));
+    return down[1];
   }
 };
 #undef fi
