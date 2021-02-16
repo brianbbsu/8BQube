@@ -23,6 +23,11 @@ struct Poly { // coefficients in [0, P)
   }
   Poly& irev() { return reverse(data(), data() + n()), *this; }
   Poly& iresz(int _n) { return coef.resize(_n), *this; }
+  Poly& iadd(const Poly &rhs) {
+    Poly &lhs = *this; assert(lhs.n() == rhs.n());
+    fi(0, n()) if ((lhs[i] += rhs[i]) >= P) lhs[i] -= P;
+    return *this;
+  }
 
   Poly Mul(const Poly &rhs) const {
     const int _n = n2k(n() + rhs.n() - 1);
@@ -45,18 +50,12 @@ struct Poly { // coefficients in [0, P)
     ntt(Xi.data(), _n, true);
     return Xi.iresz(n());
   }
-  Poly Sqrt() const { //data()[0] != 0 && sqrt(at(0)) exists
+  Poly Sqrt() const { //data()[0] != 0 && sqrt(data()[0]) exists
     if (n() == 1) return {QuadraticResidue(data()[0], P)};
-    const int _n = n2k(n() * 2);
-    Poly X = Poly(*this, (n() + 1) / 2).Sqrt().iresz(_n);
-    Poly Xi = Poly(X, n()).Inv().iresz(_n), Y(*this, _n);
-    ntt(X.data(), _n), ntt(Xi.data(), _n), ntt(Y.data(), _n);
-    fi(0, _n) {
-        if ((X[i] += Y[i] * Xi[i] % P) >= P) X[i] -= P;
-        X[i] = X[i] * INV2 % P;
-    }
-    ntt(X.data(), _n, true);
-    return X.iresz(n());
+    Poly X = Poly(*this, (n() + 1) / 2).Sqrt().iresz(n());
+    X.iadd(Mul(X.Inv()).iresz(n()));
+    fi(0, n()) X[i] = X[i] * INV2 % P;
+    return X;
   }
   pair<Poly, Poly> DivMod(const Poly &rhs) const { // (rhs.)back() != 0
     if (n() < rhs.n()) return {{0}, *this};
@@ -106,11 +105,6 @@ struct Poly { // coefficients in [0, P)
     vector<LL> y(_n);
     fi(0, _n) y[i] = down[_n + i][0];
     return y;
-  }
-  Poly& iadd(const Poly &rhs) {
-    Poly &lhs = *this; assert(lhs.n() == rhs.n());
-    fi(0, n()) if ((lhs[i] += rhs[i]) >= P) lhs[i] -= P;
-    return *this;
   }
   static Poly Interpolate(const vector<LL> &x, const vector<LL> &y) {
     const int _n = (int)x.size();
