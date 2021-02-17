@@ -82,7 +82,7 @@ struct Poly { // coefficients in [0, P)
     const int _n = (int)x.size();
     if (!_n) return {};
     vector<Poly> node(_n * 2);
-    fi(0, _n) node[_n + i] = {(x[i] % P ? P - x[i] % P : 0), 1};
+    fi(0, _n) node[_n + i] = {(x[i] ? P - x[i] : 0), 1};
     Fi(0, _n - 1) node[i] = node[i * 2].Mul(node[i * 2 + 1]);
     node[0] = *this;
     fi(1, _n * 2) node[i] = node[i / 2].DivMod(node[i]).second;
@@ -98,7 +98,7 @@ struct Poly { // coefficients in [0, P)
     const int _n = (int)x.size();
     if (!_n) return {};
     vector<Poly> up(_n * 2), down(_n * 2);
-    fi(0, _n) up[_n + i] = {1, (x[i] % P ? P - x[i] % P : 0)};
+    fi(0, _n) up[_n + i] = {1, (x[i] ? P - x[i] : 0)};
     Fi(0, _n - 1) up[i] = up[i * 2].Mul(up[i * 2 + 1]);
     down[1] = up[1].iresz(n()).Inv().MulT(_n, *this);
     fi(2, _n * 2) down[i] = up[i ^ 1].MulT(up[i].n() - 1, down[i / 2]);
@@ -109,13 +109,12 @@ struct Poly { // coefficients in [0, P)
   static Poly Interpolate(const vector<LL> &x, const vector<LL> &y) {
     const int _n = (int)x.size();
     vector<Poly> up(_n * 2), down(_n * 2);
-    fi(0, _n) up[_n + i] = {(x[i] % P ? P - x[i] % P : 0), 1};
+    fi(0, _n) up[_n + i] = {(x[i] ? P - x[i] : 0), 1};
     Fi(0, _n - 1) up[i] = up[i * 2].Mul(up[i * 2 + 1]);
     vector<LL> z = up[1].Derivative().Eval(x);
     fi(0, _n) z[i] = y[i] * ntt.minv(z[i]) % P;
     fi(0, _n) down[_n + i] = {z[i]};
-    Fi(0, _n - 1) down[i] = down[i * 2].Mul(up[i * 2 + 1])
-                      .iadd(down[i * 2 + 1].Mul(up[i * 2]));
+    Fi(0, _n - 1) down[i] = down[i * 2].Mul(up[i * 2 + 1]).iadd(down[i * 2 + 1].Mul(up[i * 2]));
     return down[1];
   }
   Poly Ln() const { // coef[0] == 1
@@ -143,10 +142,25 @@ struct Poly { // coefficients in [0, P)
       if (nk2 * nz >= n()) return Poly(n());
       nk2 %= P - 1;
     }
-    if (!nk && !nk2) return Poly({1}).iresz(n());
+    if (!nk && !nk2) return Poly({1}, n());
     Poly X(data() + nz, n() - nz * nk2);
     LL x0 = X[0];
-    return X.imul(ntt.minv(x0)).Ln().imul(nk).Exp().imul(ntt.mpow(x0, nk2)).irev().iresz(n()).irev();
+    return X.imul(ntt.minv(x0)).Ln().imul(nk).Exp()
+      .imul(ntt.mpow(x0, nk2)).irev().iresz(n()).irev();
+  }
+  static LL LinearRecursion(const vector<LL> &a, const vector<LL> &coef, LL n) { // a_n = \sum c_j a_{n - j}
+    const int k = (int)a.size();
+    assert((int)coef.size() == k + 1);
+    Poly C(k + 1), W({1}, k), M = {0, 1};
+    fi(1, k + 1) C[k - i] = coef[i] ? P - coef[i] : 0;
+    C[k] = 1;
+    while (n) {
+      if (n % 2) W = W.Mul(M).DivMod(C).second;
+      n /= 2, M = M.Mul(M).DivMod(C).second;
+    }
+    LL ret = 0;
+    fi(0, k) ret = (ret + W[i] * a[i]) % P;
+    return ret;
   }
 };
 #undef fi
