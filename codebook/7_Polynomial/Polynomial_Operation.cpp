@@ -7,8 +7,6 @@ int n2k(int n) {
 template<int MAXN, LL P, LL RT> // MAXN = 2^k
 struct Poly { // coefficients in [0, P)
   static NTT<MAXN, P, RT> ntt;
-  static const LL INV2;
-
   vector<LL> coef;
   int n() const { return (int)coef.size(); } // n() >= 1
   LL *data() { return coef.data(); }
@@ -24,8 +22,11 @@ struct Poly { // coefficients in [0, P)
   Poly& irev() { return reverse(data(), data() + n()), *this; }
   Poly& iresz(int _n) { return coef.resize(_n), *this; }
   Poly& iadd(const Poly &rhs) { // n() == rhs.n()
-    assert(n() == rhs.n());
     fi(0, n()) if ((coef[i] += rhs[i]) >= P) coef[i] -= P;
+    return *this;
+  }
+  Poly& imul(LL k) {
+    fi(0, n()) coef[i] = coef[i] * k % P;
     return *this;
   }
 
@@ -53,9 +54,7 @@ struct Poly { // coefficients in [0, P)
   Poly Sqrt() const { //coef[0] != 0 && sqrt(coef[0]) exists
     if (n() == 1) return {QuadraticResidue(coef[0], P)};
     Poly X = Poly(*this, (n() + 1) / 2).Sqrt().iresz(n());
-    X.iadd(Mul(X.Inv()).iresz(n()));
-    fi(0, n()) X[i] = X[i] * INV2 % P;
-    return X;
+    return X.iadd(Mul(X.Inv()).iresz(n())).imul(P / 2 + 1);
   }
   pair<Poly, Poly> DivMod(const Poly &rhs) const { // (rhs.)back() != 0
     if (n() < rhs.n()) return {{0}, *this};
@@ -127,11 +126,6 @@ struct Poly { // coefficients in [0, P)
     fi(0, n()) if ((Y[i] = coef[i] - Y[i]) < 0) Y[i] += P;
     return X.Mul(Y).iresz(n());
   }
-  Poly& imul(LL k) {
-    k %= P;
-    fi(0, n()) coef[i] = coef[i] * k % P;
-    return *this;
-  }
   Poly Pow(const string &K) const {
     int nz = 0;
     while (nz < n() && !coef[nz]) ++nz;
@@ -165,6 +159,5 @@ struct Poly { // coefficients in [0, P)
 };
 #undef fi
 #undef Fi
-template<int MAXN, LL P, LL RT> NTT<MAXN, P, RT> Poly<MAXN, P, RT>::ntt;
-template<int MAXN, LL P, LL RT> const LL Poly<MAXN, P, RT>::INV2 = ntt.minv(2);
 using Poly_t = Poly<131072 * 2, 998244353, 3>;
+template<> decltype(Poly_t::ntt) Poly_t::ntt = {};
