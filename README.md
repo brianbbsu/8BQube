@@ -10,7 +10,7 @@ Current Version: [Codebook.pdf](https://github.com/brianbbsu/BBQube/blob/codeboo
 | NTU Japan Ranking             | 2019/09/07    |  2  | 8/10  | 1502 | A | B | C | D | E | F | G | . | I | . |
 | NTU NCPC & Team Ranking 2019  | 2019/09/28    |  1  | 6/10  | 1020 | A | B | **C** | D | **E** | (F) | G | (H) | I | J |
 | TOPC 2019                     | 2019/10/05    |  2  | 7/9   | 419  | A | B | C | D | . | F | **G** | H | I |
-| NCPC 2019                     | 2019/10/19    |  2  | 15/15 | 2098 | A | B | C | D | E | F | G | H | I | J | K | L | M~O |
+| NCPC 2019                     | 2019/10/19    |  2  | 15/15 | 2098 | A | B | C | D | E | F | G | H | I | J | K | L | M | N~O |
 | Taipei-Hsinchu 2019           | 2019/11/23    |  8  | 8/13  | 548  | A | B | C | D | E | . | . | H | . | J | K | (L) | . |
 | Manila 2019                   | 2019/12/15    |  3  | 7/13  | 660  | A | . | . | D | E | . | . | H | I | . | . | L | M |
 | NTU NCPC 2020                 | 2020/09/27    |  7  | 6/10  | 1031 | A | B | . | D | E | F | G | H | . | . |
