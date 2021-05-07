@@ -5,8 +5,8 @@ Current Version: [Codebook.pdf](https://github.com/brianbbsu/BBQube/blob/codeboo
 
 # Result
 
-| Contest                   | Date          | Rank | Solved/Total | Penalty |   |   |   |   |   |   |   |   |   |   |   |   |   |
-| --------------------------|:-------------:|:----:|:------------:|:--------:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+| Contest                   | Date          | Rank | Solved/Total | Penalty |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+| --------------------------|:-------------:|:----:|:------------:|:--------:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
 | NTU Japan Ranking             | 2019/09/07    |  2  | 8/10  | 1502 | A | B | C | D | E | F | G | . | I | . |
 | NTU NCPC & Team Ranking 2019  | 2019/09/28    |  1  | 6/10  | 1020 | A | B | **C** | D | **E** | (F) | G | (H) | I | J |
 | TOPC 2019                     | 2019/10/05    |  2  | 7/9   | 419  | A | B | C | D | . | F | **G** | H | I |
@@ -19,8 +19,8 @@ Current Version: [Codebook.pdf](https://github.com/brianbbsu/BBQube/blob/codeboo
 
 # Training
 
-| Contest                   | Date          | Rank | Solved/Total | Penalty |   |   |   |   |   |   |   |   |   |   |   |   |   |
-| --------------------------|:-------------:|:----:|:------------:|:--------:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+| Contest                   | Date          | Rank | Solved/Total | Penalty |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+| --------------------------|:-------------:|:----:|:------------:|:--------:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
 | NWERC 2016                    | 2019/8/17     |  4  | 9/11  | 1118 | A | B | C | **D** | E | F | **G** | H | I | J | K |
 | JAG Spring Contest 2015       | 2019/8/24     |  2  | 7/12  | 1251 | A | **B** | . | D | E | F | G | . | **I** | . | K | L |
 | 2010-2011 OpenCup IX          | 2019/8/31     |  16 | 2/10  | 248  | . | . | . | . | E | **F** | **G** | H | . | **J** |
@@ -67,10 +67,16 @@ Current Version: [Codebook.pdf](https://github.com/brianbbsu/BBQube/blob/codeboo
 | PtzWinterCamp Petr Contest12 2014 | 2020/11/23 | 19 | 3/9   | 364  | **A** | . | C | . | E | . | G | . | **I** |
 | PtzWinterCamp rng_58 Contest4 2014 | 2020/11/28 | 17 | 6/10 | 888  | A | B | C | D | . | F | . | H | . | . |
 | PtzWinterCamp Kyiv + Kharkov Contest 2011 | 2020/12/7 | 2 | 8/11 | 1185 | A | . | C | . | E | F | . | H | I | J | K |
-| Moscow Pre-Finals Workshop 2019 | 2020/12/14 | 8 | 5/10 | 751 | A | . | . | . | E | F | . | . | I | J |
+| Moscow Pre-Finals Workshop 2019 | 2020/12/14 |  8  | 5/10 | 751 | A | . | . | . | E | F | . | . | I | J |
 | BSUIR 2018 Semifinal          | 2021/1/23    |  3  | 10/12 | 1354 | A | B | C | . | E | F | G | H | I | . | K | L |
 | Xian 2014                     | 2021/1/26    |  5  | 7/11  | 954  | A | . | C | . | . | F | G | H | I | . | K |
 | Shanghai 2020                 | 2021/2/8     |  11 | 9/13  | 1163 | . | B | C | D | E | . | G | H | I | . | K | **L** | M |
+| PtzWinterCamp Saratov 2017    | 2021/3/1     |  31 | 7/12  | 1339 | A | . | C | D | . | . | G | . | . | J | K | L |
+| ASC 33                        | 2020/3/5     |  11 | 5/10  | 751  | . | B | C | . | E | . | G | . | . | J |
+| 2020 CCPC, Mianyang Site      | 2021/3/13    |  5  | 8/12  | 1017 | . | B | C | D | E | . | G | . | . | J | K | L |
+| XXI OpenCup GP of Samara      | 2020/3/19    |  33 | 8/14  | 1054 | . | B | . | D | . | F | G | . | . | J | K | L | M | . |
+| SEERC 2019                    | 2021/3/28    |  1  | 8/11  | 874  | . | B | C | D | E | F | G | . | I | J | . |
+| Moscow Pre-Finals 2016 Kent Nikaido | 2021/4/30 | 13 | 6/11 | 569 | A | . | C | D | . | . | . | H | **I** | J | K |
 
 - A : 賽內AC
 - **A** : 賽後AC
