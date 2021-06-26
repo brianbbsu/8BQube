@@ -1,46 +1,35 @@
 #define fi(s, n) for (int i = (int)(s); i < (int)(n); ++i)
-#define Fi(s, n) for (int i = (int)(n); i > (int)(s); --i)
-int n2k(int n) {
-  int sz = 1; while (sz < n) sz <<= 1;
-  return sz;
-}
 template<int MAXN, LL P, LL RT> // MAXN = 2^k
-struct Poly { // coefficients in [0, P)
+struct Poly : vector<LL> { // coefficients in [0, P)
+  using vector<LL>::vector;
   static NTT<MAXN, P, RT> ntt;
-  vector<LL> coef;
-  int n() const { return (int)coef.size(); } // n() >= 1
-  LL *data() { return coef.data(); }
-  const LL *data() const { return coef.data(); }
-  LL &operator[](size_t i) { return coef[i]; }
-  const LL &operator[](size_t i) const { return coef[i]; }
-  Poly(initializer_list<LL> a) : coef(a) { }
-  explicit Poly(int _n = 1) : coef(_n) { }
-  Poly(const LL *arr, int _n) : coef(arr, arr + _n) {}
-  Poly(const Poly &p, int _n) : coef(_n) {
+  int n() const { return (int)size(); } // n() >= 1
+  Poly(const Poly &p, int _n) : vector<LL>(_n) {
     copy_n(p.data(), min(p.n(), _n), data());
   }
   Poly& irev() { return reverse(data(), data() + n()), *this; }
-  Poly& isz(int _n) { return coef.resize(_n), *this; }
+  Poly& isz(int _n) { return resize(_n), *this; }
   Poly& iadd(const Poly &rhs) { // n() == rhs.n()
-    fi(0, n()) if ((coef[i] += rhs[i]) >= P) coef[i] -= P;
+    fi(0, n()) if (((*this)[i] += rhs[i]) >= P) (*this)[i] -= P;
     return *this;
   }
   Poly& imul(LL k) {
-    fi(0, n()) coef[i] = coef[i] * k % P;
+    fi(0, n()) (*this)[i] = (*this)[i] * k % P;
     return *this;
   }
-
   Poly Mul(const Poly &rhs) const {
-    const int _n = n2k(n() + rhs.n() - 1);
+    int _n = 1;
+    while (_n < n() + rhs.n() - 1) _n <<= 1;
     Poly X(*this, _n), Y(rhs, _n);
     ntt(X.data(), _n), ntt(Y.data(), _n);
     fi(0, _n) X[i] = X[i] * Y[i] % P;
     ntt(X.data(), _n, true);
     return X.isz(n() + rhs.n() - 1);
   }
-  Poly Inv() const { // coef[0] != 0
-    if (n() == 1) return {ntt.minv(coef[0])};
-    const int _n = n2k(n() * 2);
+  Poly Inv() const { // (*this)[0] != 0
+    if (n() == 1) return {ntt.minv((*this)[0])};
+    int _n = 1;
+    while (_n < n() * 2) _n <<= 1;
     Poly Xi = Poly(*this, (n() + 1) / 2).Inv().isz(_n);
     Poly Y(*this, _n);
     ntt(Xi.data(), _n), ntt(Y.data(), _n);
@@ -51,8 +40,8 @@ struct Poly { // coefficients in [0, P)
     ntt(Xi.data(), _n, true);
     return Xi.isz(n());
   }
-  Poly Sqrt() const { // Jacobi(coef[0], P) = 1
-    if (n() == 1) return {QuadraticResidue(coef[0], P)};
+  Poly Sqrt() const { // Jacobi((*this)[0], P) = 1
+    if (n() == 1) return {QuadraticResidue((*this)[0], P)};
     Poly X = Poly(*this, (n() + 1) / 2).Sqrt().isz(n());
     return X.iadd(Mul(X.Inv()).isz(n())).imul(P / 2 + 1);
   }
@@ -68,17 +57,17 @@ struct Poly { // coefficients in [0, P)
   }
   Poly Dx() const {
     Poly ret(n() - 1);
-    fi(0, ret.n()) ret[i] = (i + 1) * coef[i + 1] % P;
+    fi(0, ret.n()) ret[i] = (i + 1) * (*this)[i + 1] % P;
     return ret.isz(max(1, ret.n()));
   }
   Poly Sx() const {
     Poly ret(n() + 1);
-    fi(0, n()) ret[i + 1] = ntt.minv(i + 1) * coef[i] % P;
+    fi(0, n()) ret[i + 1] = ntt.minv(i + 1) * (*this)[i] % P;
     return ret;
   }
   Poly _tmul(int nn, const Poly &rhs) const {
     Poly Y = Mul(rhs).isz(n() + nn - 1);
-    return Poly(Y.data() + n() - 1, nn);
+    return Poly(Y.data() + n() - 1, Y.data() + Y.n());
   }
   vector<LL> _eval(const vector<LL> &x, const vector<Poly> &up) const {
     const int _n = (int)x.size();
@@ -96,7 +85,7 @@ struct Poly { // coefficients in [0, P)
     const int _n = (int)x.size();
     vector<Poly> up(_n * 2);
     fi(0, _n) up[_n + i] = {(x[i] ? P - x[i] : 0), 1};
-    Fi(0, _n - 1) up[i] = up[i * 2].Mul(up[i * 2 + 1]);
+    for (int i = _n - 1; i > 0; --i) up[i] = up[i * 2].Mul(up[i * 2 + 1]);
     return up;
   }
   vector<LL> Eval(const vector<LL> &x) const {
@@ -108,22 +97,22 @@ struct Poly { // coefficients in [0, P)
     vector<LL> z = up[1].Dx()._eval(x, up);
     fi(0, _n) z[i] = y[i] * ntt.minv(z[i]) % P;
     fi(0, _n) down[_n + i] = {z[i]};
-    Fi(0, _n - 1) down[i] = down[i * 2].Mul(up[i * 2 + 1]).iadd(down[i * 2 + 1].Mul(up[i * 2]));
+    for (int i = _n - 1; i > 0; --i) down[i] = down[i * 2].Mul(up[i * 2 + 1]).iadd(down[i * 2 + 1].Mul(up[i * 2]));
     return down[1];
   }
-  Poly Ln() const { // coef[0] == 1
+  Poly Ln() const { // (*this)[0] == 1
     return Dx().Mul(Inv()).Sx().isz(n());
   }
-  Poly Exp() const { // coef[0] == 0
+  Poly Exp() const { // (*this)[0] == 0
     if (n() == 1) return {1};
     Poly X = Poly(*this, (n() + 1) / 2).Exp().isz(n());
     Poly Y = X.Ln(); Y[0] = P - 1;
-    fi(0, n()) if ((Y[i] = coef[i] - Y[i]) < 0) Y[i] += P;
+    fi(0, n()) if ((Y[i] = (*this)[i] - Y[i]) < 0) Y[i] += P;
     return X.Mul(Y).isz(n());
   }
   Poly Pow(const string &K) const {
     int nz = 0;
-    while (nz < n() && !coef[nz]) ++nz;
+    while (nz < n() && !(*this)[nz]) ++nz;
     LL nk = 0, nk2 = 0;
     for (char c : K) {
       nk = (nk * 10 + c - '0') % P;
@@ -131,8 +120,8 @@ struct Poly { // coefficients in [0, P)
       if (nk2 * nz >= n()) return Poly(n());
       nk2 %= P - 1;
     }
-    if (!nk && !nk2) return Poly({1}, n());
-    Poly X(data() + nz, n() - nz * nk2);
+    if (!nk && !nk2) return Poly(Poly {1}, n());
+    Poly X(data() + nz, data() + nz + n() - nz * nk2);
     LL x0 = X[0];
     return X.imul(ntt.minv(x0)).Ln().imul(nk).Exp()
       .imul(ntt.mpow(x0, nk2)).irev().isz(n()).irev();
@@ -153,6 +142,5 @@ struct Poly { // coefficients in [0, P)
   }
 };
 #undef fi
-#undef Fi
 using Poly_t = Poly<131072 * 2, 998244353, 3>;
 template<> decltype(Poly_t::ntt) Poly_t::ntt = {};
