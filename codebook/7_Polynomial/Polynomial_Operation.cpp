@@ -129,7 +129,7 @@ struct Poly : vector<LL> { // coefficients in [0, P)
   static LL LinearRecursion(const vector<LL> &a, const vector<LL> &coef, LL n) { // a_n = \sum c_j a_(n-j)
     const int k = (int)a.size();
     assert((int)coef.size() == k + 1);
-    Poly C(k + 1), W({1}, k), M = {0, 1};
+    Poly C(k + 1), W(Poly {1}, k), M = {0, 1};
     fi(1, k + 1) C[k - i] = coef[i] ? P - coef[i] : 0;
     C[k] = 1;
     while (n) {
