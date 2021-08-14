@@ -11,11 +11,18 @@ struct SAT { // 0-base
   void add_edge(int a, int b) {
     G[a].pb(b);
   }
+  int rv(int a) {
+    if (a > n) return a - n;
+    return a + n;
+  }
+  void add_clause(int a, int b) {
+    add_edge(rv(a), b), add_edge(rv(b), a);
+  }
   void dfs(int u) {
     dfn[u] = low[u] = ++Time;
     instack[u] = 1, st.push(u);
     for (int i : G[u])
-      if (!dfn[i]) dfs(i), low[u]=min(low[i], low[u]);
+      if (!dfn[i]) dfs(i), low[u] = min(low[i], low[u]);
       else if (instack[i] && dfn[i] < dfn[u]) 
         low[u] = min(low[u], dfn[i]);
     if (low[u] == dfn[u]) {
