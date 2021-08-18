@@ -1,13 +1,14 @@
-template<bool Exact>
+#define TRAV(i, link, start) for (int i = link[start]; i != start; i = link[i])
+template<bool A, bool B = !A> // A: Exact
 struct DLX {
   int lt[NN], rg[NN], up[NN], dn[NN], cl[NN], rw[NN], bt[NN], s[NN], head, sz, ans;
   int columns;
   bool vis[NN];
   void remove(int c) {
-    if (Exact) lt[rg[c]] = lt[c], rg[lt[c]] = rg[c];
-    for (int i = dn[c]; i != c; i = dn[i]) {
-      if (Exact) {
-        for (int j = rg[i]; j != i; j = rg[j])
+    if (A) lt[rg[c]] = lt[c], rg[lt[c]] = rg[c];
+    TRAV(i, dn, c) {
+      if (A) {
+        TRAV(j, rg, i)
           up[dn[j]] = up[j], dn[up[j]] = dn[j], --s[cl[j]];
       } else {
         lt[rg[i]] = lt[i], rg[lt[i]] = rg[i];
@@ -15,15 +16,15 @@ struct DLX {
     }
   }
   void restore(int c) {
-    for (int i = up[c]; i != c; i = up[i]) {
-      if (Exact) {
-        for (int j = lt[i]; j != i; j = lt[j])
+    TRAV(i, up, c) {
+      if (A) {
+        TRAV(j, lt, i)
           ++s[cl[j]], up[dn[j]] = j, dn[up[j]] = j;
       } else {
         lt[rg[i]] = rg[lt[i]] = i;
       }
     }
-    if (Exact) lt[rg[c]] = c, rg[lt[c]] = c;
+    if (A) lt[rg[c]] = c, rg[lt[c]] = c;
   }
   void init(int c) {
     columns = c;
@@ -54,40 +55,28 @@ struct DLX {
   int h() {
     int ret = 0;
     memset(vis, 0, sizeof(bool) * sz);
-    for (int x = rg[head]; x != head; x = rg[x]) {
+    TRAV(x, rg, head) {
       if (vis[x]) continue;
       vis[x] = true, ++ret;
-      for (int i = dn[x]; i != x; i = dn[i]) {
-        for (int j = rg[i]; j != i; j = rg[j])
-          vis[cl[j]] = true;
-      }
+      TRAV(i, dn, x) TRAV(j, rg, i) vis[cl[j]] = true;
     }
     return ret;
   }
   void dfs(int dep) {
-    if (dep + (Exact ? 0 : h()) >= ans) return;
+    if (dep + (A ? 0 : h()) >= ans) return;
     if (rg[head] == head) return ans = dep, void();
     if (dn[rg[head]] == rg[head]) return;
-    int c = rg[head];
-    int w = c;
-    for (int x = c; x != head; x = rg[x]) if (s[x] < s[w]) w = x;
-    if (Exact) {
-      remove(w);
-      for (int i = dn[w]; i != w; i = dn[i]) {
-        for (int j = rg[i]; j != i; j = rg[j]) remove(cl[j]);
-        dfs(dep + 1);
-        for (int j = lt[i]; j != i; j = lt[j]) restore(cl[j]);
-      }
-      restore(w);
-    } else {
-      for (int i = dn[w]; i != w; i = dn[i]) {
-        remove(i);
-        for (int j = rg[i]; j != i; j = rg[j]) remove(j);
-        dfs(dep + 1);
-        for (int j = lt[i]; j != i; j = lt[j]) restore(j);
-        restore(i);
-      }
+    int w = rg[head];
+    TRAV(x, rg, head) if (s[x] < s[w]) w = x;
+    if (A) remove(w);
+    TRAV(i, dn, w) {
+      if (B) remove(i);
+      TRAV(j, rg, i) remove(A ? cl[j] : j);
+      dfs(dep + 1);
+      TRAV(j, lt, i) restore(A ? cl[j] : j);
+      if (B) restore(i);
     }
+    if (A) restore(w);
   }
   int solve() {
     for (int i = 0; i < columns; ++i)
