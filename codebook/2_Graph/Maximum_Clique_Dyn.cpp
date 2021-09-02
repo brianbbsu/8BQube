@@ -1,5 +1,5 @@
 const int N = 150;
-struct MaxClique { // Maximum Clique
+struct MaxClique {  // Maximum Clique
   bitset<N> a[N], cs[N];
   int ans, sol[N], q, cur[N], d[N], n;
   void init(int _n) {
@@ -44,7 +44,7 @@ struct MaxClique { // Maximum Clique
       c.pop_back(), q--;
     }
   }
-  int solve(bitset<N> mask = bitset<N>(string(N, '1'))) { // vertex mask
+  int solve(bitset<N> mask = bitset<N>(string(N, '1'))) {  // vertex mask
     vector<int> r, c;
     ans = q = 0;
     for (int i = 0; i < n; i++)
@@ -52,6 +52,6 @@ struct MaxClique { // Maximum Clique
     for (int i = 0; i < n; i++) d[i] = (a[i] & mask).count();
     sort(r.begin(), r.end(), [&](int i, int j) { return d[i] > d[j]; });
     csort(r, c), dfs(r, c, 1, mask);
-    return ans; // sol[0 ~ ans-1]
+    return ans;  // sol[0 ~ ans-1]
   }
 } graph;
