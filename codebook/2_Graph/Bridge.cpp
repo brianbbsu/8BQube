@@ -1,4 +1,4 @@
-int low[N], dfn[N], Time;// 1-base
+int low[N], dfn[N], Time; // 1-base
 vector<pii> G[N], edge;
 vector<bool> is_bridge;
 
@@ -20,13 +20,11 @@ void dfs(int u, int f) {
       dfs(i.X, i.Y), low[u] = min(low[u], low[i.X]);
     else if (i.Y != f)
       low[u] = min(low[u], dfn[i.X]);
-  if (low[u] == dfn[u] && f != -1)
-    is_bridge[f] = 1;
+  if (low[u] == dfn[u] && f != -1) is_bridge[f] = 1;
 }
 
 void solve(int n) {
   is_bridge.resize(SZ(edge));
   for (int i = 1; i <= n; ++i)
-    if (!dfn[i]) 
-      dfs(i, -1);
+    if (!dfn[i]) dfs(i, -1);
 }
