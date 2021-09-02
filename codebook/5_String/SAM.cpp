@@ -20,12 +20,10 @@ struct SAM {
     mx[np] = mx[p] + 1;
     for (; p && nxt[p][c] == 0; p = mom[p])
       nxt[p][c] = np;
-    if (p == 0)
-      mom[np] = root;
+    if (p == 0) mom[np] = root;
     else {
       int q = nxt[p][c];
-      if (mx[p] + 1 == mx[q])
-        mom[np] = q;
+      if (mx[p] + 1 == mx[q]) mom[np] = q;
       else {
         int nq = newNode();
         mx[nq] = mx[p] + 1;

@@ -164,13 +164,11 @@ int main() {
     int k, x, y;
     ll t;
     cin >> k >> x >> y, ++x;
-    if (k == 0)
-      cin >> t, modifymin(x, y, 1, n, 1, t);
+    if (k == 0) cin >> t, modifymin(x, y, 1, n, 1, t);
     else if (k == 1)
       cin >> t, modifymax(x, y, 1, n, 1, t);
     else if (k == 2)
       cin >> t, modifyadd(x, y, 1, n, 1, t);
-    else
-      cout << query(x, y, 1, n, 1) << "\n";
+    else cout << query(x, y, 1, n, 1) << "\n";
   }
 }

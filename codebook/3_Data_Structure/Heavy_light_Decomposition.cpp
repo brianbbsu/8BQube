@@ -19,8 +19,7 @@ struct Heavy_light_Decomposition { // 1-base
       if (i.X != f) {
         dfs(i.X, u, d), w[u] += w[i.X];
         if (w[mxson[u]] < w[i.X]) mxson[u] = i.X;
-      } else
-        bln[i.Y] = u, dt[u] = edge[i.Y];
+      } else bln[i.Y] = u, dt[u] = edge[i.Y];
   }
   void cut(int u, int link) {
     data[pl[u] = t++] = dt[u], ulink[u] = link;
@@ -36,8 +35,7 @@ struct Heavy_light_Decomposition { // 1-base
     while (ta != tb)
       if (deep[ta] < deep[tb])
         /*query*/, tb = ulink[b = pa[tb]];
-      else
-        /*query*/, ta = ulink[a = pa[ta]];
+      else /*query*/, ta = ulink[a = pa[ta]];
     if (a == b) return re;
     if (pl[a] > pl[b]) swap(a, b);
     /*query*/

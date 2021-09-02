@@ -34,8 +34,7 @@ struct Maxflow {
         }
       }
     }
-    if ((--gap[d[p]]) == 0)
-      d[s] = tot;
+    if ((--gap[d[p]]) == 0) d[s] = tot;
     else {
       d[p]++;
       iter[p] = 0;

@@ -22,16 +22,14 @@ void split(node *o, node *&a, node *&b, int k) {
   o->down();
   if (o->data <= k)
     a = o, split(o->r, a->r, b, k), a->up();
-  else
-    b = o, split(o->l, a, b->l, k), b->up();
+  else b = o, split(o->l, a, b->l, k), b->up();
 }
 void split2(node *o, node *&a, node *&b, int k) {
   if (sz(o) <= k) return a = o, b = 0, void();
   o->down();
   if (sz(o->l) + 1 <= k)
     a = o, split2(o->r, a->r, b, k - sz(o->l) - 1);
-  else
-    b = o, split2(o->l, a, b->l, k);
+  else b = o, split2(o->l, a, b->l, k);
   o->up();
 }
 node *kth(node *o, int k) {
@@ -42,8 +40,7 @@ node *kth(node *o, int k) {
 int Rank(node *o, int key) {
   if (o->data < key)
     return sz(o->l) + 1 + Rank(o->r, key);
-  else
-    return Rank(o->l, key);
+  else return Rank(o->l, key);
 }
 bool erase(node *&o, int k) {
   if (!o) return 0;

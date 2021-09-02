@@ -17,10 +17,8 @@ void solve(vector<pair<int, int>> &E, int N, int M) {
     G[u][v] = G[v][u] = c;
     C[u][c] = v, C[v][c] = u;
     C[u][p] = C[v][p] = 0;
-    if (p)
-      X[u] = X[v] = p;
-    else
-      update(u), update(v);
+    if (p) X[u] = X[v] = p;
+    else update(u), update(v);
     return p;
   };
   auto flip = [&](int u, int c1, int c2) {
@@ -45,10 +43,8 @@ void solve(vector<pair<int, int>> &E, int N, int M) {
       else if (!C[u][d])
         for (a = (int)L.size() - 1; a >= 0; a--)
           color(u, L[a].first, L[a].second);
-      else if (vst[d])
-        break;
-      else
-        vst[d] = 1, v = C[u][d];
+      else if (vst[d]) break;
+      else vst[d] = 1, v = C[u][d];
     }
     if (!G[u][v0]) {
       for (; v; v = flip(v, c, d), swap(c, d))
@@ -59,8 +55,7 @@ void solve(vector<pair<int, int>> &E, int N, int M) {
           ;
         for (; a >= 0; a--)
           color(u, L[a].first, L[a].second);
-      } else
-        t--;
+      } else t--;
     }
   }
 }
