@@ -72,11 +72,20 @@ Current Version: [Codebook.pdf](https://github.com/brianbbsu/BBQube/blob/codeboo
 | Xian 2014                     | 2021/1/26    |  5  | 7/11  | 954  | A | . | C | . | . | F | G | H | I | . | K |
 | Shanghai 2020                 | 2021/2/8     |  11 | 9/13  | 1163 | . | B | C | D | E | . | G | H | I | . | K | **L** | M |
 | PtzWinterCamp Saratov 2017    | 2021/3/1     |  31 | 7/12  | 1339 | A | . | C | D | . | . | G | . | . | J | K | L |
-| ASC 33                        | 2020/3/5     |  11 | 5/10  | 751  | . | B | C | . | E | . | G | . | . | J |
+| ASC 33                        | 2021/3/5     |  11 | 5/10  | 751  | . | B | C | . | E | . | G | . | . | J |
 | 2020 CCPC, Mianyang Site      | 2021/3/13    |  5  | 8/12  | 1017 | . | B | C | D | E | . | G | . | . | J | K | L |
-| XXI OpenCup GP of Samara      | 2020/3/19    |  33 | 8/14  | 1054 | . | B | . | D | . | F | G | . | . | J | K | L | M | . |
+| XXI OpenCup GP of Samara      | 2021/3/19    |  33 | 8/14  | 1054 | . | B | . | D | . | F | G | . | . | J | K | L | M | . |
 | SEERC 2019                    | 2021/3/28    |  1  | 8/11  | 874  | . | B | C | D | E | F | G | . | I | J | . |
 | Moscow Pre-Finals 2016 Kent Nikaido | 2021/4/30 | 13 | 6/11 | 569 | A | . | C | D | . | . | . | H | **I** | J | K |
+| XVIII Open Cup of SPb         | 2021/5/7     |  11 | 10/12 | 1011 | A | B | . | D | **E** | . | . | H | . | J | K | L |
+| XVI Open Cup of Ekaterinburg  | 2021/6/4     |  32 | 8/11  | 959  | **A** | B | C | D | E | F | G | **H** | . | J | K |
+| XVIII Open Cup of Urals       | 2021/7/3     |  33 | 4/11  | 612  | A | B | C | . | . | . | . | . | . | . | K |
+| XVIII Open Cup of Eurasia     | 2021/7/10    |  29 | 7/12  | 695  | A | B | . | D | **E** | . | . | H | . | J | K | L |
+| XVII Open Cup of America      | 2021/7/25    |  26 | 6/11  | 820  | A | B | C | D | E | . | . | . | . | J | . |
+| XV Open Cup of Central Europe | 2021/8/1     |  12 | 8/11  | 509  | A | B | C | D | E | . | G | . | I | . | K |
+| NTU preliminary 2018          | 2021/8/14    |  1  | 9/10  | 1203 | A | B | C | D | . | F | G | H | I | J |
+| NTU preliminary 2021          | 2021/8/21    |  2  | 7/11  | 767  | . | B | . | . | E | . | G | H | I | J | K |
+| ECNA 2016                     | 2021/8/28    |  1  | 10/10 | 824  | A | B | C | D | E | F | G | H | I | J |
 
 - A : 賽內AC
 - **A** : 賽後AC
