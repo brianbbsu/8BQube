@@ -83,8 +83,8 @@ Current Version: [Codebook.pdf](https://github.com/brianbbsu/BBQube/blob/codeboo
 | XVIII Open Cup of Eurasia     | 2021/7/10    |  29 | 7/12  | 695  | A | B | . | D | **E** | . | . | H | . | J | K | L |
 | XVII Open Cup of America      | 2021/7/25    |  26 | 6/11  | 820  | A | B | C | D | E | . | . | . | . | J | . |
 | XV Open Cup of Central Europe | 2021/8/1     |  12 | 8/11  | 509  | A | B | C | D | E | . | G | . | I | . | K |
-| NTU preliminary 2018          | 2021/8/14    |  1  | 9/10  | 1203 | A | B | C | D | . | F | G | H | I | J |
-| NTU preliminary 2021          | 2021/8/21    |  2  | 7/11  | 767  | . | B | . | . | E | . | G | H | I | J | K |
+| NTU preliminary 2018          | 2021/8/14    |  1  | 9/10  | 1203 | A | B | C | D | **E** | F | G | H | I | J |
+| NTU preliminary 2021          | 2021/8/21    |  2  | 7/11  | 767  | **A** | B |  **C** |  **D** | E |  **F** | G | H | I | J | K |
 | ECNA 2016                     | 2021/8/28    |  1  | 10/10 | 824  | A | B | C | D | E | F | G | H | I | J |
 
 - A : 賽內AC
