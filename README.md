@@ -86,6 +86,8 @@ Current Version: [Codebook.pdf](https://github.com/brianbbsu/BBQube/blob/codeboo
 | NTU preliminary 2018          | 2021/8/14    |  1  | 9/10  | 1203 | A | B | C | D | **E** | F | G | H | I | J |
 | NTU preliminary 2021          | 2021/8/21    |  2  | 7/11  | 767  | **A** | B |  **C** |  **D** | E |  **F** | G | H | I | J | K |
 | ECNA 2016                     | 2021/8/28    |  1  | 10/10 | 824  | A | B | C | D | E | F | G | H | I | J |
+| JAG Practice Contest 2017     | 2021/9/4     |  3  | 10/11 | 1408 | A | B | C | D | E | F | G | . | I | J | K |
+| BSUIR 2015                    | 2021/9/5     |  1  | 8/10  | 765  | A | . | C | D | E | F | G | H | I | . |
 
 - A : 賽內AC
 - **A** : 賽後AC
