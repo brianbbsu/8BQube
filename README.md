@@ -89,7 +89,7 @@ Current Version: [Codebook.pdf](https://github.com/brianbbsu/BBQube/blob/codeboo
 | JAG Practice Contest 2017     | 2021/9/4     |  3  | 10/11 | 1408 | A | B | C | D | E | F | G | . | I | J | K |
 | BSUIR 2015                    | 2021/9/5     |  1  | 8/10  | 765  | A | . | C | D | E | F | G | H | I | . |
 | NEERC 2014                    | 2021/9/11    |  3  | 7/11  | 554  | A | B | . | . | E | F | . | . | I | J | K |
-| Tsukuba 2016                  | 2021/9/12    |  4  | 8/11  | 1032 | A | B | C | D | E | F | G | H | I | . | . |
+| Tsukuba 2016                  | 2021/9/12    |  4  | 8/11  | 1032 | A | B | C | D | E | F | G | H | I | . | **K** |
 
 - A : 賽內AC
 - **A** : 賽後AC
