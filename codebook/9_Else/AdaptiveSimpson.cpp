@@ -18,5 +18,11 @@ double simpson_ada(const F_t &f, double l, double r,
 }
 double simpson_ada(const F_t &f, double l, double r) {
   return simpson_ada(
-    f, l, r, f(l), f((l + r) / 2), f(r), 1e-9);
+    f, l, r, f(l), f((l + r) / 2), f(r), 1e-9 / 7122);
+}
+double simpson_ada2(const F_t &f, double l, double r) {
+    double h = (r - l) / 7122, s = 0;
+    for (int i = 0; i < 7122; ++i, l += h)
+        s += simpson_ada(f, l, l + h);
+    return s;
 }
