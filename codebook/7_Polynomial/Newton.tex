@@ -1,0 +1,7 @@
+Given $F(x)$ where
+
+\[ F(x) = \sum_{i=0}^{\infty}{\alpha_i(x - \beta)^i} \]
+
+for $\beta$ being some constant. Polynomial $P$ such that $F(P) = 0$ can be found iteratively. Denote by $Q_k$ the polynomial such that $F(Q_k) = 0 \pmod {x^{2^k}}$, then
+
+\[ Q_{k+1} = Q_k - \frac{F(Q_k)}{F^\prime(Q_k)} \pmod {x^{2^{k+1}}} \]
