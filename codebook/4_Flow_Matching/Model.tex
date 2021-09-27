@@ -1,0 +1,76 @@
+% \normalsize
+\begin{itemize}
+    \itemsep-0.3em
+    \item Maximum/Minimum flow with lower bound / Circulation problem
+    \vspace{-1em}
+    \begin{enumerate}
+        \itemsep-0.3em
+        \item Construct super source $S$ and sink $T$.
+        \item For each edge $(x, y, l, u)$, connect $x \rightarrow y$ with capacity $u - l$.
+        \item For each vertex $v$, denote by $in(v)$ the difference between the sum of incoming lower bounds and the sum of outgoing lower bounds.
+        \item If $in(v) > 0$, connect $S \rightarrow v$ with capacity $in(v)$, otherwise, connect $v \rightarrow T$ with capacity $-in(v)$.
+        \begin{itemize}
+            \itemsep-0.2em
+            \item To maximize, connect $t \rightarrow s$ with capacity $\infty$ (skip this in circulation problem), and let $f$ be the maximum flow from $S$ to $T$. If $f \neq \sum_{v \in V, in(v) > 0}{in(v)}$, there's no solution. Otherwise, the maximum flow from $s$ to $t$ is the answer.
+            \item To minimize, let $f$ be the maximum flow from $S$ to $T$. Connect $t \rightarrow s$ with capacity $\infty$ and let the flow from $S$ to $T$ be $f^\prime$. If $f + f^\prime \neq \sum_{v \in V, in(v) > 0}{in(v)}$, there's no solution. Otherwise, $f^\prime$ is the answer.
+        \end{itemize}
+        \item The solution of each edge $e$ is $l_e + f_e$, where $f_e$ corresponds to the flow of edge $e$ on the graph.
+    \end{enumerate}
+    \item Construct minimum vertex cover from maximum matching $M$ on bipartite graph $(X, Y)$
+    \vspace{-1em}
+    \begin{enumerate}
+        \itemsep-0.3em
+        \item Redirect every edge: $y \rightarrow x$ if $(x, y) \in M$, $x \rightarrow y$ otherwise.
+        \item DFS from unmatched vertices in $X$.
+        \item $x \in X$ is chosen iff $x$ is unvisited.
+        \item $y \in Y$ is chosen iff $y$ is visited.
+    \end{enumerate}
+    \item Minimum cost cyclic flow
+    \vspace{-0.5em}
+    \begin{enumerate}
+        \itemsep-0.3em
+        \item Consruct super source $S$ and sink $T$
+        \item For each edge $(x, y, c)$, connect $x \rightarrow y$ with $(cost, cap) = (c, 1)$ if $c > 0$, otherwise connect $y \rightarrow x$ with $(cost, cap) = (-c, 1)$
+        \item For each edge with $c < 0$, sum these cost as $K$, then increase $d(y)$ by 1, decrease $d(x)$ by 1
+        \item For each vertex $v$ with $d(v) > 0$, connect $S \rightarrow v$ with $(cost, cap) = (0, d(v))$
+        \item For each vertex $v$ with $d(v) < 0$, connect $v \rightarrow T$ with $(cost, cap) = (0, -d(v))$
+        \item Flow from $S$ to $T$, the answer is the cost of the flow $C + K$
+    \end{enumerate}
+    \item Maximum density induced subgraph
+    \vspace{-1em}
+    \begin{enumerate}
+        \itemsep-0.3em
+        \item Binary search on answer, suppose we're checking answer $T$
+        \item Construct a max flow model, let $K$ be the sum of all weights
+        \item Connect source $s \rightarrow v$, $v \in G$ with capacity $K$
+        \item For each edge $(u, v, w)$ in $G$, connect $u \rightarrow v$ and $v \rightarrow u$ with capacity $w$
+        \item For $v \in G$, connect it with sink $v \rightarrow t$ with capacity $K + 2T - (\sum_{e \in E(v)}{w(e)}) - 2w(v)$
+        \item $T$ is a valid answer if the maximum flow $f < K \lvert V \rvert$
+    \end{enumerate}
+    \item Minimum weight edge cover
+    \vspace{-1em}
+    \begin{enumerate}
+        \itemsep-0.3em
+      \item For each $v \in V$ create a copy $v^\prime$, and connect $u^\prime \to v^\prime$ with weight $w(u, v)$.
+      \item Connect $v \to v^\prime$ with weight $2\mu(v)$, where $\mu(v)$ is the cost of the cheapest edge incident to $v$.
+      \item Find the minimum weight perfect matching on $G^\prime$.
+    \end{enumerate}
+    \item Project selection problem
+    \vspace{-1em}
+    \begin{enumerate}
+      \itemsep-0.3em
+      \item If $p_v > 0$, create edge $(s, v)$ with capacity $p_v$; otherwise, create edge $(v, t)$ with capacity $-p_v$.
+      \item Create edge $(u, v)$ with capacity $w$ with $w$ being the cost of choosing $u$ without choosing $v$.
+      \item The mincut is equivalent to the maximum profit of a subset of projects.
+    \end{enumerate}
+    \item 0/1 quadratic programming
+    \vspace{-1em}
+    \[ \sum_x{c_xx} + \sum_y{c_y\bar{y}} + \sum_{xy}c_{xy}x\bar{y} + \sum_{xyx^\prime y^\prime}c_{xyx^\prime y^\prime}(x\bar{y} + x^\prime\bar{y^\prime}) \]
+    can be minimized by the mincut of the following graph:
+    \begin{enumerate}
+      \itemsep-0.3em
+      \item Create edge $(x, t)$ with capacity $c_x$ and create edge $(s, y)$ with capacity $c_y$.
+      \item Create edge $(x, y)$ with capacity $c_{xy}$.
+      \item Create edge $(x, y)$ and edge $(x^\prime, y^\prime)$ with capacity $c_{xyx^\prime y^\prime}$.
+    \end{enumerate}
+\end{itemize}
