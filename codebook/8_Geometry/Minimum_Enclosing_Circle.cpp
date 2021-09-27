@@ -1,4 +1,4 @@
-pdd Minimum_Circle_Cover(vector<pdd> dots, double &r) {
+pdd Minimum_Enclosing_Circle(vector<pdd> dots, double &r) {
   pdd cent;
   random_shuffle(ALL(dots));
   cent = dots[0], r = 0;
