@@ -17,3 +17,13 @@ double area(Point a, Point b, Point c)
 { return abs(cross3(a, b, c));}
 double volume(Point a, Point b, Point c, Point d)
 {return dot(cross3(a, b, c), d - a);}
+pdd proj(Point a, Point b, Point c, Point u) {
+// proj. u to the plane of a, b, and c
+    Point e1 = b - a;
+    Point e2 = c - a;
+    e1 = e1 / abs(e1);
+    e2 = e2 - e1 * dot(e2, e1);
+    e2 = e2 / abs(e2);
+    Point p = u - a;
+    return pdd(dot(p, e1), dot(p, e2));
+}
