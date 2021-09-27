@@ -1,0 +1,31 @@
+\begin{itemize}
+  \itemsep-0.5em
+  \item $m = \lfloor\frac{an + b}{c}\rfloor$
+  \item Time complexity: $O(\log{n})$
+\end{itemize}
+
+$$ \begin{aligned}
+  f(a, b, c, n) &= \sum_{i = 0}^{n}\lfloor\frac{ai + b}{c}\rfloor \\
+  &= \begin{cases} 
+    \lfloor\frac{a}{c}\rfloor \cdot \frac{n(n + 1)}{2} + \lfloor\frac{b}{c}\rfloor \cdot (n + 1) \\ + f(a\text{ mod } c, b\text{ mod } c, c, n), & a \geq c \lor b \geq c \\ 
+    0, & n < 0 \lor a = 0 \\
+    nm - f(c, c - b - 1, a, m - 1), & \text{otherwise} 
+  \end{cases} 
+\end{aligned} $$
+$$ \begin{aligned}
+  g(a, b, c, n) &= \sum_{i = 0}^{n}i\lfloor\frac{ai + b}{c}\rfloor \\
+  &= \begin{cases}
+    \lfloor{\frac{a}{c}}\rfloor \cdot \frac{n(n + 1)(2n + 1)}{6} + \lfloor\frac{b}{c}\rfloor \cdot \frac{n(n + 1)}{2} \\ + g(a\text{ mod } c, b\text{ mod } c, c, n), & a \geq c \lor b \geq c \\
+    0, & n < 0 \lor a = 0 \\
+    \frac{1}{2} \cdot (n(n + 1)m - f(c, c - b - 1, a, m - 1) \\ - h(c, c - b - 1, a, m - 1)), & \text{otherwise}
+  \end{cases}
+\end{aligned} $$
+$$ \begin{aligned}
+  h(a, b, c, n) &= \sum_{i = 0}^{n}\lfloor\frac{ai + b}{c}\rfloor^2 \\
+  &= \begin{cases}
+    \lfloor\frac{a}{c}\rfloor^2 \cdot \frac{n(n + 1)(2n + 1)}{6} + \lfloor\frac{b}{c}\rfloor^2 \cdot (n + 1) \\ + \lfloor\frac{a}{c}\rfloor \cdot \lfloor\frac{b}{c}\rfloor \cdot n(n + 1) \\ + h(a\text{ mod } c, b\text{ mod } c, c, n) \\ + 2\lfloor\frac{a}{c}\rfloor \cdot g(a\text{ mod } c, b\text{ mod } c, c, n) \\ + 2\lfloor\frac{b}{c}\rfloor \cdot f(a\text{ mod } c, b\text{ mod } c, c, n), & a \geq c \lor b \geq c \\
+    0, & n < 0 \lor a = 0 \\
+    nm(m + 1) - 2g(c, c - b - 1, a, m - 1) \\ - 2f(c, c - b - 1, a, m - 1) - f(a, b, c, n), & \text{otherwise}
+  \end{cases}
+\end{aligned} $$
+
