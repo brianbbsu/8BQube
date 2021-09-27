@@ -1,0 +1,18 @@
+% \normalsize
+Standard form: maximize $\mathbf{c}^T\mathbf{x}$ subject to $A\mathbf{x} \leq \mathbf{b}$ and $\mathbf{x} \geq 0$. \\
+Dual LP: minimize $\mathbf{b}^T\mathbf{y}$ subject to $A^T\mathbf{y} \geq \mathbf{c}$ and $\mathbf{y} \geq 0$. \\
+$\bar{\mathbf{x}}$ and $\bar{\mathbf{y}}$ are optimal if and only if for all $i \in [1, n]$, either $\bar{x}_i = 0$ or $\sum_{j=1}^{m}A_{ji}\bar{y}_j = c_i$ holds and for all $i \in [1, m]$ either $\bar{y}_i = 0$ or $\sum_{j=1}^{n}A_{ij}\bar{x}_j = b_j$ holds.
+
+\begin{enumerate}
+    \itemsep-0.5em
+    \item In case of minimization, let $c^\prime_i = -c_i$
+    \item $\sum_{1 \leq i \leq n}{A_{ji}x_i} \geq b_j \rightarrow \sum_{1 \leq i \leq n}{-A_{ji}x_i} \leq -b_j$
+    \item $\sum_{1 \leq i \leq n}{A_{ji}x_i} = b_j$ 
+        \vspace{-0.5em}
+        \begin{itemize}
+            \itemsep-0.5em
+            \item $\sum_{1 \leq i \leq n}{A_{ji}x_i} \leq b_j$
+            \item $\sum_{1 \leq i \leq n}{A_{ji}x_i} \geq b_j$
+        \end{itemize}
+    \item If $x_i$ has no lower bound, replace $x_i$ with $x_i - x_i^\prime$
+\end{enumerate}
