@@ -92,7 +92,7 @@ Current Version: [Codebook.pdf](https://github.com/brianbbsu/BBQube/blob/codeboo
 | Tsukuba 2016                  | 2021/9/12    |  4  | 8/11  | 1032 | A | B | C | D | E | F | G | H | . | . | **K** |
 | XXI Open Cup of Korea         | 2021/9/24    |  48 | 5/12  | 640  | . | . | . | D | E | . | . | H | . | J | K | . |
 | 15th Heilongjiang Contest     | 2021/9/25    |  1  | 12/12 | 1589 | A | B | C | D | E | F | G | H | I | J | K | L |
-| 2020 CCPC, Weihai Site        | 2021/10/1    |  23 | 6/12  | 525  | A | . | C | D | . | . | G | H | . | **J** | . | L |
+| 2020 CCPC, Weihai Site        | 2021/10/1    |  23 | 6/12  | 525  | A | . | C | D | . | . | G | H | . | **J** | **K** | L |
 
 - A : 賽內AC
 - **A** : 賽後AC
