@@ -15,7 +15,8 @@ Current Version: [Codebook.pdf](https://github.com/brianbbsu/BBQube/blob/codeboo
 | Manila 2019                   | 2019/12/15    |  3  | 7/13  | 660  | A | . | . | D | E | . | . | H | I | . | . | L | M |
 | NTU NCPC 2020                 | 2020/09/27    |  7  | 6/10  | 1031 | A | B | . | D | E | F | G | H | . | . |
 | TOPC 2020                     | 2020/10/07    |  1  | 10/10 | 947  | A | B | C | D | E | F | G | H | I |
-| Taipei-Hsinchu 2020           | 2019/11/08    |  5  | 9/13  | 1033 | A | B | . | . | E | F | G | H | I | . | K | . | M |
+| Taipei-Hsinchu 2020           | 2020/11/08    |  5  | 9/13  | 1033 | A | B | . | . | E | F | G | H | I | . | K | . | M |
+| NTU NCPC 2021                 | 2021/10/2     |  1  | 9/12  | 1347 | A | B | C | D | E | . | G | . | I | J | K | . |
 
 # Training
 
