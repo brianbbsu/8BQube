@@ -94,6 +94,7 @@ Current Version: [Codebook.pdf](https://github.com/brianbbsu/BBQube/blob/codeboo
 | XXI Open Cup of Korea         | 2021/9/24    |  48 | 5/12  | 640  | . | . | . | D | E | . | . | H | . | J | K | . |
 | 15th Heilongjiang Contest     | 2021/9/25    |  1  | 12/12 | 1589 | A | B | C | D | E | F | G | H | I | J | K | L |
 | 2020 CCPC, Weihai Site        | 2021/10/1    |  23 | 6/12  | 525  | A | . | C | D | . | . | G | H | . | **J** | **K** | L |
+| SEERC 2020                    | 2021/10/8    |  11 | 9/13  | 1021 | . | B | . | D | E | F | . | H | I | J | . | L | M |
 
 - A : 賽內AC
 - **A** : 賽後AC
