@@ -17,6 +17,7 @@ Current Version: [Codebook.pdf](https://github.com/brianbbsu/BBQube/blob/codeboo
 | TOPC 2020                     | 2020/10/07    |  1  | 10/10 | 947  | A | B | C | D | E | F | G | H | I |
 | Taipei-Hsinchu 2020           | 2020/11/08    |  5  | 9/13  | 1033 | A | B | . | . | E | F | G | H | I | . | K | . | M |
 | NTU NCPC 2021                 | 2021/10/2     |  1  | 9/12  | 1347 | A | B | C | D | E | . | G | . | I | J | K | . |
+| NCPC 2021                     | 2021/10/16    |  2  | 12/12 | 1333 | A | B | C | D | E | F | G | H | I | J | K | L |
 
 # Training
 
@@ -96,6 +97,7 @@ Current Version: [Codebook.pdf](https://github.com/brianbbsu/BBQube/blob/codeboo
 | 2020 CCPC, Weihai Site        | 2021/10/1    |  23 | 6/12  | 525  | A | . | C | D | . | . | G | H | . | **J** | **K** | L |
 | SEERC 2020                    | 2021/10/8    |  11 | 9/13  | 1021 | . | B | . | D | E | F | . | H | I | J | . | L | M |
 | Seoul 2020                    | 2021/10/9    |  7  | 9/12  | 1182 | A | B | C | . | E | F | G | H | . | J | . | L |
+| CERC 2012                     | 2021/10/15   |  1  | 11/11 | 1365 | A | B | C | D | E | F | G | H | I | J | K |
 
 - A : 賽內AC
 - **A** : 賽後AC
