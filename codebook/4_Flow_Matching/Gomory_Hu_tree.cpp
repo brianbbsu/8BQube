@@ -16,8 +16,7 @@ struct Gomory_Hu_tree { // 0-base
     G[s].pb(pii(t, x)), G[t].pb(pii(s, x));
     for (int i : v)
       if (~Dinic.dis[i]) L.pb(i);
-      else
-        R.pb(i);
+      else R.pb(i);
     solve(L), solve(R);
   }
   void build() {

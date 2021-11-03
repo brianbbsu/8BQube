@@ -60,13 +60,10 @@ int cyclic_lcs() {
     for (int j = 1; j <= bl; j++) {
       if (a[i - 1] == b[j - 1])
         dp[i][j] = dp[i - 1][j - 1] + 1;
-      else
-        dp[i][j] = max(dp[i - 1][j], dp[i][j - 1]);
+      else dp[i][j] = max(dp[i - 1][j], dp[i][j - 1]);
       if (dp[i][j - 1] == dp[i][j]) pred[i][j] = L;
-      else if (a[i - 1] == b[j - 1])
-        pred[i][j] = LU;
-      else
-        pred[i][j] = U;
+      else if (a[i - 1] == b[j - 1]) pred[i][j] = LU;
+      else pred[i][j] = U;
     }
   }
   // do cyclic lcs

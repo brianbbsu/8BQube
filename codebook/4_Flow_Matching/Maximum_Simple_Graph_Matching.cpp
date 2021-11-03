@@ -17,12 +17,10 @@ struct GenMatch { // 1-base
     fill_n(inp, V + 1, 0);
     while (1)
       if (u = djs[u], inp[u] = true, u == st) break;
-      else
-        u = bk[pr[u]];
+      else u = bk[pr[u]];
     while (1)
       if (v = djs[v], inp[v]) return v;
-      else
-        v = bk[pr[v]];
+      else v = bk[pr[v]];
     return v;
   }
   void upd(int u) {
@@ -59,8 +57,7 @@ struct GenMatch { // 1-base
           else if (!bk[v]) {
             if (bk[v] = u, pr[v] > 0) {
               if (!inq[pr[v]]) qe.push(pr[v]);
-            } else
-              return ed = v, void();
+            } else return ed = v, void();
           }
         }
     }

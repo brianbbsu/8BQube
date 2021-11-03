@@ -169,7 +169,6 @@ int main() {
       cin >> t, modifymax(x, y, 1, n, 1, t);
     else if (k == 2)
       cin >> t, modifyadd(x, y, 1, n, 1, t);
-    else
-      cout << query(x, y, 1, n, 1) << "\n";
+    else cout << query(x, y, 1, n, 1) << "\n";
   }
 }

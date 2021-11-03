@@ -60,8 +60,7 @@ struct BoundedFlow { // 0-base
     for (int i = 0; i < n; ++i)
       if (cnt[i] > 0)
         add_edge(n + 1, i, cnt[i]), sum += cnt[i];
-      else if (cnt[i] < 0)
-        add_edge(i, n + 2, -cnt[i]);
+      else if (cnt[i] < 0) add_edge(i, n + 2, -cnt[i]);
     if (sum != maxflow(n + 1, n + 2)) sum = -1;
     for (int i = 0; i < n; ++i)
       if (cnt[i] > 0)
