@@ -35,7 +35,8 @@ void rotate(Splay *x) {
   Splay *p = x->f;
   int d = x->dir();
   if (!p->isr()) p->f->setCh(x, p->dir());
-  else x->f = p->f;
+  else
+    x->f = p->f;
   p->setCh(x->ch[!d], d);
   x->setCh(p, !d);
   p->pull(), x->pull();
@@ -52,7 +53,8 @@ void splay(Splay *x) {
     if (x->f->isr()) rotate(x);
     else if (x->dir() == x->f->dir())
       rotate(x->f), rotate(x);
-    else rotate(x), rotate(x);
+    else
+      rotate(x), rotate(x);
   }
 }
 Splay *access(Splay *x) {

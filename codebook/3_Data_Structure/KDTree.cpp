@@ -7,7 +7,8 @@ int build(int l, int r, int dep = 0) {
   function<bool(const point &, const point &)> f =
     [dep](const point &a, const point &b) {
       if (dep & 1) return a.x < b.x;
-      else return a.y < b.y;
+      else
+        return a.y < b.y;
     };
   int m = (l + r) >> 1;
   nth_element(p + l, p + m, p + r, f);

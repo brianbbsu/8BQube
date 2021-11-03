@@ -44,7 +44,8 @@ struct MaxClique { // Maximum Clique
             [&](int x, int y) { return d[x] > d[y]; });
         }
         csort(nr, nc), dfs(nr, nc, l + 1, nmask);
-      } else if (q > ans) ans = q, copy_n(cur, q, sol);
+      } else if (q > ans)
+        ans = q, copy_n(cur, q, sol);
       c.pop_back(), q--;
     }
   }

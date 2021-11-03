@@ -27,13 +27,15 @@ struct KM { // 0-base
           if (!vl[x] &&
             slk[x] >= (d = hl[x] + hr[y] - w[x][y]))
             if (pre[x] = y, d) slk[x] = d;
-            else if (!Check(x)) return;
+            else if (!Check(x))
+              return;
       d = INF;
       for (int x = 0; x < n; ++x)
         if (!vl[x] && d > slk[x]) d = slk[x];
       for (int x = 0; x < n; ++x) {
         if (vl[x]) hl[x] += d;
-        else slk[x] -= d;
+        else
+          slk[x] -= d;
         if (vr[x]) hr[x] -= d;
       }
       for (int x = 0; x < n; ++x)

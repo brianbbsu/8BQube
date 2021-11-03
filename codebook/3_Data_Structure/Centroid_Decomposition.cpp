@@ -39,7 +39,8 @@ struct Cent_Dec { // 1-base
       if (!done[e.X]) {
         if (sz[e.X] > sz[c])
           lc = cut(e.X, c, num - sz[c]);
-        else lc = cut(e.X, c, sz[e.X]);
+        else
+          lc = cut(e.X, c, sz[e.X]);
         upinfo[lc] = pll(), dfs(e.X, c, e.Y, c);
       }
     return done[c] = 0, c;

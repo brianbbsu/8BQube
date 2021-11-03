@@ -138,7 +138,8 @@ private:
           (k + 1) % kd, x)) {
       --u->s;
       return 1;
-    } else return 0;
+    } else
+      return 0;
   }
   inline T heuristic(const T h[]) const {
     T ret = 0;

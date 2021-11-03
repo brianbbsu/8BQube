@@ -34,7 +34,8 @@ struct LiChao_min {
     if (trl > vl) swap(nd->f, v);
     if (nd->f.eval(mid) < v.eval(mid))
       insert(v, mid + 1, r, nd->r);
-    else swap(nd->f, v), insert(v, l, mid, nd->l);
+    else
+      swap(nd->f, v), insert(v, l, mid, nd->l);
   }
   LL query(int x, int l, int r, pnode &nd) {
     if (!nd) return LLONG_MAX;

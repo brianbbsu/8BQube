@@ -18,7 +18,8 @@ void dfs(int u, int f) {
   for (auto i : G[u])
     if (!dfn[i.X])
       dfs(i.X, i.Y), low[u] = min(low[u], low[i.X]);
-    else if (i.Y != f) low[u] = min(low[u], dfn[i.X]);
+    else if (i.Y != f)
+      low[u] = min(low[u], dfn[i.X]);
   if (low[u] == dfn[u] && f != -1) is_bridge[f] = 1;
 }
 
