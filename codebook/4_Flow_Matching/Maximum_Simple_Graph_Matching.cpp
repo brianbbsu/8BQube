@@ -58,7 +58,7 @@ struct GenMatch { // 1-base
             if (bk[v] = u, pr[v] > 0) {
               if (!inq[pr[v]]) qe.push(pr[v]);
             } else
-	      return ed = v, void();
+              return ed = v, void();
           }
         }
     }
