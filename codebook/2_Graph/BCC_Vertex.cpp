@@ -39,7 +39,7 @@ void bcc_init(int n) {
 void bcc_solve(int n) {
   for (int i = 1; i <= n; ++i)
     if (!dfn[i]) dfs(i);
-  // circle-square tree
+  // block-cut tree
   for (int i = 1; i <= n; ++i)
     if (is_cut[i])
       bcc_id[i] = ++bcc_cnt, cir[bcc_cnt] = 1;

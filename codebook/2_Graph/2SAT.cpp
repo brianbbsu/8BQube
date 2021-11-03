@@ -9,7 +9,7 @@ struct SAT { // 0-base
   }
   void add_edge(int a, int b) { G[a].pb(b); }
   int rv(int a) {
-    if (a > n) return a - n;
+    if (a >= n) return a - n;
     return a + n;
   }
   void add_clause(int a, int b) {
