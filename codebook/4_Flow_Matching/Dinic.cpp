@@ -21,7 +21,7 @@ struct MaxFlow { // 0-base
     return 0;
   }
   bool bfs() {
-    FILL(dis, -1);
+    fill_n(dis, n, -1);
     queue<int> q;
     q.push(s), dis[s] = 0;
     while (!q.empty()) {
@@ -39,8 +39,8 @@ struct MaxFlow { // 0-base
     s = _s, t = _t;
     int flow = 0, df;
     while (bfs()) {
-      FILL(cur, 0);
-      while (df = dfs(s, INF)) flow += df;
+      fill_n(cur, n, 0);
+      while ((df = dfs(s, INF))) flow += df;
     }
     return flow;
   }
