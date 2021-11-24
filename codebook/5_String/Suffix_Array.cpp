@@ -11,7 +11,7 @@ struct suffix_array {
     for (int i = n - 1; i >= 0; --i)
       ot[--box[key[it[i]]]] = it[i];
   }
-  void make_sa(string s, int n) {
+  void make_sa(const string &s, int n) {
     int k = 1;
     for (int i = 0; i < n; ++i) ra[i] = s[i];
     do {
@@ -27,7 +27,7 @@ struct suffix_array {
       k *= 2;
     } while (k < n && m != n);
   }
-  void make_he(string s, int n) {
+  void make_he(const string &s, int n) {
     for (int j = 0, k = 0; j < n; ++j) {
       if (ra[j])
         for (; s[j + k] == s[sa[ra[j] - 1] + k]; ++k)
@@ -36,10 +36,10 @@ struct suffix_array {
     }
   }
   int sa[MAXN], ra[MAXN], he[MAXN];
-  void build(string s) {
-    FILL(sa, 0), FILL(ra, 0), FILL(he, 0);
-    FILL(box, 0), FILL(tp, 0), m = 256;
-    make_sa(s, s.size());
-    make_he(s, s.size());
+  void build(const string &s) {
+    int n = SZ(s);
+    fill_n(sa, n, 0), fill_n(ra, n, 0), fill_n(he, n, 0);
+    fill_n(box, n, 0), fill_n(tp, n, 0), m = 256;
+    make_sa(s, n), make_he(s, n);
   }
 };
