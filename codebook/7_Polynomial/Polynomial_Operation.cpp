@@ -73,10 +73,10 @@ struct Poly : vector<LL> { // coefficients in [0, P)
     const int _n = (int)x.size();
     if (!_n) return {};
     vector<Poly> down(_n * 2);
-    down[1] = DivMod(up[1]).second;
-    fi(2, _n * 2) down[i] = down[i / 2].DivMod(up[i]).second;
-    /* down[1] = Poly(up[1]).irev().isz(n()).Inv().irev()._tmul(_n, *this);
-    fi(2, _n * 2) down[i] = up[i ^ 1]._tmul(up[i].n() - 1, down[i / 2]); */
+    // down[1] = DivMod(up[1]).second;
+    // fi(2, _n * 2) down[i] = down[i / 2].DivMod(up[i]).second;
+    down[1] = Poly(up[1]).irev().isz(n()).Inv().irev()._tmul(_n, *this);
+    fi(2, _n * 2) down[i] = up[i ^ 1]._tmul(up[i].n() - 1, down[i / 2]);
     vector<LL> y(_n);
     fi(0, _n) y[i] = down[_n + i][0];
     return y;
@@ -88,10 +88,10 @@ struct Poly : vector<LL> { // coefficients in [0, P)
     for (int i = _n - 1; i > 0; --i) up[i] = up[i * 2].Mul(up[i * 2 + 1]);
     return up;
   }
-  vector<LL> Eval(const vector<LL> &x) const {
+  vector<LL> Eval(const vector<LL> &x) const { // 1e5, 1s
     auto up = _tree1(x); return _eval(x, up);
   }
-  static Poly Interpolate(const vector<LL> &x, const vector<LL> &y) {
+  static Poly Interpolate(const vector<LL> &x, const vector<LL> &y) { // 1e5, 1.4s
     const int _n = (int)x.size();
     vector<Poly> up = _tree1(x), down(_n * 2);
     vector<LL> z = up[1].Dx()._eval(x, up);
