@@ -40,7 +40,7 @@ struct Poly : vector<LL> { // coefficients in [0, P)
     ntt(Xi.data(), _n, true);
     return Xi.isz(n());
   }
-  Poly Sqrt() const { // Jacobi((*this)[0], P) = 1
+  Poly Sqrt() const { // Jacobi((*this)[0], P) = 1, 1e5/235ms
     if (n() == 1) return {QuadraticResidue((*this)[0], P)};
     Poly X = Poly(*this, (n() + 1) / 2).Sqrt().isz(n());
     return X.iadd(Mul(X.Inv()).isz(n())).imul(P / 2 + 1);
