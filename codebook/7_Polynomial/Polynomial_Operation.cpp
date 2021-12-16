@@ -26,7 +26,7 @@ struct Poly : vector<LL> { // coefficients in [0, P)
     ntt(X.data(), _n, true);
     return X.isz(n() + rhs.n() - 1);
   }
-  Poly Inv() const { // (*this)[0] != 0
+  Poly Inv() const { // (*this)[0] != 0, 1e5/125ms
     if (n() == 1) return {ntt.minv((*this)[0])};
     int _n = 1;
     while (_n < n() * 2) _n <<= 1;
@@ -100,10 +100,10 @@ struct Poly : vector<LL> { // coefficients in [0, P)
     for (int i = _n - 1; i > 0; --i) down[i] = down[i * 2].Mul(up[i * 2 + 1]).iadd(down[i * 2 + 1].Mul(up[i * 2]));
     return down[1];
   }
-  Poly Ln() const { // (*this)[0] == 1
+  Poly Ln() const { // (*this)[0] == 1, 1e5/250ms
     return Dx().Mul(Inv()).Sx().isz(n());
   }
-  Poly Exp() const { // (*this)[0] == 0
+  Poly Exp() const { // (*this)[0] == 0, 1e5/500ms
     if (n() == 1) return {1};
     Poly X = Poly(*this, (n() + 1) / 2).Exp().isz(n());
     Poly Y = X.Ln(); Y[0] = P - 1;
