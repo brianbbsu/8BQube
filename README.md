@@ -18,6 +18,8 @@ Current Version: [Codebook.pdf](https://github.com/brianbbsu/BBQube/blob/codeboo
 | Taipei-Hsinchu 2020           | 2020/11/08    |  5  | 9/13  | 1033 | A | B | . | . | E | F | G | H | I | . | K | . | M |
 | NTU NCPC 2021                 | 2021/10/2     |  1  | 9/12  | 1347 | A | B | C | D | E | . | G | . | I | J | K | . |
 | NCPC 2021                     | 2021/10/16    |  2  | 12/12 | 1333 | A | B | C | D | E | F | G | H | I | J | K | L |
+| TOPC 2021                     | 2021/10/23    |  4  | 9/11  | 426  | A | B | C | D | E | F | G | H | . | J |
+| Taipei-Hsinchu 2020           | 2021/11/28    |  3  | 10/13 | 1239 | A | B | C | D | . | F | G | . | I | J | K | . | M |
 
 # Training
 
@@ -79,25 +81,37 @@ Current Version: [Codebook.pdf](https://github.com/brianbbsu/BBQube/blob/codeboo
 | XXI OpenCup GP of Samara      | 2021/3/19    |  33 | 8/14  | 1054 | . | B | . | D | . | F | G | . | . | J | K | L | M | . |
 | SEERC 2019                    | 2021/3/28    |  1  | 8/11  | 874  | . | B | C | D | E | F | G | . | I | J | . |
 | Moscow Pre-Finals 2016 Kent Nikaido | 2021/4/30 | 13 | 6/11 | 569 | A | . | C | D | . | . | . | H | **I** | J | K |
-| XVIII Open Cup of SPb         | 2021/5/7     |  11 | 10/12 | 1011 | A | B | . | D | **E** | . | . | H | . | J | K | L |
+| XVIII Open Cup GP of SPb      | 2021/5/7     |  11 | 10/12 | 1011 | A | B | . | D | **E** | . | . | H | . | J | K | L |
 | XVI Open Cup of Ekaterinburg  | 2021/6/4     |  32 | 8/11  | 959  | **A** | B | C | D | E | F | G | **H** | . | J | K |
-| XVIII Open Cup of Urals       | 2021/7/3     |  33 | 4/11  | 612  | A | B | C | . | . | . | . | . | . | . | K |
-| XVIII Open Cup of Eurasia     | 2021/7/10    |  29 | 7/12  | 695  | A | B | . | D | **E** | . | . | H | . | J | K | L |
+| XVIII OpenCup GP of Urals     | 2021/7/3     |  33 | 4/11  | 612  | A | B | C | . | . | . | . | . | . | . | K |
+| XVIII OpenCup GP of Eurasia   | 2021/7/10    |  29 | 7/12  | 695  | A | B | . | D | **E** | . | . | H | . | J | K | L |
 | XVII Open Cup of America      | 2021/7/25    |  26 | 6/11  | 820  | A | B | C | D | E | . | . | . | . | J | . |
-| XV Open Cup of Central Europe | 2021/8/1     |  12 | 8/11  | 509  | A | B | C | D | E | . | G | . | I | . | K |
+| XV Open Cup GP of Central Europe | 2021/8/1  |  12 | 8/11  | 509  | A | B | C | D | E | . | G | . | I | . | K |
 | NTU preliminary 2018          | 2021/8/14    |  1  | 9/10  | 1203 | A | B | C | D | **E** | F | G | H | I | J |
 | NTU preliminary 2021          | 2021/8/21    |  2  | 7/11  | 767  | **A** | B |  **C** |  **D** | E |  **F** | G | H | I | J | K |
 | ECNA 2016                     | 2021/8/28    |  1  | 10/10 | 824  | A | B | C | D | E | F | G | H | I | J |
-| JAG Practice Contest 2017     | 2021/9/4     |  3  | 10/11 | 1408 | A | B | C | D | E | F | G | . | I | J | K |
+| JAG Practice Contest 2017     | 2021/9/4     |  3  | 10/11 | 1408 | A | B | C | D | E | F | G | **H** | I | J | K |
 | BSUIR 2015                    | 2021/9/5     |  1  | 8/10  | 765  | A | . | C | D | E | F | G | H | I | . |
-| NEERC 2014                    | 2021/9/11    |  3  | 7/11  | 554  | A | B | . | . | E | F | . | . | I | J | K |
+| NEERC 2014                    | 2021/9/11    |  3  | 7/11  | 554  | A | B | **C** | **D** | E | F | **G** | **H** | I | J | K |
 | Tsukuba 2016                  | 2021/9/12    |  4  | 8/11  | 1032 | A | B | C | D | E | F | G | H | . | . | **K** |
+| Jakarta 2020                  | 2021/9/18    |  1  | 11/13 | 1197 | A | B | C | D | E | F | G | **H** | I | J | K | **L** | M |
 | XXI Open Cup of Korea         | 2021/9/24    |  48 | 5/12  | 640  | . | . | . | D | E | . | . | H | . | J | K | . |
 | 15th Heilongjiang Contest     | 2021/9/25    |  1  | 12/12 | 1589 | A | B | C | D | E | F | G | H | I | J | K | L |
 | 2020 CCPC, Weihai Site        | 2021/10/1    |  23 | 6/12  | 525  | A | . | C | D | . | . | G | H | . | **J** | **K** | L |
 | SEERC 2020                    | 2021/10/8    |  11 | 9/13  | 1021 | . | B | . | D | E | F | . | H | I | J | . | L | M |
 | Seoul 2020                    | 2021/10/9    |  7  | 9/12  | 1182 | A | B | C | . | E | F | G | H | . | J | . | L |
 | CERC 2012                     | 2021/10/15   |  1  | 11/11 | 1365 | A | B | C | D | E | F | G | H | I | J | K |
+| SWERC 2020                    | 2021/10/19   |  2  | 11/13 | 818  | A | **B** | C | D | E | F | G | H | I | J | K | L | **M** |
+| PetrozavodskCamp XJTU Contest 2020 | 2021/10/23 | 63 | 2/11 | 187 | A | **B** | **C** | **D** | E | . | . | . | . | **J** | **K** |
+| PetrozavodskCamp Almost Algorithmic Contest 2019 | 2021/10/29 | 17 | 6/12 | 1065 | . | **B** | C | D | E | F | G | H | . | . | . | . |
+| Yokohama 2020                 | 2021/10/30   |  11 | 8/11  | 1169 | A | B | C | **D** | E | **F** | G | H | I | J | **K** |
+| JAG Summer Camp 2018 Day3     | 2021/11/6    |  2  | 11/11 | 887  | A | B | C | D | E | F | G | H | I | J | K |
+| NWERC 2015                    | 2021/11/20   |  8  | 8/12  | 1120 | A | . | . | D | E | F | G | . | I | J | K | L |
+| XIX OpenCup GP of America     | 2021/11/21   |  12 | 10/13 | 1070 | A | B | . | D | E | F | G | . | I | J | . | L | M |
+| Macau 2020                    | 2021/11/25   |  4  | 7/12  | 836  | **A** | . | C | D | E | F | G | . | **I** | J | . | L |
+| CCPC Weihai 2021              | 2021/12/11   |  3  | 10/13 | 1044 | A | . | C | D | E | F | G | H | . | J | K | . | M |
+
+
 
 - A : 賽內AC
 - **A** : 賽後AC
