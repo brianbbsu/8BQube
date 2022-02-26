@@ -4,4 +4,4 @@ se re=1 ts=4 sts=4 sw=4 ls=2 mouse=a
 syntax on
 hi cursorline cterm=none ctermbg=89
 set bg=dark
-inoremap {<ENTER> {}<LEFT><ENTER><ENTER><UP><TAB>
+inoremap {<CR> {<CR>}<Esc>ko<tab>
