@@ -110,8 +110,12 @@ Current Version: [Codebook.pdf](https://github.com/brianbbsu/BBQube/blob/codeboo
 | XIX OpenCup GP of America     | 2021/11/21   |  12 | 10/13 | 1070 | A | B | . | D | E | F | G | . | I | J | . | L | M |
 | Macau 2020                    | 2021/11/25   |  4  | 7/12  | 836  | **A** | . | C | D | E | F | G | . | **I** | J | . | L |
 | CCPC Weihai 2021              | 2021/12/11   |  3  | 10/13 | 1044 | A | . | C | D | E | F | G | H | . | J | K | . | M |
-
-
+| NERC 2021                     | 2022/2/18    |  2  | 14/14 | 1183 | A | B | C | D | E | F | G | H | I | J | K | L | M | N |
+| XXII OpenCup GP of EDG        | 2022/3/4     |  49 | 8/12  | 1059 | A | B | . | D | E | **F** | G | **H** | I | J | K | . |
+| Shenyang 2021                 | 2022/3/11    |  3  | 11/13 | 1429 | A | B | . | D | E | F | G | H | I | J | . | L | M |
+| XXII OpenCup GP of Nanjing    | 2022/3/18    |  29 | 9/13  | 1495 | A | . | C | D | E | . | G | H | I | J | . | **L** | M |
+| XXII OpenCup GP of Southeastern Europe | 2022/3/25 | 41 | 7/14 | 1188 | A | . | C | . | . | F | **G** | H | . | J | K | . | . | N |
+| XXI OpenCup GP of Belarus     | 2022/4/1     |  17 | 10/14 | 1117 | A | B | C | D | E | . | G | . | I | J | . | . | M | N |
 
 - A : 賽內AC
 - **A** : 賽後AC
