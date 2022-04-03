@@ -19,7 +19,7 @@ Current Version: [Codebook.pdf](https://github.com/brianbbsu/BBQube/blob/codeboo
 | NTU NCPC 2021                 | 2021/10/2     |  1  | 9/12  | 1347 | A | B | C | D | E | . | G | . | I | J | K | . |
 | NCPC 2021                     | 2021/10/16    |  2  | 12/12 | 1333 | A | B | C | D | E | F | G | H | I | J | K | L |
 | TOPC 2021                     | 2021/10/23    |  4  | 9/11  | 426  | A | B | C | D | E | F | G | H | . | J |
-| Taipei-Hsinchu 2020           | 2021/11/28    |  3  | 10/13 | 1239 | A | B | C | D | . | F | G | . | I | J | K | . | M |
+| Taipei 2021                   | 2021/11/28    |  3  | 10/13 | 1239 | A | B | C | D | . | F | G | . | I | J | K | . | M |
 
 # Training
 
