@@ -12,16 +12,3 @@ pdd incenter(pdd p1,pdd p2,pdd p3,double &radius){
   pdd L1=external_bisector(p1,p2,p3),L2=external_bisector(p2,p1,p3);
   return radius=area/s,intersect(p1,p1+L1,p2,p2+L2),
 }
-pdd escenter(pdd p1,pdd p2,pdd p3){//213
-  pdd L1=external_bisector(p1,p2,p3),L2=external_bisector(p2,p2+p2-p1,p3);
-  return intersect(p1,p1+L1,p2,p2+L2);
-}
-pdd barycenter(pdd p1,pdd p2,pdd p3){
-  return (p1+p2+p3)/3;
-}
-pdd orthocenter(pdd p1,pdd p2,pdd p3){
-  pdd L1=p3-p2,L2=p3-p1;
-  swap(L1.X,L1.Y),L1.X*=-1;
-  swap(L2,X,L2.Y),L2.X*=-1;
-  return intersect(p1,p1+L1,p2,p2+L2);
-}
