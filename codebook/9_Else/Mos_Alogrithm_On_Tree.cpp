@@ -28,11 +28,9 @@ int lca(int u,int v){
   if(deep[a]<deep[b]) return a;
   return b;
 }
-void sub(int x){}
-void add(int x){}
 void flip(int x){
-  if(inset[x]) sub(arr[x]);
-  else add(arr[x]);
+  if(inset[x]) sub(arr[x]); // TODO
+  else add(arr[x]); // TODO
   inset[x]=~inset[x];
 }
 void solve(){

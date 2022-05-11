@@ -10,20 +10,16 @@ struct QUERY{//BLOCK=N^{2/3}
 };
 vector<QUERY> query;
 int cur_ans,arr[MAXN],ans[MAXN];
-void addTime(int L,int R,int T){}
-void subTime(int L,int R,int T){}
-void add(int x){}
-void sub(int x){}
 void solve(){
   sort(ALL(query));
   int L=0,R=0,T=-1;
   for(auto q:query){
-    while(T<q.T) addTime(L,R,++T);
-    while(T>q.T) subTime(L,R,T--);
-    while(R<q.R) add(arr[++R]);
-    while(L>q.L) add(arr[--L]);
-    while(R>q.R) sub(arr[R--]);
-    while(L<q.L) sub(arr[L++]);
+    while(T<q.T) addTime(L,R,++T); // TODO
+    while(T>q.T) subTime(L,R,T--); // TODO
+    while(R<q.R) add(arr[++R]); // TODO
+    while(L>q.L) add(arr[--L]); // TODO
+    while(R>q.R) sub(arr[R--]); // TODO
+    while(L<q.L) sub(arr[L++]); // TODO
     ans[q.id]=cur_ans;
   }
 }
