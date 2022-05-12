@@ -23,8 +23,8 @@ Current Version: [Codebook.pdf](https://github.com/brianbbsu/BBQube/blob/codeboo
 
 # Training
 
-| Contest                   | Date          | Rank | Solved/Total | Penalty |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
-| --------------------------|:-------------:|:----:|:------------:|:--------:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+| Contest                   | Date          | Rank | Solved/Total | Penalty |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+| --------------------------|:-------------:|:----:|:------------:|:--------:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
 | NWERC 2016                    | 2019/8/17     |  4  | 9/11  | 1118 | A | B | C | **D** | E | F | **G** | H | I | J | K |
 | JAG Spring Contest 2015       | 2019/8/24     |  2  | 7/12  | 1251 | A | **B** | . | D | E | F | G | . | **I** | . | K | L |
 | 2010-2011 OpenCup IX          | 2019/8/31     |  16 | 2/10  | 248  | **A** | . | . | . | E | **F** | **G** | H | . | **J** |
@@ -117,7 +117,9 @@ Current Version: [Codebook.pdf](https://github.com/brianbbsu/BBQube/blob/codeboo
 | XXII OpenCup GP of Southeastern Europe | 2022/3/25 | 41 | 7/14 | 1188 | A | . | C | . | . | F | **G** | H | . | J | K | . | . | N |
 | XXI OpenCup GP of Belarus     | 2022/4/1     |  17 | 10/14 | 1117 | A | B | C | D | E | . | G | . | I | J | . | . | M | N |
 | 2020 CCPC, Qinhuangdao Site   | 2022/4/8     |   7 | 6/12  | 475  | A | . | ? | . | E | F | G | . | I | **J** | K | . |
+| NERC Final 2021               | 2022/4/15    |   2 | 8/12  | 774  | **A** | . | C | D | E | F | G | . | I | J | **K** | L |
 | XXII OpenCup GP of IMO        | 2022/4/22    |  18 | 9/13  | 1218 | A | B | . | D | E | F | G | H | . | J | . | . | M |
+| SWERC 2021                    | 2022/4/29    |  7  | 8/15  | 538  | A | . | . | D | . | F | **G** | H | I | . | . | L | M | . | O |
 | BSUIR 2019                    | 2022/5/6     |  8  | 10/12 | 1018 | A | B | C | **D** | . | F | G | H | I | J | K | L |
 
 - A : 賽內AC
