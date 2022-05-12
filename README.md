@@ -119,7 +119,7 @@ Current Version: [Codebook.pdf](https://github.com/brianbbsu/BBQube/blob/codeboo
 | 2020 CCPC, Qinhuangdao Site   | 2022/4/8     |   7 | 6/12  | 475  | A | . | ? | . | E | F | G | . | I | **J** | K | . |
 | NERC Final 2021               | 2022/4/15    |   2 | 8/12  | 774  | **A** | . | C | D | E | F | G | . | I | J | **K** | L |
 | XXII OpenCup GP of IMO        | 2022/4/22    |  18 | 9/13  | 1218 | A | B | . | D | E | F | G | H | . | J | . | . | M |
-| SWERC 2021                    | 2022/4/29    |  7  | 8/15  | 538  | A | . | . | D | . | F | **G** | H | I | . | . | L | M | . | O |
+| SWERC 2021                    | 2022/4/29    |  37 | 8/15  | 538  | A | . | . | D | . | F | **G** | H | I | . | . | L | M | . | O |
 | BSUIR 2019                    | 2022/5/6     |  8  | 10/12 | 1018 | A | B | C | **D** | . | F | G | H | I | J | K | L |
 
 - A : 賽內AC
