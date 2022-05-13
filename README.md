@@ -121,6 +121,7 @@ Current Version: [Codebook.pdf](https://github.com/brianbbsu/BBQube/blob/codeboo
 | XXII OpenCup GP of IMO        | 2022/4/22    |  18 | 9/13  | 1218 | A | B | . | D | E | F | G | H | . | J | . | . | M |
 | SWERC 2021                    | 2022/4/29    |  37 | 8/15  | 538  | A | . | . | D | . | F | **G** | H | I | . | . | L | M | . | O |
 | BSUIR 2019                    | 2022/5/6     |  8  | 10/12 | 1018 | A | B | C | **D** | . | F | G | H | I | J | K | L |
+| HBCPC 2021                    | 2022/5/13    |  1  | 9/11  | 920  | A | **B** | C | D | E | F | G | H | I | **J** | K |
 
 - A : 賽內AC
 - **A** : 賽後AC
