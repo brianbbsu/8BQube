@@ -1,5 +1,6 @@
 \begin{itemize}
 \item Kirchhoff's Theorem
+
 Denote $L$ be a $n \times n$ matrix as the Laplacian matrix of graph $G$, where $L_{ii} = d(i)$, $L_{ij} = -c$ where $c$ is the number of edge $(i, j)$ in $G$.
 \begin{itemize}
     \itemsep-0.5em
@@ -8,9 +9,11 @@ Denote $L$ be a $n \times n$ matrix as the Laplacian matrix of graph $G$, where 
 \end{itemize}
 
 \item Tutte's Matrix
+
 Let $D$ be a $n \times n$ matrix, where $d_{ij} = x_{ij}$ ($x_{ij}$ is chosen uniformly at random) if $i < j$ and $(i, j) \in E$, otherwise $d_{ij} = -d_{ji}$. $\frac{rank(D)}{2}$ is the maximum matching on $G$.
 
 \item Cayley's Formula
+
 \begin{itemize}
     \itemsep-0.5em
   \item Given a degree sequence $d_1, d_2, \ldots, d_n$ for each \textit{labeled} vertices, there are $\frac{(n - 2)!}{(d_1 - 1)!(d_2 - 1)!\cdots(d_n - 1)!}$ spanning trees.
@@ -18,12 +21,15 @@ Let $D$ be a $n \times n$ matrix, where $d_{ij} = x_{ij}$ ($x_{ij}$ is chosen un
 \end{itemize}
 
 \item Erdős–Gallai theorem 
+
 A sequence of nonnegative integers $d_1\ge\cdots\ge d_n$ can be represented as the degree sequence of a finite simple graph on $n$ vertices if and only if $d_1+\cdots+d_n$ is even and $\displaystyle\sum_{i-1}^kd_i\le k(k-1)+\displaystyle\sum_{i=k+1}^n\min(d_i,k)$ holds for every $1\le k\le n$.
 
 \item Gale–Ryser theorem
+
 A pair of sequences of nonnegative integers $a_1\ge\cdots\ge a_n$ and $b_1,\ldots,b_n$ is bigraphic if and only if $\displaystyle\sum_{i=1}^n a_i=\displaystyle\sum_{i=1}^n b_i$ and $\displaystyle\sum_{i=1}^k a_i\le \displaystyle\sum_{i=1}^n\min(b_i,k)$ holds for every $1\le k\le n$.
 
 \item Fulkerson–Chen–Anstee theorem
+
 A sequence $(a_1,b_1),\ldots,(a_n,b_n)$ of nonnegative integer pairs with $a_1\ge\cdots\ge a_n$ is digraphic if and only if $\displaystyle\sum_{i=1}^n a_i=\displaystyle\sum_{i=1}^n b_i$ and $\displaystyle\sum_{i=1}^k a_i\le \displaystyle\sum_{i=1}^k\min(b_i,k-1)+\displaystyle\sum_{i=k+1}^n\min(b_i,k)$ holds for every $1\le k\le n$.
 
 \end{itemize}
