@@ -1,15 +1,14 @@
-// p, q is convex
-double TwoConvexHullMinDist(Point P[], Point Q[], int n, int m) {
-  int YMinP = 0, YMaxQ = 0;
-  double tmp, ans = 999999999;
-  for (i = 0; i < n; ++i) if(P[i].y < P[YMinP].y) YMinP = i;
-  for (i = 0; i < m; ++i) if(Q[i].y > Q[YMaxQ].y) YMaxQ = i;
-  P[n] = P[0], Q[m] = Q[0];
-  for (int i = 0; i < n; ++i) {
-    while (tmp = Cross(Q[YMaxQ + 1] - P[YMinP + 1], P[YMinP] - P[YMinP + 1]) > Cross(Q[YMaxQ] - P[YMinP + 1], P[YMinP] - P[YMinP + 1])) YMaxQ = (YMaxQ + 1) % m;
-    if (tmp < 0) ans = min(ans, PointToSegDist(P[YMinP], P[YMinP + 1], Q[YMaxQ]));
-    else ans = min(ans, TwoSegMinDist(P[YMinP], P[YMinP + 1], Q[YMaxQ], Q[YMaxQ + 1]));
-    YMinP = (YMinP + 1) % n;
-  }
-  return ans;
+double ConvexHullDist(vector<pdd> A, vector<pdd> B) {
+    for (auto &p : B) p = {-p.X, -p.Y};
+    auto C = Minkowski(A, B);
+    if (PointInConvex(C, pdd(0, 0))) return 0;
+    double ans = 1e9;
+    for (int i = 0; i < SZ(C); ++i) {
+        ans = min(ans, dot(C[i], C[i]));
+        const int j = i + 1 == SZ(C) ? 0 : i + 1;
+        auto p = foot(C[i], C[j], pdd(0, 0));
+        if (!btw(C[i], C[j], p)) continue;
+        ans = min(ans, dot(p, p));
+    }
+    return sqrt(ans);
 }
