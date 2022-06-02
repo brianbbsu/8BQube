@@ -1,4 +1,4 @@
-void hull(vector<pll> &dots) {
+void hull(vector<pll> &dots) { // n=1 => ans = {}
   sort(dots.begin(), dots.end());
   vector<pll> ans(1, dots[0]);
   for (int ct = 0; ct < 2; ++ct, reverse(ALL(dots)))
