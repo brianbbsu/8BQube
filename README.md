@@ -123,7 +123,7 @@ Current Version: [Codebook.pdf](https://github.com/brianbbsu/BBQube/blob/codeboo
 | BSUIR 2019                    | 2022/5/6     |  8  | 10/12 | 1018 | A | B | C | **D** | . | F | G | H | I | J | K | L |
 | HBCPC 2021                    | 2022/5/13    |  1  | 9/11  | 920  | A | **B** | C | D | E | F | G | H | I | **J** | K |
 | CCPC Guilin 2018              | 2022/5/20    |  5  | 6/12  | 369  | A | B | . | D | . | . | G | H | . | J | . | . |
-| CCPC Northeast 2019           | 2022/6/3     |  1  | 9/10  | 369  | A | B | C | D | E | F | G | H | . | J |
+| CCPC Northeast 2019           | 2022/6/3     |  1  | 9/10  | 977  | A | B | C | D | E | F | G | H | . | J |
 
 - A : 賽內AC
 - **A** : 賽後AC
