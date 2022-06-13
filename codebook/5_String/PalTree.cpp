@@ -1,5 +1,4 @@
-struct palindromic_tree { // Check by APIO 2014
-                          // palindrome
+struct palindromic_tree {
   struct node {
     int next[26], fail, len;
     int cnt, num; // cnt: appear times, num: number of

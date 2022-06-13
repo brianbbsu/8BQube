@@ -1,5 +1,4 @@
 // Divides into multiple triangle, and sum up
-// test by HDU2892 
 const double PI=acos(-1);
 double _area(pdd pa, pdd pb, double r){	
   if(abs(pa)<abs(pb)) swap(pa, pb);

@@ -24,5 +24,5 @@ struct Gomory_Hu_tree { // 0-base
     for (int i = 0; i < n; ++i) v[i] = i;
     solve(v);
   }
-} ght; // test by BZOJ 4519
+} ght;
 MaxFlow &Dinic = ght.Dinic;
