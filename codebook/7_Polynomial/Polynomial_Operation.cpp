@@ -110,16 +110,15 @@ struct Poly : vector<ll> { // coefficients in [0, P)
     fi(0, n()) if ((Y[i] = (*this)[i] - Y[i]) < 0) Y[i] += P;
     return X.Mul(Y).isz(n());
   }
-  // For k >= M, take k' = k % M + M where M = P(P - 1).
+  // M := P(P - 1). If k >= M, k := k % M + M.
   Poly Pow(ll k) const {
     int nz = 0;
     while (nz < n() && !(*this)[nz]) ++nz;
     if (nz * min(k, (ll)n()) >= n()) return Poly(n());
     if (!k) return Poly(Poly {1}, n());
     Poly X(data() + nz, data() + nz + n() - nz * k);
-    const ll x0 = X[0];
-    return X.imul(ntt.minv(x0)).Ln().imul(k % P).Exp()
-      .imul(ntt.mpow(x0, k % (P - 1))).irev().isz(n()).irev();
+    const ll c = ntt.mpow(X[0], k % (P - 1));
+    return X.Ln().imul(k % P).Exp().imul(c).irev().isz(n()).irev();
   }
   static ll LinearRecursion(const vector<ll> &a, const vector<ll> &coef, ll n) { // a_n = \sum c_j a_(n-j)
     const int k = (int)a.size();
