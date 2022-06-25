@@ -110,21 +110,16 @@ struct Poly : vector<ll> { // coefficients in [0, P)
     fi(0, n()) if ((Y[i] = (*this)[i] - Y[i]) < 0) Y[i] += P;
     return X.Mul(Y).isz(n());
   }
-  Poly Pow(const string &K) const {
+  // For k >= M, take k' = k % M + M where M = P(P - 1).
+  Poly Pow(ll k) const {
     int nz = 0;
     while (nz < n() && !(*this)[nz]) ++nz;
-    ll nk = 0, nk2 = 0;
-    for (char c : K) {
-      nk = (nk * 10 + c - '0') % P;
-      nk2 = nk2 * 10 + c - '0';
-      if (nk2 * nz >= n()) return Poly(n());
-      nk2 %= P - 1;
-    }
-    if (!nk && !nk2) return Poly(Poly {1}, n());
-    Poly X(data() + nz, data() + nz + n() - nz * nk2);
-    ll x0 = X[0];
-    return X.imul(ntt.minv(x0)).Ln().imul(nk).Exp()
-      .imul(ntt.mpow(x0, nk2)).irev().isz(n()).irev();
+    if (nz * min(k, (ll)n()) >= n()) return Poly(n());
+    if (!k) return Poly(Poly {1}, n());
+    Poly X(data() + nz, data() + nz + n() - nz * k);
+    const ll x0 = X[0];
+    return X.imul(ntt.minv(x0)).Ln().imul(k % P).Exp()
+      .imul(ntt.mpow(x0, k % (P - 1))).irev().isz(n()).irev();
   }
   static ll LinearRecursion(const vector<ll> &a, const vector<ll> &coef, ll n) { // a_n = \sum c_j a_(n-j)
     const int k = (int)a.size();
