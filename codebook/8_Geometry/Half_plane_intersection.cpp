@@ -4,7 +4,7 @@ bool isin( Line l0, Line l1, Line l2 ){
   return cross(l0.Y - l0.X,p - l0.X) > eps;
 }
 /* If no solution, check: 1. ret.size() < 3
- * Or more precisely, 2. interPnt(ret[0], ret[1])
+ * Or more precisely, 2. check intersect(ret[0], ret[1])
  * in all the lines. (use (l.Y - l.X) ^ (p - l.X) > 0
  */
 /* --^-- Line.X --^-- Line.Y --^-- */
