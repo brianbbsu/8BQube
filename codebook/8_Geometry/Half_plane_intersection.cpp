@@ -3,8 +3,7 @@ bool isin( Line l0, Line l1, Line l2 ){
   pdd p = intersect(l1.X,l1.Y,l2.X,l2.Y);
   return cross(l0.Y - l0.X,p - l0.X) > eps;
 }
-/* If no solution, check: 1. ret.size() < 3
- * Or more precisely, 2. check intersect(ret[0], ret[1])
+/* If no solution, check intersect(ret[0], ret[1])
  * in all the lines. (use (l.Y - l.X) ^ (p - l.X) > 0
  */
 /* --^-- Line.X --^-- Line.Y --^-- */
