@@ -20,9 +20,9 @@ struct Clique_Cover { // 0-base, O(n2^n)
     }
     for (int i = 0; i < (1 << n); ++i)
       co[i] = (co[i] & i) == i;
-    fwt(co, 1 << n);
+    fwt(co, 1 << n, 1);
     for (int ans = 1; ans < n; ++ans) {
-      int sum = 0;
+      int sum = 0; // probabilistic
       for (int i = 0; i < (1 << n); ++i)
         sum += (dp[i] *= co[i]);
       if (sum) return ans;
