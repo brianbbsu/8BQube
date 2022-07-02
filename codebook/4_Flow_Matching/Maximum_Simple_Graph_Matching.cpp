@@ -52,13 +52,14 @@ struct GenMatch { // 1-base
         if (el[u][v] && djs[u] != djs[v] &&
           pr[u] != v) {
           if ((v == st) ||
-            (pr[v] > 0 && bk[pr[v]] > 0))
+            (pr[v] > 0 && bk[pr[v]] > 0)) {
             blo(u, v, qe);
-          else if (!bk[v]) {
+          } else if (!bk[v]) {
             if (bk[v] = u, pr[v] > 0) {
               if (!inq[pr[v]]) qe.push(pr[v]);
-            } else
+            } else {
               return ed = v, void();
+            }
           }
         }
     }
