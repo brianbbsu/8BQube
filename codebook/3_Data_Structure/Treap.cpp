@@ -38,6 +38,7 @@ node *kth(node *o, int k) {
   return kth(o->r, k - sz(o->l) - 1);
 }
 int Rank(node *o, int key) {
+  if (!o) return 0;
   if (o->data < key)
     return sz(o->l) + 1 + Rank(o->r, key);
   else return Rank(o->l, key);
