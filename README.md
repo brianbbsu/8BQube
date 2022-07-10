@@ -124,6 +124,15 @@ Current Version: [Codebook.pdf](https://github.com/brianbbsu/BBQube/blob/codeboo
 | HBCPC 2021                    | 2022/5/13    |  1  | 9/11  | 920  | A | **B** | C | D | E | F | G | H | I | **J** | K |
 | CCPC Guilin 2018              | 2022/5/20    |  5  | 6/12  | 369  | A | B | . | D | . | . | G | H | . | J | . | . |
 | CCPC Northeast 2019           | 2022/6/3     |  1  | 9/10  | 977  | A | B | C | D | E | F | G | H | . | J |
+| 17th HPCPC                    | 2022/6/12    |  1  | 9/12  | 815  | A | B | . | D | E | F | G | H | I | . | . | L |
+| Multi-Univ Beihang 2017       | 2022/6/19    |  1  | 10/12 | 1111 | A | B | C | D | . | F | G | H | I | **J** | K | L |
+| CCPC Qinhuangdao 2019         | 2022/6/24    |  3  | 8/12  | 835  | A | . | **C** | D | E | F | G | . | I | J | K | . |
+| CCPC Harbin 2021              | 2022/6/26    |  2  | 9/12  | 994  | . | B | C | D | E | . | G | H | I | J | . | L |
+| Shanghai 2021                 | 2022/7/1     |  25 | 8/13  | 852  | . | B | . | D | E | . | G | H | I | J | K | **L** | M |
+| PetrozavodskCamp ingzhe Tang Contest 2019 | 2022/7/3 | 25 | 5/12 | 676 | . | B | . | **D** | E | **F** | G | H | . | . | K | **L** |
+| ECNA 2017                     | 2022/7/8     |  1  | 9/10  | 867  | . | B | C | D | E | F | G | H | I | J |
+| XVI Open Cup GP of Bashkortostan | 2022/7/10 |  11 | 10/13  | 862  | A | **B** | C | D | E | F | . | H | I | J | **K** | L | M |
+
 
 - A : 賽內AC
 - **A** : 賽後AC
