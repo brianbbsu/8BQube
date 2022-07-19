@@ -1,32 +1,32 @@
-struct matrix
-{
-  ll M[MAXN][MAXN],n,m;
-  matrix(ll n=0,ll m=0):n(n),m(m){FILL(M,0);}
-  ll det()
-  {
-    vector<vector<double>> tM(n,vector<double>(m));
-    const double eps=1e-9;
-    double x=1;
-    for(int i=0;i<n;++i)
-      for(int j=0;j<m;++j)
-        tM[i][j]=M[i][j];
-    for(int i=0;i<n;++i)
-    {
-      int maxline=i;
-      for(int j=i+1;j<n;++j)
-        if(tM[j][i]>tM[maxline][i]) maxline=j;
-      if(maxline!=i)
-        tM[i].swap(tM[maxline]),x*=-1;
-      if(fabs(tM[i][i])<eps) return 0;
-      for(int j=i+1;j<n;++j)
-      {
-        double tmp=-tM[j][i]/tM[i][i];
-        for(int k=i;k<m;++k)
-          tM[j][k]+=tmp*tM[i][k];
+struct Matrix {
+  int n, m;
+  ll M[MAXN][MAXN];
+  int row_swap(int i, int j) {
+    if (i == j) return 0;
+    for (int k = 0; k < m; ++k)
+      swap(M[i][k], M[j][k]);
+    return 1;
+  }
+  ll det() { // return the number of swaps
+    int rt = 0;
+    for (int i = 0; i < n; ++i) {
+      int piv = i;
+      while (piv < n && !M[piv][i]) ++piv;
+      if (piv == n) continue;
+      rt += row_swap(i, piv);
+      for (int j = i + 1; j < n; ++j) {
+        while (M[j][i]) {
+          int tmp = P - M[i][i] / M[j][i];
+          for (int k = i; k < m; ++k)
+            M[i][k] = (M[j][k] * tmp + M[i][k]) % P;
+          rt += row_swap(i, j);
+        }
       }
     }
-    for(int i=0;i<n;++i)
-      x=x*tM[i][i];
-    return (ll)round(x);
+    rt = (rt & 1) ? P - 1 : 1;
+    for (int i = 0; i < n; ++i)
+      rt = rt * M[i][i] % P;
+    return rt; 
+    // round(rt) if using double to cal. int. det
   }
 };
