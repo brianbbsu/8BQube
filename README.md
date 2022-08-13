@@ -131,7 +131,15 @@ Current Version: [Codebook.pdf](https://github.com/brianbbsu/BBQube/blob/codeboo
 | Shanghai 2021                 | 2022/7/1     |  25 | 8/13  | 852  | . | B | . | D | E | . | G | H | I | J | K | **L** | M |
 | PetrozavodskCamp ingzhe Tang Contest 2019 | 2022/7/3 | 25 | 5/12 | 676 | . | B | . | **D** | E | **F** | G | H | . | . | K | **L** |
 | ECNA 2017                     | 2022/7/8     |  1  | 9/10  | 867  | . | B | C | D | E | F | G | H | I | J |
-| XVI Open Cup GP of Bashkortostan | 2022/7/10 |  11 | 10/13  | 862  | A | **B** | C | D | E | F | . | H | I | J | **K** | L | M |
+| XVI Open Cup GP of Bashkortostan | 2022/7/10 |  11 | 10/13 | 862  | A | **B** | C | D | E | F | . | H | I | J | **K** | L | M |
+| 14th CNCPC                    | 2022/7/15    |  1  | 10/12 | 1135 | **A** | B | C | D | E | . | G | H | I | J | K | L |
+| Nanjing 2019                  | 2022/7/22    |  23 | 6/11  | 668  | A | B | C | . | . | F | . | **H** | . | J | K |
+| XXII OpenCup GP of Seoul      | 2022/7/24    |  32 | 9/13  | 892 | A | . | C | D | E | F | G | H | . | J | . | . | M |
+| China Final 2016              | 2022/7/29    |  21 | 7/12  | 865 | A | . | C | D | E | F | G | **H** | . | . | . | L |
+| XX Open Cup GP of Nanjing     | 2022/7/31    |  40 | 5/13  | 551 | A | . | . | . | **E** | . | G | . | I | J | . | L | . |
+| NWERC 2020                    | 2022/8/5     |  7  | 10/11 | 1148  | A | . | C | D | E | F | G | H | I | J | K |
+| Shenyang 2020                 | 2022/8/7     |  6  | 9/13  | 735 | **A** | . | C | D | E | F | G | H | I | . | K | . | M |
+| CMPCPC 2018                   | 2022/8/12    |  1  | 11/13 | 1068 | A | B | C | D | E | F | G | H | . | J | K | L | **M** |
 
 
 - A : 賽內AC
