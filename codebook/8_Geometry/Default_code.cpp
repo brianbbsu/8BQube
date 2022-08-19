@@ -23,10 +23,10 @@ int sign(const double &a)
 int ori(const pdd &a,const pdd &b,const pdd &c)
 { return sign(cross(b - a, c - a));}
 bool collinearity(const pdd &p1, const pdd &p2, const pdd &p3)
-{ return fabs(cross(p1 - p3, p2 - p3)) < eps;}
+{ return sign(cross(p1 - p3, p2 - p3)) == 0;}
 bool btw(const pdd &p1,const pdd &p2,const pdd &p3) {
   if(!collinearity(p1, p2, p3)) return 0;
-  return dot(p1 - p3, p2 - p3) < eps;
+  return sign(dot(p1 - p3, p2 - p3)) <= 0;
 }
 bool seg_intersect(const pdd &p1,const pdd &p2,const pdd &p3,const pdd &p4) {
   int a123 = ori(p1, p2, p3);
@@ -44,6 +44,6 @@ pdd intersect(const pdd &p1, const pdd &p2, const pdd &p3, const pdd &p4) {
   return (p4 * a123 - p3 * a124) / (a123 - a124);
 }
 pdd perp(const pdd &p1)
-{ return pdd(-p1.Y, p1.X);}
-pdd foot(const pdd &p1, const pdd &p2, const pdd &p3)
-{ return intersect(p1, p2, p3, p3 + perp(p2 - p1));}
+{ return pdd(-p1.Y, p1.X); }
+pdd projection(const pdd &p1, const pdd &p2, const pdd &p3)
+{ return (p2 - p1) * dot(p3 - p1, p2 - p1) / abs2(p2 - p1); }
