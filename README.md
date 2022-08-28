@@ -1,5 +1,5 @@
-# BBQube
-Codebook of NTU BBQube by baluteshih, briansu, icube
+# 8BQube
+Codebook of NTU 8BQube by baluteshih, briansu, icube
 
 Current Version: [Codebook.pdf](https://github.com/brianbbsu/BBQube/blob/codebook/codebook.pdf)
 
