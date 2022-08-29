@@ -4,11 +4,11 @@ struct Poly : vector<ll> { // coefficients in [0, P)
   using vector<ll>::vector;
   static NTT<MAXN, P, RT> ntt;
   int n() const { return (int)size(); } // n() >= 1
-  Poly(const Poly &p, int _n) : vector<ll>(_n) {
-    copy_n(p.data(), min(p.n(), _n), data());
+  Poly(const Poly &p, int m) : vector<ll>(m) {
+    copy_n(p.data(), min(p.n(), m), data());
   }
   Poly& irev() { return reverse(data(), data() + n()), *this; }
-  Poly& isz(int _n) { return resize(_n), *this; }
+  Poly& isz(int m) { return resize(m), *this; }
   Poly& iadd(const Poly &rhs) { // n() == rhs.n()
     fi(0, n()) if (((*this)[i] += rhs[i]) >= P) (*this)[i] -= P;
     return *this;
@@ -18,26 +18,26 @@ struct Poly : vector<ll> { // coefficients in [0, P)
     return *this;
   }
   Poly Mul(const Poly &rhs) const {
-    int _n = 1;
-    while (_n < n() + rhs.n() - 1) _n <<= 1;
-    Poly X(*this, _n), Y(rhs, _n);
-    ntt(X.data(), _n), ntt(Y.data(), _n);
-    fi(0, _n) X[i] = X[i] * Y[i] % P;
-    ntt(X.data(), _n, true);
+    int m = 1;
+    while (m < n() + rhs.n() - 1) m <<= 1;
+    Poly X(*this, m), Y(rhs, m);
+    ntt(X.data(), m), ntt(Y.data(), m);
+    fi(0, m) X[i] = X[i] * Y[i] % P;
+    ntt(X.data(), m, true);
     return X.isz(n() + rhs.n() - 1);
   }
   Poly Inv() const { // (*this)[0] != 0, 1e5/95ms
     if (n() == 1) return {ntt.minv((*this)[0])};
-    int _n = 1;
-    while (_n < n() * 2) _n <<= 1;
-    Poly Xi = Poly(*this, (n() + 1) / 2).Inv().isz(_n);
-    Poly Y(*this, _n);
-    ntt(Xi.data(), _n), ntt(Y.data(), _n);
-    fi(0, _n) {
+    int m = 1;
+    while (m < n() * 2) m <<= 1;
+    Poly Xi = Poly(*this, (n() + 1) / 2).Inv().isz(m);
+    Poly Y(*this, m);
+    ntt(Xi.data(), m), ntt(Y.data(), m);
+    fi(0, m) {
       Xi[i] *= (2 - Xi[i] * Y[i]) % P;
       if ((Xi[i] %= P) < 0) Xi[i] += P;
     }
-    ntt(Xi.data(), _n, true);
+    ntt(Xi.data(), m, true);
     return Xi.isz(n());
   }
   Poly Sqrt() const { // Jacobi((*this)[0], P) = 1, 1e5/235ms
@@ -47,10 +47,10 @@ struct Poly : vector<ll> { // coefficients in [0, P)
   }
   pair<Poly, Poly> DivMod(const Poly &rhs) const { // (rhs.)back() != 0
     if (n() < rhs.n()) return {{0}, *this};
-    const int _n = n() - rhs.n() + 1;
-    Poly X(rhs); X.irev().isz(_n);
-    Poly Y(*this); Y.irev().isz(_n);
-    Poly Q = Y.Mul(X.Inv()).isz(_n).irev();
+    const int m = n() - rhs.n() + 1;
+    Poly X(rhs); X.irev().isz(m);
+    Poly Y(*this); Y.irev().isz(m);
+    Poly Q = Y.Mul(X.Inv()).isz(m).irev();
     X = rhs.Mul(Q), Y = *this;
     fi(0, n()) if ((Y[i] -= X[i]) < 0) Y[i] += P;
     return {Q, Y.isz(max(1, rhs.n() - 1))};
@@ -70,34 +70,34 @@ struct Poly : vector<ll> { // coefficients in [0, P)
     return Poly(Y.data() + n() - 1, Y.data() + Y.n());
   }
   vector<ll> _eval(const vector<ll> &x, const vector<Poly> &up) const {
-    const int _n = (int)x.size();
-    if (!_n) return {};
-    vector<Poly> down(_n * 2);
+    const int m = (int)x.size();
+    if (!m) return {};
+    vector<Poly> down(m * 2);
     // down[1] = DivMod(up[1]).second;
-    // fi(2, _n * 2) down[i] = down[i / 2].DivMod(up[i]).second;
-    down[1] = Poly(up[1]).irev().isz(n()).Inv().irev()._tmul(_n, *this);
-    fi(2, _n * 2) down[i] = up[i ^ 1]._tmul(up[i].n() - 1, down[i / 2]);
-    vector<ll> y(_n);
-    fi(0, _n) y[i] = down[_n + i][0];
+    // fi(2, m * 2) down[i] = down[i / 2].DivMod(up[i]).second;
+    down[1] = Poly(up[1]).irev().isz(n()).Inv().irev()._tmul(m, *this);
+    fi(2, m * 2) down[i] = up[i ^ 1]._tmul(up[i].n() - 1, down[i / 2]);
+    vector<ll> y(m);
+    fi(0, m) y[i] = down[m + i][0];
     return y;
   }
   static vector<Poly> _tree1(const vector<ll> &x) {
-    const int _n = (int)x.size();
-    vector<Poly> up(_n * 2);
-    fi(0, _n) up[_n + i] = {(x[i] ? P - x[i] : 0), 1};
-    for (int i = _n - 1; i > 0; --i) up[i] = up[i * 2].Mul(up[i * 2 + 1]);
+    const int m = (int)x.size();
+    vector<Poly> up(m * 2);
+    fi(0, m) up[m + i] = {(x[i] ? P - x[i] : 0), 1};
+    for (int i = m - 1; i > 0; --i) up[i] = up[i * 2].Mul(up[i * 2 + 1]);
     return up;
   }
   vector<ll> Eval(const vector<ll> &x) const { // 1e5, 1s
     auto up = _tree1(x); return _eval(x, up);
   }
   static Poly Interpolate(const vector<ll> &x, const vector<ll> &y) { // 1e5, 1.4s
-    const int _n = (int)x.size();
-    vector<Poly> up = _tree1(x), down(_n * 2);
+    const int m = (int)x.size();
+    vector<Poly> up = _tree1(x), down(m * 2);
     vector<ll> z = up[1].Dx()._eval(x, up);
-    fi(0, _n) z[i] = y[i] * ntt.minv(z[i]) % P;
-    fi(0, _n) down[_n + i] = {z[i]};
-    for (int i = _n - 1; i > 0; --i) down[i] = down[i * 2].Mul(up[i * 2 + 1]).iadd(down[i * 2 + 1].Mul(up[i * 2]));
+    fi(0, m) z[i] = y[i] * ntt.minv(z[i]) % P;
+    fi(0, m) down[m + i] = {z[i]};
+    for (int i = m - 1; i > 0; --i) down[i] = down[i * 2].Mul(up[i * 2 + 1]).iadd(down[i * 2 + 1].Mul(up[i * 2]));
     return down[1];
   }
   Poly Ln() const { // (*this)[0] == 1, 1e5/170ms
