@@ -10,4 +10,4 @@ ll hilbert(int n, int x, int y) {
     }
   }
   return res;
-}
+} // n = 2^k
