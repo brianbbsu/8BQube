@@ -12,7 +12,7 @@ void PollardRho(ll n) {
       return;
     }
     if (d == n) ++p;
-    x = f(x, n, p); y = f(f(y, n, p), n, p);
-    d = __gcd(abs(x - y), n);
+    x = f(x, n, p), y = f(f(y, n, p), n, p);
+    d = gcd(abs(x - y), n);
   }
 }
