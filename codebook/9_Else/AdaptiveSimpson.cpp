@@ -22,7 +22,7 @@ double simpson_ada(const F_t &f, double l, double r) {
 }
 double simpson_ada2(const F_t &f, double l, double r) {
     double h = (r - l) / 7122, s = 0;
-    for (int i = 0; i < 7122; ++i, l += h)
-        s += simpson_ada(f, l, l + h);
-    return s;
+  for (int i = 0; i < 7122; ++i, l += h)
+    s += simpson_ada(f, l, l + h);
+  return s;
 }
