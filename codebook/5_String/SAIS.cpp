@@ -46,13 +46,10 @@ void sais(int *s, int *sa, int *p, int *q, bool *t, int *c, int n, int z) {
   induce(sa, c, s, t, n, z);
 }
 void mkhei(int n) {
-  int ind = 0; H[0] = 0;
-  for (int i = 0; i < n; ++i) {
-    if (!RA[i]) ind = 0;
-    else {
-      while (i + ind < n && _s[i + ind] == _s[SA[RA[i] - 1] + ind]) ++ind;
-      H[RA[i]] = ind ? ind-- : 0;
-    }
+  for (int i = 0, j = 0; i < n; ++i) {
+    if (RA[i])
+      for (; _s[i + j] == _s[SA[RA[i] - 1] + j]; ++j);
+    H[RA[i]] = j, j = max(0, j - 1);
   }
 }
 void build(int *s, int n) {
