@@ -267,3 +267,6 @@ TSWLatexianTemp*
 ### LaTeX Patch ###
 # glossaries
 *.glstex
+
+# vim
+*.swp
