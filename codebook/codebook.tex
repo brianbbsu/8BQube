@@ -52,9 +52,43 @@
 \setcounter{secnumdepth}{3}						%目錄顯示第三層
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand\digitstyle{\color{DarkOrchid3}}
 \makeatletter
 \lst@CCPutMacro\lst@ProcessOther {"2D}{\lst@ttfamily{-{}}{-{}}}
 \@empty\z@\@empty
+
+\newtoks\BBQube@token
+\newcount\BBQube@length
+\def\BBQube@ResetToken{\BBQube@token{}\BBQube@length\z@}
+\def\BBQube@Append#1{\advance\BBQube@length\@ne
+  \BBQube@token=\expandafter{\the\BBQube@token#1}}
+
+\def\BBQube@ProcessChar#1{%
+  \ifnum\lst@mode=\lst@Pmode%
+    \ifnum 9<1#1%
+      \expandafter\BBQube@Append{\begingroup\digitstyle #1 \endgroup}%
+    \else%
+      \expandafter\BBQube@Append{#1}%
+    \fi%
+  \else%
+    \expandafter\BBQube@Append{#1}%
+  \fi%
+}
+\def\BBQube@ProcessStringInner#1#2\BBQube@nil{%
+  \expandafter\BBQube@ProcessChar{#1}%
+  \if\relax\detokenize{#2}\relax%
+  \else%
+    \expandafter\BBQube@ProcessStringInner#2\BBQube@nil%
+  \fi%
+}
+
+\def\BBQube@ProcessString#1{\expandafter\BBQube@ProcessStringInner#1\BBQube@nil}
+
+\lst@AddToHook{OutputOther}{%
+\BBQube@ResetToken%
+\expandafter\BBQube@ProcessString{\the\lst@token}%
+\lst@token=\expandafter{\the\BBQube@token}%
+}
 \makeatother
 \lstset{											% Code顯示
 language=C++,										% the language of the code
