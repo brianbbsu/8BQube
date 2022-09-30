@@ -1,7 +1,6 @@
 /*
 Mo's Algorithm With modification
-Block: N^{2/3}
-Complexity: N^{5/3}
+Block: N^{2/3}, Complexity: N^{5/3}
 */
 struct Query {
   int L, R, LBid, RBid, T;
