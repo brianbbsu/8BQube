@@ -1,11 +1,11 @@
 const int MAXM = 1000010;
 struct SAM {
   int tot, root, lst, mom[MAXM], mx[MAXM];
-  int acc[MAXM], nxt[MAXM][33];
+  int nxt[MAXM][33], cnt[MAXM], in[MAXM];
   int newNode() {
     int res = ++tot;
     fill(nxt[res], nxt[res] + 33, 0);
-    mom[res] = mx[res] = acc[res] = 0;
+    mom[res] = mx[res] = cnt[res] = in[res] = 0;
     return res;
   }
   void init() {
@@ -36,10 +36,24 @@ struct SAM {
           nxt[p][c] = nq;
       }
     }
-    lst = np;
+    lst = np, cnt[np] = 1;
   }
   void push(char *str) {
     for (int i = 0; str[i]; i++)
       push(str[i] - 'a' + 1);
+  }
+  void count() {
+    for (int i = 1; i <= tot; ++i)
+      ++in[mom[i]];
+    queue<int> q;
+    for (int i = 1; i <= tot; ++i)
+      if (!in[i]) q.push(i);
+    while (!q.empty()) {
+      int u = q.front();
+      q.pop();
+      cnt[mom[u]] += cnt[u];
+      if (!--in[mom[u]])
+        q.push(mom[u]);
+    }
   }
 } sam;
