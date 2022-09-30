@@ -6,7 +6,7 @@
     \item Sort querys same as the normal Mo's algorithm.
     \item For each query $[l, r]$:
     \item If $l / blk == r / blk$, brute-force.
-    \item If $l / blk != curL / blk$, initialize $curL := (l / blk + 1) \cdot blk, curR = curL - 1$
+    \item If $l / blk != curL / blk$, initialize $curL := (l / blk + 1) \cdot blk, curR := curL - 1$
     \item If $r > curR$, increase $curR$
     \item decrease $curL$ to fit $l$, and then undo after answering
 \end{itemize}
