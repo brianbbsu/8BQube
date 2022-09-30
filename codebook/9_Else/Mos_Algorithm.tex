@@ -1,0 +1,24 @@
+\begin{itemize}
+\item Mo's Algorithm With Addition Only
+
+\begin{itemize}
+    \itemsep-0.5em
+    \item Sort querys same as the normal Mo's algorithm.
+    \item For each query $[l, r]$:
+    \item If $l / blk == r / blk$, brute-force.
+    \item If $l / blk != curL / blk$, initialize $curL := (l / blk + 1) \cdot blk, curR = curL - 1$
+    \item If $r > curR$, increase $curR$
+    \item decrease $curL$ to fit $l$, and then undo after answering
+\end{itemize}
+
+\item Mo's Algorithm With Offline Second Time
+
+\begin{itemize}
+    \itemsep-0.5em
+    \item Require: Changing answer $\equiv$ $ans += f([l, r], r + 1)$.
+    \item Require: $f([l, r], r + 1) = f([1, r], r + 1) - f([1, l), r + 1)$.
+    \item Part1: Answer all $f([1, r], r + 1)$ first.
+    \item Part2: Store $curR \to R$ for $curL$ (reduce the space to $O(N)$), and then answer them by the second offline algorithm.
+    \item Note: You must do the above symmetrically for the left boundaries.
+\end{itemize}
+\end{itemize}
