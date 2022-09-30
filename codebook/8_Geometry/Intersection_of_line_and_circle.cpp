@@ -1,8 +1,8 @@
-vector<pdd> line_interCircle(const pdd &p1,const pdd &p2,const pdd &c,const double r){
-  pdd ft=foot(p1,p2,c),vec=p2-p1;
-  double dis=abs(c-ft);
-  if(fabs(dis-r)<eps) return vector<pdd>{ft};
-  if(dis>r) return {};
-  vec=vec*sqrt(r*r-dis*dis)/abs(vec);
-  return vector<pdd>{ft+vec,ft-vec};
+vector<pdd> circleLine(pdd c, double r, pdd a, pdd b) {
+  pdd p = a + (b - a) * dot(c - a, b - a) / abs2(b - a);
+  double s = cross(b - a, c - a), h2 = r * r - s * s / abs2(b - a);
+  if (h2 < 0) return {};
+  if (h2 == 0) return {p};
+  pdd h = (b - a) / abs(b - a) * sqrt(h2);
+  return {p - h, p + h};
 }
