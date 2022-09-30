@@ -25,4 +25,15 @@ $\displaystyle\prod_{n=1}^{\infty}(1-x^n)=1+\sum_{k=1}^{\infty}(-1)^k\left(x^{k(
 $C^{(k)}_n = \displaystyle \frac{1}{(k - 1)n + 1}\binom{kn}{n}$
 
 $C^{(k)}(x) = 1 + x [C^{(k)}(x)]^k$
+
+\item Eulerian numbers
+
+Number of permutations $\pi \in S_n$ in which exactly $k$ elements are greater than the previous element. $k$ $j$:s s.t. $\pi(j)>\pi(j+1)$, $k+1$ $j$:s s.t. $\pi(j)\geq j$, $k$ $j$:s s.t. $\pi(j)>j$.
+
+$E(n,k) = (n-k)E(n-1,k-1) + (k+1)E(n-1,k)$
+
+$E(n,0) = E(n,n-1) = 1$
+
+$E(n,k) = \sum_{j=0}^k(-1)^j\binom{n+1}{j}(k+1-j)^n$
+
 \end{itemize}
