@@ -1,17 +1,16 @@
 struct Heavy_light_Decomposition { // 1-base
-  int n, ulink[10005], deep[10005], mxson[10005],
-    w[10005], pa[10005];
-  int t, pl[10005], data[10005], dt[10005], bln[10005],
-    edge[10005], et;
-  vector<pii> G[10005];
+  int n, ulink[N], deep[N], mxson[N], w[N], pa[N];
+  int t, pl[N], data[N], dt[N], bln[N], edge[N], et;
+  vector<pii> G[N];
   void init(int _n) {
     n = _n, t = 0, et = 1;
     for (int i = 1; i <= n; ++i)
       G[i].clear(), mxson[i] = 0;
   }
   void add_edge(int a, int b, int w) {
-    G[a].pb(pii(b, et)), G[b].pb(pii(a, et)),
-      edge[et++] = w;
+    G[a].pb(pii(b, et));
+    G[b].pb(pii(a, et));
+    edge[et++] = w;
   }
   void dfs(int u, int f, int d) {
     w[u] = 1, pa[u] = f, deep[u] = d++;
