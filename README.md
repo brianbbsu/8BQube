@@ -102,8 +102,8 @@ Current Version: [Codebook.pdf](https://github.com/brianbbsu/BBQube/blob/codeboo
 | Seoul 2020                    | 2021/10/9    |  7  | 9/12  | 1182 | A | B | C | . | E | F | G | H | . | J | . | L |
 | CERC 2012                     | 2021/10/15   |  1  | 11/11 | 1365 | A | B | C | D | E | F | G | H | I | J | K |
 | SWERC 2020                    | 2021/10/19   |  2  | 11/13 | 818  | A | **B** | C | D | E | F | G | H | I | J | K | L | **M** |
-| PetrozavodskCamp XJTU Contest 2020 | 2021/10/23 | 63 | 2/11 | 187 | A | **B** | **C** | **D** | E | . | . | . | . | **J** | **K** |
-| PetrozavodskCamp Almost Algorithmic Contest 2019 | 2021/10/29 | 17 | 6/12 | 1065 | . | **B** | C | D | E | F | G | H | . | . | . | . |
+| PetrozavodskCamp XJTU 2020    | 2021/10/23   | 63  | 2/11  | 187  | A | **B** | **C** | **D** | E | . | . | . | . | **J** | **K** |
+| PetrozavodskCamp Almost Algorithmic 2019 | 2021/10/29 | 17 | 6/12 | 1065 | . | **B** | C | D | E | F | G | H | . | . | . | . |
 | Yokohama 2020                 | 2021/10/30   |  11 | 8/11  | 1169 | A | B | C | **D** | E | **F** | G | H | I | J | **K** |
 | JAG Summer Camp 2018 Day3     | 2021/11/6    |  2  | 11/11 | 887  | A | B | C | D | E | F | G | H | I | J | K |
 | NWERC 2015                    | 2021/11/20   |  8  | 8/12  | 1120 | A | . | . | D | E | F | G | . | I | J | K | L |
@@ -143,8 +143,17 @@ Current Version: [Codebook.pdf](https://github.com/brianbbsu/BBQube/blob/codeboo
 | CCPC Guangzhou 2021           | 2022/8/19    |  6  | 5/12  | 545  | . | . | C | . | . | F | . | H | I | . | K | . |
 | EC Final 2020                 | 2022/8/21    |  2  | 9/13  | 1061 | A | B | C | D | . | F | G | . | I | . | K | L | . |
 | Hong Kong 2019                | 2022/8/26    |  1  | 7/11  | 908  | **A** | B | C | D | E | . | G | . | I | J | . |
-| NEERC 2013                    | 2022/8/27    |  1  | 9/12  | 1119 | A | B | . | . | . | F | G | H | I | J | K | L |
-| CCPC Finals 2021              | 2022/8/28    |  4  | 9/12  | 1093 | A | . | C | D | E | F | G | . | . | J | K | L |
+| NEERC 2013                    | 2022/8/27    |  1  | 9/12  | 1119 | A | B | **C** | **D** | **E** | F | G | H | I | J | K | L |
+| CCPC Finals 2021              | 2022/8/28    |  4  | 9/12  | 1093 | A | **B** | C | D | E | F | G | **H** | **I** | J | K | L |
+| NEERC 2016                    | 2022/9/2     |  6  | 9/11  | 781  | A | B | C | D | . | F | G | . | I | J | K |
+| NEERC 2017                    | 2022/9/3     |  1  | 11/12 | 1052 | A | B | C | **D** | E | F | G | H | I | J | K | L |
+| 18th ZPCPC                    | 2022/9/4     |  12 | 10/13 | 591  | A | B | C | D | **E** | F | G | **H** | I | J | **K** | L | M |
+| CCPC Changchun 2020           | 2022/9/9     |  3  | 7/12  | 966  | A | . | . | D | . | F | . | H | . | J | K | L |
+| PetrozavodskCamp Saratov 2015 | 2022/9/16    |  13 | 7/11  | 1275 | A | . | . | . | . | F | G | H | I | J | K |
+| Bangkok 2016                  | 2022/9/17    |  1  | 10/12 | 980  | A | B | C | D | E | F | G | H | I | **J** | **K** | L |
+| ASC 41                        | 2022/9/23    |  5  | 7/10  | 866  | A | . | . | D | E | . | G | H | I | J |
+| EC Final 2021                 | 2022/9/24    |  14 | 7/13  | 971  | A | B | C | . | E | . | . | . | I | J | . | L | . |
+| CCPC Final 2019               | 2022/9/30    |  19 | 4/12  | 266  | A | B | . | . | . | . | . | . | **I** | . | K | L |
 
 - A : 賽內AC
 - **A** : 賽後AC
