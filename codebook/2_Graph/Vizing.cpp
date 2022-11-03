@@ -1,17 +1,14 @@
-namespace vizing { // returns edge coloring in adjacent
-                   // matrix G. 1 - based
-int C[kN][kN], G[kN][kN];
-void clear(int N) {
-  for (int i = 0; i <= N; i++) {
-    for (int j = 0; j <= N; j++) C[i][j] = G[i][j] = 0;
-  }
+namespace vizing { // returns edge coloring in adjacent matrix G. 1 - based
+const int N = 105;
+int C[N][N], G[N][N], X[N], vst[N], n;
+void init(int _n) { n = _n;
+  for (int i = 0; i <= n; ++i)
+    for (int j = 0; j <= n; ++j) 
+      C[i][j] = G[i][j] = 0;
 }
-void solve(vector<pair<int, int>> &E, int N, int M) {
-  int X[kN] = {}, a;
-  auto update = [&](int u) {
-    for (X[u] = 1; C[u][X[u]]; X[u]++)
-      ;
-  };
+void solve(vector<pii> &E) {
+  auto update = [&](int u)
+  { for (X[u] = 1; C[u][X[u]]; ++X[u]); };
   auto color = [&](int u, int v, int c) {
     int p = G[u][v];
     G[u][v] = G[v][u] = c;
@@ -29,33 +26,25 @@ void solve(vector<pair<int, int>> &E, int N, int M) {
     if (!C[u][c2]) X[u] = c2;
     return p;
   };
-  for (int i = 1; i <= N; i++) X[i] = 1;
-  for (int t = 0; t < E.size(); t++) {
-    int u = E[t].first, v0 = E[t].second, v = v0,
-        c0 = X[u], c = c0, d;
-    vector<pair<int, int>> L;
-    int vst[kN] = {};
+  fill_n(X + 1, n, 1);
+  for (int t = 0; t < SZ(E); ++t) {
+    int u = E[t].X, v0 = E[t].Y, v = v0, c0 = X[u], c = c0, d;
+    vector<pii> L;
+    fill_n(vst + 1, n, 0);
     while (!G[u][v0]) {
       L.emplace_back(v, d = X[v]);
-      if (!C[v][c])
-        for (a = (int)L.size() - 1; a >= 0; a--)
-          c = color(u, L[a].first, c);
-      else if (!C[u][d])
-        for (a = (int)L.size() - 1; a >= 0; a--)
-          color(u, L[a].first, L[a].second);
+      if (!C[v][c]) for (int a = SZ(L) - 1; a >= 0; --a) c = color(u, L[a].X, c);
+      else if (!C[u][d]) for (int a = SZ(L) - 1; a >= 0; --a) color(u, L[a].X, L[a].Y);
       else if (vst[d]) break;
       else vst[d] = 1, v = C[u][d];
     }
     if (!G[u][v0]) {
-      for (; v; v = flip(v, c, d), swap(c, d))
-        ;
-      if (C[u][c0]) {
-        for (a = (int)L.size() - 2;
-             a >= 0 && L[a].second != c; a--)
-          ;
-        for (; a >= 0; a--)
-          color(u, L[a].first, L[a].second);
-      } else t--;
+      for (; v; v = flip(v, c, d), swap(c, d));
+      if (int a; C[u][c0]) {
+        for (a = SZ(L) - 2; a >= 0 && L[a].Y != c; --a);
+        for (; a >= 0; --a) color(u, L[a].X, L[a].Y);
+      }
+      else --t;
     }
   }
 }
