@@ -18,8 +18,10 @@ Current Version: [Codebook.pdf](https://github.com/brianbbsu/BBQube/blob/codeboo
 | Taipei-Hsinchu 2020           | 2020/11/08    |  5  | 9/13  | 1033 | A | B | . | . | E | F | G | H | I | . | K | . | M |
 | NTU NCPC 2021                 | 2021/10/2     |  1  | 9/12  | 1347 | A | B | C | D | E | . | G | . | I | J | K | . |
 | NCPC 2021                     | 2021/10/16    |  2  | 12/12 | 1333 | A | B | C | D | E | F | G | H | I | J | K | L |
-| TOPC 2021                     | 2021/10/23    |  4  | 9/11  | 426  | A | B | C | D | E | F | G | H | . | J |
+| TOPC 2021                     | 2021/10/23    |  4  | 9/10  | 426  | A | B | C | D | E | F | G | H | . | J |
 | Taipei 2021                   | 2021/11/28    |  3  | 10/13 | 1239 | A | B | C | D | . | F | G | . | I | J | K | . | M |
+| NCPC 2022                     | 2022/10/15    |  2  | 11/14 | 1063 | A | B | C | D | E | F | G | H | . | . | K | L | . | N |
+| TOPC 2022                     | 2022/10/22    |  3  | 7/9   | 406  | . | B | C | D | . | F | G | H | I |
 
 # Training
 
@@ -129,7 +131,7 @@ Current Version: [Codebook.pdf](https://github.com/brianbbsu/BBQube/blob/codeboo
 | CCPC Qinhuangdao 2019         | 2022/6/24    |  3  | 8/12  | 835  | A | . | **C** | D | E | F | G | . | I | J | K | . |
 | CCPC Harbin 2021              | 2022/6/26    |  2  | 9/12  | 994  | . | B | C | D | E | . | G | H | I | J | . | L |
 | Shanghai 2021                 | 2022/7/1     |  25 | 8/13  | 852  | . | B | . | D | E | . | G | H | I | J | K | **L** | M |
-| PetrozavodskCamp ingzhe Tang Contest 2019 | 2022/7/3 | 25 | 5/12 | 676 | . | B | . | **D** | E | **F** | G | H | . | . | K | **L** |
+| PetrozavodskCamp ingzhe Tang 2019 | 2022/7/3 | 25  | 5/12  | 676  | . | B | . | **D** | E | **F** | G | H | . | . | K | **L** |
 | ECNA 2017                     | 2022/7/8     |  1  | 9/10  | 867  | . | B | C | D | E | F | G | H | I | J |
 | XVI Open Cup GP of Bashkortostan | 2022/7/10 |  11 | 10/13 | 862  | A | **B** | C | D | E | F | . | H | I | J | **K** | L | M |
 | 14th CNCPC                    | 2022/7/15    |  1  | 10/12 | 1135 | **A** | B | C | D | E | . | G | H | I | J | K | L |
@@ -154,6 +156,13 @@ Current Version: [Codebook.pdf](https://github.com/brianbbsu/BBQube/blob/codeboo
 | ASC 41                        | 2022/9/23    |  5  | 7/10  | 866  | A | . | . | D | E | . | G | H | I | J |
 | EC Final 2021                 | 2022/9/24    |  14 | 7/13  | 971  | A | B | C | . | E | . | . | . | I | J | . | L | . |
 | CCPC Final 2019               | 2022/9/30    |  19 | 4/12  | 266  | A | B | . | . | . | . | . | . | **I** | . | K | L |
+| Tsukuba 2017                  | 2022/10/7    |  2  | 9/11  | 789  | A | B | C | . | E | F | G | . | I | J | K |
+| PetrozavodskCamp Jagiellonian U 2020 | 2022/10/8 | 12 | 10/12 | 1295 | A | B | C | . | E | F | G | H | I | J | . | L |
+| Brazil 2022                   | 2022/10/14   |  1  | 14/14 | 951  | A | B | C | D | E | F | G | H | I | J | K | L | M | N |
+| SWERC 2017                    | 2022/10/21   |  1  | 10/11 | 643  | A | B | C | D | E | F | G | . | I | J | K |
+| NEERC 2018                    | 2022/10/28   |  3  | 9/13  | 920  | A | . | C | . | E | F | G | . | . | J | K | L | M |
+| CCPC 2015                     | 2022/10/29   |  9  | 9/12  | 478  | A | . | C | D | E | F | G | H | . | . | K | L |
+| XIX OpenCup GP of Korea       | 2022/11/4    |  15 | 10/13 | 1016 | A | . | . | D | E | F | G | H | I | J | . | L | M |
 
 - A : 賽內AC
 - **A** : 賽後AC
