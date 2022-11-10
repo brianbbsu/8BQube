@@ -15,11 +15,11 @@ struct Splay { // xor-sum
     if (c != &nil) c->f = this;
     pull();
   }
+  void give_tag(int r) 
+  { if (r) swap(ch[0], ch[1]), rev ^= 1; }
   void push() {
-    if (!rev) return;
-    swap(ch[0], ch[1]);
-    if (ch[0] != &nil) ch[0]->rev ^= 1;
-    if (ch[1] != &nil) ch[1]->rev ^= 1;
+    if (ch[0] != &nil) ch[0]->give_tag(rev);
+    if (ch[1] != &nil) ch[1]->give_tag(rev);
     rev = 0;
   }
   void pull() {
