@@ -270,3 +270,6 @@ TSWLatexianTemp*
 
 # vim
 *.swp
+
+# macos
+*.DS_Store
