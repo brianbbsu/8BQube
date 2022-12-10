@@ -1,9 +1,9 @@
 vector<int> G[N]; // 1-base
-vector<int> nG[N], bcc[N];
+vector<int> nG[N * 2], bcc[N];
 int low[N], dfn[N], Time;
 int bcc_id[N], bcc_cnt; // 1-base
 bool is_cut[N]; // whether is av
-bool cir[N];
+bool cir[N * 2];
 int st[N], top;
 
 void dfs(int u, int pa = -1) {
@@ -30,7 +30,7 @@ void dfs(int u, int pa = -1) {
   if (pa == -1 && child < 2) is_cut[u] = 0;
 }
 
-void bcc_init(int n) {
+void bcc_init(int n) { // TODO: init {nG, cir}[1..2n]
   Time = bcc_cnt = top = 0;
   for (int i = 1; i <= n; ++i)
     G[i].clear(), dfn[i] = bcc_id[i] = is_cut[i] = 0;
