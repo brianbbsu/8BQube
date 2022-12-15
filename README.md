@@ -168,7 +168,7 @@ Current Version: [Codebook.pdf](https://github.com/brianbbsu/BBQube/blob/codeboo
 | PetrozavodskCamp SPb SU + SPb AU 2015 | 2022/11/13 | 7 | 8/12 | 1229 | . | B | C | D | E | F | **G** | **H** | I | J | K | . |
 | NEERC 2017                    | 2022/11/18   |  2  | 10/12 | 1435 | A | B | C | D | E | F | G | . | I | J | . | L |
 | Yokohama 2021                 | 2022/12/3    |  3  | 7/11  | 917  | A | B | C | D | . | . | **G** | H | I | J | . |
-| NERC 2022                     | 2022/12/9    |  3  | 9/12  | 1435 | A | B | . | D | E | F | G | H | I | **J** | M | . |
+| NERC 2022                     | 2022/12/9    |  3  | 9/12  | 1078 | A | B | . | D | E | F | G | H | I | **J** | M | . |
 
 - A : 賽內AC
 - **A** : 賽後AC
