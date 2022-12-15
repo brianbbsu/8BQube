@@ -22,6 +22,7 @@ Current Version: [Codebook.pdf](https://github.com/brianbbsu/BBQube/blob/codeboo
 | Taipei 2021                   | 2021/11/28    |  3  | 10/13 | 1239 | A | B | C | D | . | F | G | . | I | J | K | . | M |
 | NCPC 2022                     | 2022/10/15    |  2  | 11/14 | 1063 | A | B | C | D | E | F | G | H | . | . | K | L | . | N |
 | TOPC 2022                     | 2022/10/22    |  3  | 7/9   | 406  | . | B | C | D | . | F | G | H | I |
+| Taoyuan 2022                  | 2020/11/20    |  1  | 11/13 | 1155 | A | B | C | D | . | F | G | H | I | J | . | L | M |
 
 # Training
 
@@ -156,13 +157,18 @@ Current Version: [Codebook.pdf](https://github.com/brianbbsu/BBQube/blob/codeboo
 | ASC 41                        | 2022/9/23    |  5  | 7/10  | 866  | A | . | . | D | E | . | G | H | I | J |
 | EC Final 2021                 | 2022/9/24    |  14 | 7/13  | 971  | A | B | C | . | E | . | . | . | I | J | . | L | . |
 | CCPC Final 2019               | 2022/9/30    |  19 | 4/12  | 266  | A | B | . | . | . | . | . | . | **I** | . | K | L |
-| Tsukuba 2017                  | 2022/10/7    |  2  | 9/11  | 789  | A | B | C | . | E | F | G | . | I | J | K |
+| Tsukuba 2017                  | 2022/10/7    |  2  | 9/11  | 789  | A | B | C | **D** | E | F | G | **H** | I | J | K |
 | PetrozavodskCamp Jagiellonian U 2020 | 2022/10/8 | 12 | 10/12 | 1295 | A | B | C | . | E | F | G | H | I | J | . | L |
 | Brazil 2022                   | 2022/10/14   |  1  | 14/14 | 951  | A | B | C | D | E | F | G | H | I | J | K | L | M | N |
 | SWERC 2017                    | 2022/10/21   |  1  | 10/11 | 643  | A | B | C | D | E | F | G | . | I | J | K |
 | NEERC 2018                    | 2022/10/28   |  3  | 9/13  | 920  | A | . | C | . | E | F | G | . | . | J | K | L | M |
 | CCPC 2015                     | 2022/10/29   |  9  | 9/12  | 478  | A | . | C | D | E | F | G | H | . | . | K | L |
 | XIX OpenCup GP of Korea       | 2022/11/4    |  15 | 10/13 | 1016 | A | . | . | D | E | F | G | H | I | J | . | L | M |
+| CCPC Guilin 2022              | 2022/11/11   |  4  | 9/13  | 1084 | A | **B** | C | D | E | **F** | G | **H** | **I** | J | K | L | M |
+| PetrozavodskCamp SPb SU + SPb AU 2015 | 2022/11/13 | 7 | 8/12 | 1229 | . | B | C | D | E | F | **G** | **H** | I | J | K | . |
+| NEERC 2017                    | 2022/11/18   |  2  | 10/12 | 1435 | A | B | C | D | E | F | G | . | I | J | . | L |
+| Yokohama 2021                 | 2022/12/3    |  3  | 7/11  | 917  | A | B | C | D | . | . | **G** | H | I | J | . |
+| NERC 2022                     | 2022/12/9    |  3  | 9/12  | 1435 | A | B | . | D | E | F | G | H | I | **J** | M | . |
 
 - A : 賽內AC
 - **A** : 賽後AC
