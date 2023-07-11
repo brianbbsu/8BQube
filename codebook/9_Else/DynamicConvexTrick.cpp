@@ -1,4 +1,4 @@
-// only works for integer coordinates!!
+// only works for integer coordinates!! maintain max
 struct Line {
   mutable ll a, b, p;
   bool operator<(const Line &rhs) const { return a < rhs.a; }
