@@ -2,13 +2,10 @@ pll area_pair(Line a, Line b)
 { return pll(cross(a.Y - a.X, b.X - a.X), cross(a.Y - a.X, b.Y - a.X)); }
 bool isin(Line l0, Line l1, Line l2) {
   // Check inter(l1, l2) strictly in l0
-  auto [a123, a124] = area_pair(l0, l1);
-  if (a123 - a124 < 0) swap(a123, a124), swap(l1.X, l1.Y);
-  auto [b123, b124] = area_pair(l0, l2);
-  if (b123 - b124 < 0) swap(l2.X, l2.Y);
-  auto [c123, c124] = area_pair(l2, l1);
-  if (c123 - c124 < 0) c123 *= -1, c124 *= -1;
-  return c123 * (a123 - a124) < a123 * (c123 - c124); // C^4
+  auto [a02X, a02Y] = area_pair(l0, l2);
+  auto [a12X, a12Y] = area_pair(l1, l2);
+  if (a12X - a12Y < 0) a12X *= -1, a12Y *= -1;
+  return (__int128) a02Y * a12X - (__int128) a02X * a12Y > 0; // C^4
 }
 /* Having solution, check size > 2 */
 /* --^-- Line.X --^-- Line.Y --^-- */
