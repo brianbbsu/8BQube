@@ -25,9 +25,9 @@ struct MinCostMaxFlow { // 0-base
     }
     return dis[t] != INF;
   }
-  void solve(int _s, int _t, ll &flow, ll &cost) {
+  void solve(int _s, int _t, ll &flow, ll &cost, bool neg = true) {
     s = _s, t = _t, flow = 0, cost = 0;
-    BellmanFord(), copy_n(dis, n, pot);
+    if (neg) BellmanFord(), copy_n(dis, n, pot);
     for (; BellmanFord(); copy_n(dis, n, pot)) {
       for (int i = 0; i < n; ++i) dis[i] += pot[i] - pot[s];
       flow += up[t], cost += up[t] * dis[t];
