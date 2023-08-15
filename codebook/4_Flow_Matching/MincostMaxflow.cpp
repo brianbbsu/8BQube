@@ -1,48 +1,48 @@
-struct MCMF { // 0-base
-  struct edge {
-    ll from, to, cap, flow, cost, rev;
-  } * past[MAXN];
-  vector<edge> G[MAXN];
-  bitset<MAXN> inq;
-  ll dis[MAXN], up[MAXN], s, t, mx, n;
-  bool BellmanFord(ll &flow, ll &cost) {
-    fill(dis, dis + n, INF);
-    queue<ll> q;
-    q.push(s), inq.reset(), inq[s] = 1;
-    up[s] = mx - flow, past[s] = 0, dis[s] = 0;
+struct MinCostMaxFlow { // 0-base
+  struct Edge {
+    ll from, to, cap, flow, cost, rev; 
+  } *past[N];
+  vector<Edge> G[N];
+  int inq[N], n, s, t;
+  ll dis[N], up[N], pot[N];
+  bool BellmanFord() {
+    fill_n(dis, n, INF), fill_n(inq, n, 0);
+    queue<int> q;
+    auto relax = [&](int u, ll d, ll cap, Edge *e) {
+      if (cap > 0 && dis[u] > d) {
+        dis[u] = d, up[u] = cap, past[u] = e;
+        if (!inq[u]) inq[u] = 1, q.push(u);
+      }
+    };
+    relax(s, 0, INF, 0);
     while (!q.empty()) {
-      ll u = q.front();
+      int u = q.front();
       q.pop(), inq[u] = 0;
-      if (!up[u]) continue;
-      for (auto &e : G[u])
-        if (e.flow != e.cap &&
-          dis[e.to] > dis[u] + e.cost) {
-          dis[e.to] = dis[u] + e.cost, past[e.to] = &e;
-          up[e.to] = min(up[u], e.cap - e.flow);
-          if (!inq[e.to]) inq[e.to] = 1, q.push(e.to);
-        }
+      for (auto &e : G[u]) {
+        ll d2 = dis[u] + e.cost + pot[u] - pot[e.to];
+        relax(e.to, d2, min(up[u], e.cap - e.flow), &e);
+      }
     }
-    if (dis[t] == INF) return 0;
-    flow += up[t], cost += up[t] * dis[t];
-    for (ll i = t; past[i]; i = past[i]->from) {
-      auto &e = *past[i];
-      e.flow += up[t], G[e.to][e.rev].flow -= up[t];
+    return dis[t] != INF;
+  }
+  void solve(int _s, int _t, ll &flow, ll &cost) {
+    s = _s, t = _t, flow = 0, cost = 0;
+    BellmanFord(), copy_n(dis, n, pot);
+    for (; BellmanFord(); copy_n(dis, n, pot)) {
+      for (int i = 0; i < n; ++i) dis[i] += pot[i] - pot[s];
+      flow += up[t], cost += up[t] * dis[t];
+      for (int i = t; past[i]; i = past[i]->from) {
+        auto &e = *past[i];
+        e.flow += up[t], G[e.to][e.rev].flow -= up[t];
+      }
     }
-    return 1;
   }
-  ll MinCostMaxFlow(ll _s, ll _t, ll &cost) {
-    s = _s, t = _t, cost = 0;
-    ll flow = 0;
-    while (BellmanFord(flow, cost))
-      ;
-    return flow;
-  }
-  void init(ll _n, ll _mx) {
-    n = _n, mx = _mx;
+  void init(int _n) {
+    n = _n, fill_n(pot, n, 0);
     for (int i = 0; i < n; ++i) G[i].clear();
   }
   void add_edge(ll a, ll b, ll cap, ll cost) {
-    G[a].pb(edge{a, b, cap, 0, cost, G[b].size()});
-    G[b].pb(edge{b, a, 0, 0, -cost, G[a].size() - 1});
+    G[a].pb(Edge{a, b, cap, 0, cost, SZ(G[b])});
+    G[b].pb(Edge{b, a, 0, 0, -cost, SZ(G[a]) - 1});
   }
-};
+}
