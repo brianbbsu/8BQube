@@ -45,4 +45,4 @@ struct MinCostMaxFlow { // 0-base
     G[a].pb(Edge{a, b, cap, 0, cost, SZ(G[b])});
     G[b].pb(Edge{b, a, 0, 0, -cost, SZ(G[a]) - 1});
   }
-}
+};
