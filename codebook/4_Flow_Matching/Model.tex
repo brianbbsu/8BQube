@@ -63,14 +63,26 @@
       \item Create edge $(u, v)$ with capacity $w$ with $w$ being the cost of choosing $u$ without choosing $v$.
       \item The mincut is equivalent to the maximum profit of a subset of projects.
     \end{enumerate}
-    \item 0/1 quadratic programming
+    \item Dual of minimum cost maximum flow
     \vspace{-1em}
-    \[ \sum_x{c_xx} + \sum_y{c_y\bar{y}} + \sum_{xy}c_{xy}x\bar{y} + \sum_{xyx^\prime y^\prime}c_{xyx^\prime y^\prime}(x\bar{y} + x^\prime\bar{y^\prime}) \]
-    can be minimized by the mincut of the following graph:
     \begin{enumerate}
       \itemsep-0.3em
-      \item Create edge $(x, t)$ with capacity $c_x$ and create edge $(s, y)$ with capacity $c_y$.
-      \item Create edge $(x, y)$ with capacity $c_{xy}$.
-      \item Create edge $(x, y)$ and edge $(x^\prime, y^\prime)$ with capacity $c_{xyx^\prime y^\prime}$.
+      \item Capacity $c_{uv}$, Flow $f_{uv}$, Cost $w_{uv}$, Required Flow difference for vertex $b_u$.
+      \item If all $w_{uv}$ are integers, then optimal solution can happen when all $p_u$ are integers.
     \end{enumerate}
+    $$
+    \begin{aligned}\min\sum_{uv} w_{uv}f_{uv} \\ -f_{uv} \geq -c_{uv} \\ \sum_{v} f_{vu} - \sum_{v} f_{uv} = -b_u\end{aligned}
+    \Leftrightarrow
+    \begin{aligned}\min\sum_{u} b_up_u + \sum_{uv}c_{uv}\max(0, p_v - p_u - w_{uv}) \\ p_u \geq 0 \end{aligned}
+    $$
+    %\item 0/1 quadratic programming
+    %\vspace{-1em}
+    %\[ \sum_x{c_xx} + \sum_y{c_y\bar{y}} + \sum_{xy}c_{xy}x\bar{y} + \sum_{xyx^\prime y^\prime}c_{xyx^\prime y^\prime}(x\bar{y} + x^\prime\bar{y^\prime}) \]
+    %can be minimized by the mincut of the following graph:
+    %\begin{enumerate}
+    %  \itemsep-0.3em
+    %  \item Create edge $(x, t)$ with capacity $c_x$ and create edge $(s, y)$ with capacity $c_y$.
+    %  \item Create edge $(x, y)$ with capacity $c_{xy}$.
+    %  \item Create edge $(x, y)$ and edge $(x^\prime, y^\prime)$ with capacity $c_{xyx^\prime y^\prime}$.
+    %\end{enumerate}
 \end{itemize}
