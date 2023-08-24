@@ -1,52 +1,55 @@
-struct Edge { int to, cap, rev, cost; };
-vector<Edge> g[kN];
-int dist[kN], pv[kN], ed[kN];
-bool mark[kN];
-int NegativeCycle(int n) {
-  memset(mark, false, sizeof(mark));
-  memset(dist, 0, sizeof(dist));
-  int upd = -1;
-  for (int i = 0; i <= n; ++i) {
-    for (int j = 0; j < n; ++j) {
-      int idx = 0;
-      for (auto &e : g[j]) {
-        if (e.cap > 0 && dist[e.to] > dist[j] + e.cost) {
-          dist[e.to] = dist[j] + e.cost;
-          pv[e.to] = j, ed[e.to] = idx;
-          if (i == n) {
-            upd = j;
-            while (!mark[upd]) mark[upd] = true, upd = pv[upd];
-            return upd;
-          }
-        }
-        idx++;
+struct MinCostCirculation { // 0-base
+  struct Edge {
+    ll from, to, cap, fcap, flow, cost, rev; 
+  } *past[N];
+  vector<Edge> G[N];
+  ll dis[N], inq[N], n;
+  void BellmanFord(int s) {
+    fill_n(dis, n, INF), fill_n(inq, n, 0);
+    queue<int> q;
+    auto relax = [&](int u, ll d, Edge *e) {
+      if (dis[u] > d) {
+        dis[u] = d, past[u] = e;
+        if (!inq[u]) inq[u] = 1, q.push(u);
+      }
+    };
+    relax(s, 0, 0);
+    while (!q.empty()) {
+      int u = q.front();
+      q.pop(), inq[u] = 0;
+      for (auto &e : G[u])
+        if (e.cap > e.flow)
+          relax(e.to, dis[u] + e.cost, &e);
+    }
+  }
+  void try_edge(Edge &cur) {
+    if (cur.cap > cur.flow) return ++cur.cap, void();
+    BellmanFord(cur.to);
+    if (dis[cur.from] + cur.cost < 0) {
+      ++cur.flow, --G[cur.to][cur.rev].flow;
+      for (int i = cur.from; past[i]; i = past[i]->from) {
+        auto &e = *past[i];
+        ++e.flow, --G[e.to][e.rev].flow;
       }
     }
+    ++cur.cap;
   }
-  return -1;
-}
-int Solve(int n) {
-  int rt = -1, ans = 0;
-  while ((rt = NegativeCycle(n)) >= 0) {
-    memset(mark, false, sizeof(mark));
-    vector<pair<int, int>> cyc;
-    while (!mark[rt]) {
-      cyc.emplace_back(pv[rt], ed[rt]);
-      mark[rt] = true;
-      rt = pv[rt];
-    }
-    reverse(cyc.begin(), cyc.end());
-    int cap = kInf;
-    for (auto &i : cyc) {
-      auto &e = g[i.first][i.second];
-      cap = min(cap, e.cap);
-    }
-    for (auto &i : cyc) {
-      auto &e = g[i.first][i.second];
-      e.cap -= cap;
-      g[e.to][e.rev].cap += cap;
-      ans += e.cost * cap;
+  void solve(int mxlg) {
+    for (int b = mxlg; b >= 0; --b) {
+      for (int i = 0; i < n; ++i)
+        for (auto &e : G[i])
+          e.cap *= 2, e.flow *= 2;
+      for (int i = 0; i < n; ++i)
+        for (auto &e : G[i])
+          if (e.fcap >> b & 1)
+            try_edge(e);
     }
   }
-  return ans;
-}
+  void init(int _n) { n = _n;
+    for (int i = 0; i < n; ++i) G[i].clear();
+  }
+  void add_edge(ll a, ll b, ll cap, ll cost) {
+    G[a].pb(Edge{a, b, 0, cap, 0, cost, SZ(G[b]) + (a == b)});
+    G[b].pb(Edge{b, a, 0, 0, 0, -cost, SZ(G[a]) - 1});
+  }
+} mcmf; // O(VE * ElogC)
