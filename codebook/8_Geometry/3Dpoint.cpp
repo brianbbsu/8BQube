@@ -5,6 +5,10 @@ struct Point {
 };
 Point operator-(const Point &p1, const Point &p2)
 { return Point(p1.x - p2.x, p1.y - p2.y, p1.z - p2.z); }
+Point operator+(const Point &p1, const Point &p2)
+{ return Point(p1.x + p2.x, p1.y + p2.y, p1.z + p2.z); }
+Point operator/(const Point &p1, const double &v)
+{ return Point(p1.x / v, p1.y / v, p1.z / v); }
 Point cross(const Point &p1, const Point &p2)
 { return Point(p1.y * p2.z - p1.z * p2.y, p1.z * p2.x - p1.x * p2.z, p1.x * p2.y - p1.y * p2.x); }
 double dot(const Point &p1, const Point &p2)
@@ -17,6 +21,8 @@ double area(Point a, Point b, Point c)
 { return abs(cross3(a, b, c)); }
 double volume(Point a, Point b, Point c, Point d)
 { return dot(cross3(a, b, c), d - a); }
+Point masscenter(Point a, Point b, Point c, Point d)
+{ return (a + b + c + d) / 4; }
 pdd proj(Point a, Point b, Point c, Point u) {
 // proj. u to the plane of a, b, and c
   Point e1 = b - a;
