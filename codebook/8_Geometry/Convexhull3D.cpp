@@ -2,7 +2,7 @@ struct convex_hull_3D {
 struct Face {
   int a, b, c;
   Face(int ta, int tb, int tc): a(ta), b(tb), c(tc) {}
-};
+}; // return the faces with pt indexes
 vector<Face> res;
 vector<Point> P;
 convex_hull_3D(const vector<Point> &_P): res(), P(_P) {
