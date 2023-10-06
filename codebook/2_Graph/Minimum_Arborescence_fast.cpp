@@ -35,5 +35,5 @@ vector<int> dmst(const vector<E> &e, int n, int root) {
       v[f] = n;
     ans.pb(r[i]);
   }
-  return ans;
+  return ans; // default minimize, returns edgeid array
 } // O(Ef(E)), f(E) from min_heap
