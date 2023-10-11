@@ -49,3 +49,7 @@ pdd projection(pdd p1, pdd p2, pdd p3)
 { return p1 + (p2 - p1) * dot(p3 - p1, p2 - p1) / abs2(p2 - p1); }
 pdd reflection(pdd p1, pdd p2, pdd p3)
 { return p3 + perp(p2 - p1) * cross(p3 - p1, p2 - p1) / abs2(p2 - p1) * 2; }
+pdd linearTransformation(pdd p0, pdd p1, pdd q0, pdd q1, pdd r) {
+	pdd dp = p1 - p0, dq = q1 - q0, num(cross(dp, dq), dot(dp, dq));
+	return q0 + pdd(cross(r - p0, num), dot(r - p0, num)) / abs2(dp);
+} // from line p0--p1 to q0--q1, apply to r 
