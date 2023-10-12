@@ -16,11 +16,17 @@ jobs:
         with:
           ref: codebook 
           path: pdf
+      - name: Get Ubuntu fonts
+        run: |
+          wget https://assets.ubuntu.com/v1/0cef8205-ubuntu-font-family-0.83.zip -O ubuntu-font.zip
+          unzip ubuntu-font.zip
       - name: Build
         uses: xu-cheng/latex-action@v3
         with:
           root_file: source/codebook/codebook.tex
           latexmk_use_xelatex: true
+          extra_fonts: |
+            ./ubuntu-font-family-0.83/*.ttf
       - run: |
           cp source/codebook/codebook.pdf pdf/codebook.pdf
           cd pdf
