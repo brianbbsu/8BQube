@@ -1,0 +1,31 @@
+name: Build Codebook
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build-codebook:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get codebook source
+        uses: actions/checkout@v4
+        with:
+          path: source
+      - name: Get codebook pdf branch
+        uses: actions/checkout@v4
+        with:
+          ref: codebook 
+          path: pdf
+      - name: Build
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: source/codebook/codebook.tex
+          latexmk_use_xelatex: true
+      - run: |
+          cp source/codebook/codebook.pdf pdf/codebook.pdf
+          cd pdf
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add .
+          git commit -m "Auto build, $(date +'%Y-%m-%d_%H:%M:%S')"
+          git push
