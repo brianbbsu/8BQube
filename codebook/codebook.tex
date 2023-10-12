@@ -13,9 +13,11 @@
 \usepackage{fancyhdr}								%設定頁首頁尾
 \usepackage{graphicx}								%Graphic
 \usepackage{enumerate}
+\usepackage{multicol}
 \usepackage{titlesec}
 \usepackage{amsmath}
 \usepackage[CheckSingle, CJKmath]{xeCJK}
+\usepackage{savetrees}
 % \usepackage{CJKulem}
 
 %\usepackage[T1]{fontenc}
@@ -33,7 +35,8 @@
 \evensidemargin=0pt
 \hoffset=-42pt
 
-\titlespacing\subsection{0pt}{4pt plus 2pt minus 2pt}{0pt plus 2pt minus 2pt}
+\titlespacing\section{0pt}{0pt plus 2pt minus 2pt}{0pt plus 2pt minus 2pt}
+\titlespacing\subsection{0pt}{0pt plus 2pt minus 2pt}{0pt plus 2pt minus 2pt}
 
 
 %\renewcommand\listfigurename{圖目錄}
@@ -41,12 +44,8 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\setmainfont{Consolas}				%主要字型
-%\setmonofont{Monaco}				%主要字型
-\setmonofont{Consolas}
-\setCJKmainfont{Noto Sans CJK TC}
-% \setCJKmainfont{Consolas}			%中文字型
-%\setmainfont{sourcecodepro}
+\setmainfont{Ubuntu}				%主要字型
+\setmonofont{Ubuntu Mono}
 \XeTeXlinebreaklocale "zh"						%中文自動換行
 \XeTeXlinebreakskip = 0pt plus 1pt				%設定段落之間的距離
 \setcounter{secnumdepth}{3}						%目錄顯示第三層
@@ -125,7 +124,9 @@ stringstyle=\itshape\color{Green4},
 \renewcommand{\contentsname}{Contents} 
 
 \scriptsize
-\tableofcontents
+\begin{multicols}{2}
+  \tableofcontents
+\end{multicols}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %\newpage

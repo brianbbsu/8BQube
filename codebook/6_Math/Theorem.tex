@@ -15,7 +15,7 @@ $$
 
 Denote $L$ be a $n \times n$ matrix as the Laplacian matrix of graph $G$, where $L_{ii} = d(i)$, $L_{ij} = -c$ where $c$ is the number of edge $(i, j)$ in $G$.
 \begin{itemize}
-    \itemsep-0.5em
+    %\itemsep-0.5em
     \item The number of undirected spanning in $G$ is $\lvert \det(\tilde{L}_{11}) \rvert$.
     \item The number of directed spanning tree rooted at $r$ in $G$ is $\lvert \det(\tilde{L}_{rr}) \rvert$.
 \end{itemize}
@@ -27,7 +27,7 @@ Let $D$ be a $n \times n$ matrix, where $d_{ij} = x_{ij}$ ($x_{ij}$ is chosen un
 \item Cayley's Formula
 
 \begin{itemize}
-    \itemsep-0.5em
+    %\itemsep-0.5em
   \item Given a degree sequence $d_1, d_2, \ldots, d_n$ for each \textit{labeled} vertices, there are $\frac{(n - 2)!}{(d_1 - 1)!(d_2 - 1)!\cdots(d_n - 1)!}$ spanning trees.
   \item Let $T_{n, k}$ be the number of \textit{labeled} forests on $n$ vertices with $k$ components, such that vertex $1, 2, \ldots, k$ belong to different components. Then $T_{n, k} = kn^{n - k - 1}$.
 \end{itemize}
@@ -47,7 +47,7 @@ A sequence $(a_1,b_1),\ldots,(a_n,b_n)$ of nonnegative integer pairs with $a_1\g
 \item Möbius inversion formula
 
 \begin{itemize}
-    \itemsep-0.5em
+    %\itemsep-0.5em
   \item $f(n)=\sum_{d\mid n}g(d)\Leftrightarrow g(n)=\sum_{d\mid n}\mu(d)f(\frac{n}{d})$
   \item $f(n)=\sum_{n\mid d}g(d)\Leftrightarrow g(n)=\sum_{n\mid d}\mu(\frac{d}{n})f(d)$
 \end{itemize}
@@ -55,7 +55,7 @@ A sequence $(a_1,b_1),\ldots,(a_n,b_n)$ of nonnegative integer pairs with $a_1\g
 \item Spherical cap
 
 \begin{itemize}
-    \itemsep-0.5em
+    %\itemsep-0.5em
   \item A portion of a sphere cut off by a plane.
   \item $r$: sphere radius, $a$: radius of the base of the cap, $h$: height of the cap, $\theta$: $\arcsin(a/r)$.
   \item Volume $=\pi h^2(3r-h)/3=\pi h(3a^2+h^2)/6=\pi r^3(2+\cos\theta)(1-\cos\theta)^2/3$.
@@ -65,7 +65,7 @@ A sequence $(a_1,b_1),\ldots,(a_n,b_n)$ of nonnegative integer pairs with $a_1\g
 \item Lagrange multiplier
 
 \begin{itemize}
-    \itemsep-0.5em
+    %\itemsep-0.5em
   \item Optimize $f(x_1, \ldots, x_n)$ when $k$ constraints $g_i(x_1, \ldots, x_n)=0$.
   \item Lagrangian function $\mathcal{L}(x_1, \ldots, x_n, \lambda_1, \ldots, \lambda_k) = f(x_1, \ldots, x_n) = \sum^{k}_{i=1}\lambda_i g_i(x_1, \ldots, x_n)$.
   \item The solution corresponding to the original constrained optimization is always a saddle point of the Lagrangian function.
