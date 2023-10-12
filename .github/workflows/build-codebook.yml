@@ -25,6 +25,7 @@ jobs:
         with:
           root_file: source/codebook/codebook.tex
           latexmk_use_xelatex: true
+          work_in_root_file_dir: true
           extra_fonts: |
             ./ubuntu-font-family-0.83/*.ttf
       - run: |
