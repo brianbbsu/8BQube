@@ -28,7 +28,8 @@ jobs:
           work_in_root_file_dir: true
           extra_fonts: |
             ./ubuntu-font-family-0.83/*.ttf
-      - run: |
+      - name: Push codebook.pdf
+        run: |
           cp source/codebook/codebook.pdf pdf/codebook.pdf
           cd pdf
           git config user.name github-actions

@@ -1,7 +1,11 @@
 # 8BQube
+[![Build Codebook](https://github.com/brianbbsu/8BQube/actions/workflows/build-codebook.yml/badge.svg?branch=master)](https://github.com/brianbbsu/8BQube/actions/workflows/build-codebook.yml)
+
 Codebook of NTU 8BQube by baluteshih, briansu, icube
 
-Current Version: [Codebook.pdf](https://github.com/brianbbsu/BBQube/blob/codebook/codebook.pdf)
+You can view the current version [here](https://pdf.8bqube.ac/).
+
+Or, you can find the file [here](https://github.com/brianbbsu/BBQube/blob/codebook/codebook.pdf).
 
 # Result
 
