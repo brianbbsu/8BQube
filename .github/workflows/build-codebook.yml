@@ -2,7 +2,7 @@ name: Build Codebook
 on:
   push:
     branches:
-      - main
+      - master
 jobs:
   build-codebook:
     runs-on: ubuntu-latest
