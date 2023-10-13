@@ -60,3 +60,6 @@ double get_dis(Point p, Face f) {
   return fabs(a * p.x + b * p.y + c * p.z + d) / sqrt(a * a + b * b + c * c);                    
 }
 };
+// n^2 delaunay: facets with negative z normal of
+// convexhull of (x, y, x^2 + y^2), use a pseudo-point
+// (0, 0, inf) to avoid degenerate case
