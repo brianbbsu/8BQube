@@ -1,79 +1,51 @@
-struct GenMatch { // 1-base
-  int V, pr[N];
-  bool el[N][N], inq[N], inp[N], inb[N];
-  int st, ed, nb, bk[N], djs[N], ans;
-  void init(int _V) {
-    V = _V;
-    for (int i = 0; i <= V; ++i) {
-      for (int j = 0; j <= V; ++j) el[i][j] = 0;
-      pr[i] = bk[i] = djs[i] = 0;
-      inq[i] = inp[i] = inb[i] = 0;
+struct Matching { // 0-base
+  queue<int> q; int n;
+  vector<int> fa, s, vis, pre, match;
+  vector<vector<int>> G;
+  int Find(int u) 
+  { return u == fa[u] ? u : fa[u] = Find(fa[u]); }
+  int LCA(int x, int y) {
+    static int tk = 0; tk++; x = Find(x); y = Find(y);
+    for (;; swap(x, y)) if (x != n) {
+      if (vis[x] == tk) return x;
+      vis[x] = tk;
+      x = Find(pre[match[x]]);
     }
   }
-  void add_edge(int u, int v) {
-    el[u][v] = el[v][u] = 1;
-  }
-  int lca(int u, int v) {
-    fill_n(inp, V + 1, 0);
-    while (1)
-      if (u = djs[u], inp[u] = true, u == st) break;
-      else u = bk[pr[u]];
-    while (1)
-      if (v = djs[v], inp[v]) return v;
-      else v = bk[pr[v]];
-    return v;
-  }
-  void upd(int u) {
-    for (int v; djs[u] != nb;) {
-      v = pr[u], inb[djs[u]] = inb[djs[v]] = true;
-      u = bk[v];
-      if (djs[u] != nb) bk[u] = v;
+  void Blossom(int x, int y, int l) {
+    for (; Find(x) != l; x = pre[y]) {
+      pre[x] = y, y = match[x];
+      if (s[y] == 1) q.push(y), s[y] = 0;
+      for (int z: {x, y}) if (fa[z] == z) fa[z] = l;
     }
   }
-  void blo(int u, int v, queue<int> &qe) {
-    nb = lca(u, v), fill_n(inb, V + 1, 0);
-    upd(u), upd(v);
-    if (djs[u] != nb) bk[u] = v;
-    if (djs[v] != nb) bk[v] = u;
-    for (int tu = 1; tu <= V; ++tu)
-      if (inb[djs[tu]])
-        if (djs[tu] = nb, !inq[tu])
-          qe.push(tu), inq[tu] = 1;
-  }
-  void flow() {
-    fill_n(inq + 1, V, 0), fill_n(bk + 1, V, 0);
-    iota(djs + 1, djs + V + 1, 1);
-    queue<int> qe;
-    qe.push(st), inq[st] = 1, ed = 0;
-    while (!qe.empty()) {
-      int u = qe.front();
-      qe.pop();
-      for (int v = 1; v <= V; ++v)
-        if (el[u][v] && djs[u] != djs[v] &&
-          pr[u] != v) {
-          if ((v == st) ||
-            (pr[v] > 0 && bk[pr[v]] > 0)) {
-            blo(u, v, qe);
-          } else if (!bk[v]) {
-            if (bk[v] = u, pr[v] > 0) {
-              if (!inq[pr[v]]) qe.push(pr[v]);
-            } else {
-              return ed = v, void();
-            }
+  bool Bfs(int r) {
+    iota(ALL(fa), 0); fill(ALL(s), -1);
+    q = queue<int>(); q.push(r); s[r] = 0;
+    for (; !q.empty(); q.pop()) {
+      for (int x = q.front(); int u : G[x])
+        if (s[u] == -1) {
+          if (pre[u] = x, s[u] = 1, match[u] == n) {
+            for (int a = u, b = x, last;
+                b != n; a = last, b = pre[a])
+              last = match[b], match[b] = a, match[a] = b;
+            return true;
           }
+          q.push(match[u]); s[match[u]] = 0;
+        } else if (!s[u] && Find(u) != Find(x)) {
+          int l = LCA(u, x);
+          Blossom(x, u, l); Blossom(u, x, l);
         }
     }
+    return false;
   }
-  void aug() {
-    for (int u = ed, v, w; u > 0;)
-      v = bk[u], w = pr[v], pr[v] = u, pr[u] = v,
-      u = w;
-  }
+  Matching(int _n) : n(_n), fa(n + 1), s(n + 1), vis(n + 1), pre(n + 1, n), match(n + 1, n), G(n) {}
+  void add_edge(int u, int v) 
+  { G[u].pb(v), G[v].pb(u); }
   int solve() {
-    fill_n(pr, V + 1, 0), ans = 0;
-    for (int u = 1; u <= V; ++u)
-      if (!pr[u])
-        if (st = u, flow(), ed > 0) aug(), ++ans;
+    int ans = 0;
+    for (int x = 0; x < n; ++x)
+      if (match[x] == n) ans += Bfs(x);
     return ans;
-  }
-};
+  } // match[x] == n means not matched
+}; 
