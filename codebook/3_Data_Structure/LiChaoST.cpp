@@ -1,58 +1,32 @@
-struct LiChao_min {
-  struct line {
-    LL m, c;
-    line(LL _m = 0, LL _c = 0) {
-      m = _m;
-      c = _c;
-    }
-    LL eval(LL x) { return m * x + c; }
-  };
-  struct node {
-    node *l, *r;
-    line f;
-    node(line v) {
-      f = v;
-      l = r = NULL;
-    }
-  };
-  typedef node *pnode;
-  pnode root;
-  int sz;
-#define mid ((l + r) >> 1)
-  void insert(line &v, int l, int r, pnode &nd) {
-    if (!nd) {
-      nd = new node(v);
-      return;
-    }
-    LL trl = nd->f.eval(l), trr = nd->f.eval(r);
-    LL vl = v.eval(l), vr = v.eval(r);
-    if (trl <= vl && trr <= vr) return;
-    if (trl > vl && trr > vr) {
-      nd->f = v;
-      return;
-    }
-    if (trl > vl) swap(nd->f, v);
-    if (nd->f.eval(mid) < v.eval(mid))
-      insert(v, mid + 1, r, nd->r);
-    else swap(nd->f, v), insert(v, l, mid, nd->l);
+struct L {
+  ll m, k, id;
+  L() : id(-1) {}
+  L(ll a, ll b, ll c) : m(a), k(b), id(c) {}
+  ll at(ll x) { return m * x + k; }
+};
+class LiChao { // maintain max
+private:
+  int n; vector<L> nodes;
+  void insert(int l, int r, int rt, L ln) {
+    int m = (l + r) >> 1;
+    if (nodes[rt].id == -1)
+      return nodes[rt] = ln, void();
+    bool atLeft = nodes[rt].at(l) < ln.at(l);
+    if (nodes[rt].at(m) < ln.at(m))
+      atLeft ^= 1, swap(nodes[rt], ln);
+    if (r - l == 1) return;
+    if (atLeft) insert(l, m, rt << 1, ln);
+    else insert(m, r, rt << 1 | 1, ln);
   }
-  LL query(int x, int l, int r, pnode &nd) {
-    if (!nd) return LLONG_MAX;
-    if (l == r) return nd->f.eval(x);
-    if (mid >= x)
-      return min(
-        nd->f.eval(x), query(x, l, mid, nd->l));
-    return min(
-      nd->f.eval(x), query(x, mid + 1, r, nd->r));
+  ll query(int l, int r, int rt, ll x) {
+    int m = (l + r) >> 1; ll ret = -INF;
+    if (nodes[rt].id != -1) ret = nodes[rt].at(x);
+    if (r - l == 1) return ret;
+    if (x < m) return max(ret, query(l, m, rt << 1, x));
+    return max(ret, query(m, r, rt << 1 | 1, x));
   }
-  /* -sz <= query_x <= sz */
-  void init(int _sz) {
-    sz = _sz + 1;
-    root = NULL;
-  }
-  void add_line(LL m, LL c) {
-    line v(m, c);
-    insert(v, -sz, sz, root);
-  }
-  LL query(LL x) { return query(x, -sz, sz, root); }
+public:
+  LiChao(int n_) : n(n_), nodes(n * 4) {}
+  void insert(L ln) { insert(0, n, 1, ln); }
+  ll query(ll x) { return query(0, n, 1, x); }
 };
