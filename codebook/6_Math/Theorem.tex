@@ -71,7 +71,7 @@ For simple polygon, when points are all integer, we have $A=\text{\#\{lattice po
 \begin{itemize}
     %\itemsep-0.5em
   \item Optimize $f(x_1, \ldots, x_n)$ when $k$ constraints $g_i(x_1, \ldots, x_n)=0$.
-  \item Lagrangian function $\mathcal{L}(x_1, \ldots, x_n, \lambda_1, \ldots, \lambda_k) = f(x_1, \ldots, x_n) = \sum^{k}_{i=1}\lambda_i g_i(x_1, \ldots, x_n)$.
+  \item Lagrangian function $\mathcal{L}(x_1, \ldots, x_n, \lambda_1, \ldots, \lambda_k) = f(x_1, \ldots, x_n) - \sum^{k}_{i=1}\lambda_i g_i(x_1, \ldots, x_n)$.
   \item The solution corresponding to the original constrained optimization is always a saddle point of the Lagrangian function.
 \end{itemize}
 
