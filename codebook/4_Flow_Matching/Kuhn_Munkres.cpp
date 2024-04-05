@@ -1,4 +1,4 @@
-struct KM { // 0-base
+struct KM { // 0-base, maximum matching
   ll w[N][N], hl[N], hr[N], slk[N];
   int fl[N], fr[N], pre[N], qu[N], ql, qr, n;
   bool vl[N], vr[N];
