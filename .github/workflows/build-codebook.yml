@@ -27,7 +27,7 @@ jobs:
           latexmk_use_xelatex: true
           latexmk_shell_escape: true
           work_in_root_file_dir: true
-          extra_system_packages: "gcc"
+          extra_system_packages: "gcc g++"
           extra_fonts: |
             ./ubuntu-font-family-0.83/*.ttf
       - name: Push codebook.pdf
