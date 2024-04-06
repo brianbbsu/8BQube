@@ -87,4 +87,39 @@ For simple polygon, when points are all integer, we have $A=\text{\#\{lattice po
 \item $\boldsymbol{c}_2 = \boldsymbol{p}_2 + \frac{(\boldsymbol{p}_1 - \boldsymbol{p}_2)\cdot\boldsymbol{n}_1}{\boldsymbol{d}_2\cdot\boldsymbol{n}_1}\boldsymbol{d}_2$
 \end{itemize}
 
+\item Derivatives/Integrals
+
+Integration by parts:
+\(\int_a^bf(x)g(x)dx = [F(x)g(x)]_a^b-\int_a^bF(x)g'(x)dx\)
+{
+  \setlength{\tabcolsep}{1pt}
+  \setlength{\columnsep}{0pt}
+
+  \noindent
+  \begin{tabular}{|*{20}{>{$\displaystyle}c<{$}|}}
+    \frac{d}{dx}\sin^{-1} x = \frac{1}{\sqrt{1-x^2}}
+    &
+    \frac{d}{dx}\cos^{-1} x = -\frac{1}{\sqrt{1-x^2}}
+    &
+    \frac{d}{dx}\tan^{-1} x = \frac{1}{1+x^2}
+    \\
+    \frac{d}{dx}\tan x = 1+\tan^2 x
+    &
+    \int\tan ax = -\frac{\ln|\cos ax|}{a}
+    &
+    % \int x\sin ax = \frac{\sin ax-ax \cos ax}{a^2}
+    % &
+    \\
+    \int e^{-x^2} = \frac{\sqrt \pi}{2} \text{erf}(x)
+    &
+    \int xe^{ax} dx = \frac{e^{ax}}{a^2}(ax-1)
+    \\
+  \end{tabular}
+  
+  \(
+    \displaystyle
+    \int \sqrt{a^2 + x^2} = \frac{1}{2} \left(x\sqrt{a^2+x^2} + a^2 \operatorname{asinh}(x/a) \right)
+  \)
+}
+
 \end{itemize}
