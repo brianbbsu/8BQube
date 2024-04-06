@@ -30,4 +30,4 @@ void main_lorentz(const string &s, int sft = 0) {
     if (k1 + k2 >= l)
       add_rep(cntr < nu, cntr, l, k1, k2);
   }
-}
+} // p \in [l, r] => s[p, p + i) = s[p + i, p + 2i)
