@@ -153,7 +153,10 @@ stringstyle=\itshape\color{Green4},
 \fancyhead[R]{\thepage}
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\contentsname}{Contents} 
-\newcommand{\inputcode}[2]{\section{#1 [\texttt{\captureshell{cpp #2 -dD -P -fpreprocessed | tr -d '[:space:]' | md5sum | cut -c-6}}]}}
+\newcommand{\inputcode}[2]{
+    \subsection{#1 [\texttt{\captureshell{cpp #2 -dD -P -fpreprocessed | tr -d '[:space:]' | md5sum | cut -c-6}}]}
+    \lstinputlisting{#2}
+}
 
 \textbf{
 \scriptsize
