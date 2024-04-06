@@ -5,3 +5,6 @@ syntax on
 hi cursorline cterm=none ctermbg=89
 set bg=dark
 inoremap {<CR> {<CR>}<Esc>ko<tab>
+" Select region and then type :Hash to hash your selection.
+" Useful for verifying that there aren't mistypes.
+ca Hash w !cpp -dD -P -fpreprocessed \| tr -d '[:space:]' \| md5sum \| cut -c-6
