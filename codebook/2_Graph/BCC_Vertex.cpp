@@ -1,46 +1,46 @@
-vector<int> G[N]; // 1-base
-vector<int> nG[N * 2], bcc[N];
-int low[N], dfn[N], Time, st[N], top;
-int bcc_id[N], bcc_cnt; // 1-base
-bool is_cut[N]; // whether is av
-bool cir[N * 2];
-void dfs(int u, int pa = -1) {
-  int child = 0;
-  low[u] = dfn[u] = ++Time;
-  st[top++] = u;
-  for (int v : G[u])
-    if (!dfn[v]) {
-      dfs(v, u), ++child;
-      low[u] = min(low[u], low[v]);
-      if (dfn[u] <= low[v]) {
-        is_cut[u] = 1;
-        bcc[++bcc_cnt].clear();
-        int t;
-        do {
-          bcc_id[t = st[--top]] = bcc_cnt;
-          bcc[bcc_cnt].push_back(t);
-        } while (t != v);
-        bcc_id[u] = bcc_cnt;
-        bcc[bcc_cnt].pb(u);
-      }
-    } else if (dfn[v] < dfn[u] && v != pa)
-      low[u] = min(low[u], dfn[v]);
-  if (pa == -1 && child < 2) is_cut[u] = 0;
-}
-void bcc_init(int n) { // TODO: init {nG, cir}[1..2n]
-  Time = bcc_cnt = top = 0;
-  for (int i = 1; i <= n; ++i)
-    G[i].clear(), dfn[i] = bcc_id[i] = is_cut[i] = 0;
-}
-void bcc_solve(int n) {
-  for (int i = 1; i <= n; ++i)
-    if (!dfn[i]) dfs(i);
-  // block-cut tree
-  for (int i = 1; i <= n; ++i)
-    if (is_cut[i])
-      bcc_id[i] = ++bcc_cnt, cir[bcc_cnt] = 1;
-  for (int i = 1; i <= bcc_cnt && !cir[i]; ++i)
-    for (int j : bcc[i])
-      if (is_cut[j])
-        nG[i].pb(bcc_id[j]), nG[bcc_id[j]].pb(i);
-}
+struct BCC { // 0-base
+  int n, dft, nbcc;
+  vector<int> low, dfn, bln, stk, is_ap, cir;
+  vector<vector<int>> G, bcc, nG;
+  void make_bcc(int u) {
+    bcc.emplace_back(1, u); 
+    for (; stk.back() != u; stk.pop_back())
+      bln[stk.back()] = nbcc, bcc[nbcc].pb(stk.back());
+    stk.pop_back(), bln[u] = nbcc++;
+  }
+  void dfs(int u, int f) {
+    int child = 0;
+    low[u] = dfn[u] = ++dft, stk.pb(u);
+    for (int v : G[u])
+      if (!dfn[v]) {
+        dfs(v, u), ++child;
+        low[u] = min(low[u], low[v]);
+        if (dfn[u] <= low[v]) {
+          is_ap[u] = 1, bln[u] = nbcc;
+          make_bcc(v), bcc.back().pb(u);
+        }
+      } else if (dfn[v] < dfn[u] && v != f)
+        low[u] = min(low[u], dfn[v]);
+    if (f == -1 && child < 2) is_ap[u] = 0;
+    if (f == -1 && child == 0) make_bcc(u);
+  }
+  BCC(int _n): n(_n), dft(), nbcc(), low(n), dfn(n), bln(n), is_ap(n), G(n) {}
+  void add_edge(int u, int v) {
+    G[u].pb(v), G[v].pb(u);
+  }
+  void solve() {
+    for (int i = 0; i < n; ++i)
+      if (!dfn[i]) dfs(i, -1);
+  }
+  void block_cut_tree() {
+    cir.resize(nbcc);
+    for (int i = 0; i < n; ++i)
+      if (is_ap[i])
+        bln[i] = nbcc++;
+    cir.resize(nbcc, 1), nG.resize(nbcc);
+    for (int i = 0; i < nbcc && !cir[i]; ++i)
+      for (int j : bcc[i])
+        if (is_ap[j])
+          nG[i].pb(bln[j]), nG[bln[j]].pb(i);
+  } // up to 2 * n - 2 nodes!! bln[i] for id
+};
