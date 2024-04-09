@@ -132,5 +132,20 @@ $$
 (r, \theta, \phi) = (\sqrt{x^2+y^2+z^2}, \textrm{acos}(z/\sqrt{x^2+y^2+z^2}), \textrm{atan2}(y,x)) 
 $$
 
+\item Rotation Matrix
+
+$$
+M(\theta)=
+\begin{bmatrix}
+\cos\theta & -\sin\theta\\
+\sin\theta & cos\theta
+\end{bmatrix},
+R_x(\theta_x)=
+\begin{bmatrix}
+1 & 0 & 0\\
+0 & \cos\theta_x & -\sin\theta_x \\
+0 & \sin\theta & cos\theta
+\end{bmatrix}
+$$
 
 \end{itemize}
